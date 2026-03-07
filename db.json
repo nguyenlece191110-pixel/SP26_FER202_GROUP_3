@@ -1,0 +1,11 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Hậu Admin",
+      "email": "admin@gmail.com",
+      "password": "1",
+      "role": "admin"
+    }
+  ]
+}
