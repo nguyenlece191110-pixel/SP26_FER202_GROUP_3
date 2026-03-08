@@ -10,7 +10,8 @@ export const AuthProvider = ({ children }) => {
 
     // Kiểm tra trạng thái đăng nhập khi load lại trang
     useEffect(() => {
-        const storedUser = localStorage.getItem('user');
+        // sessionStorage is cleared automatically when browser/tab closes
+        const storedUser = sessionStorage.getItem('user');
         if (storedUser) {
             setUser(JSON.parse(storedUser));
         }
@@ -18,15 +19,22 @@ export const AuthProvider = ({ children }) => {
 
     // Xử lý Đăng nhập với dữ liệu thật từ JSON-server
     const login = async (email, password) => {
+        console.debug('login called with', { email, password });
         try {
-            const res = await axios.get(`http://localhost:5000/users?email=${email}&password=${password}`);
+            // fetch full list then filter locally to avoid query encoding quirks
+            const res = await axios.get('http://localhost:5000/users');
+            console.log('fetched users', res.data);
+            const candidates = Array.isArray(res.data) ? res.data : [];
+            const loggedInUser = candidates.find(u => u.email === email && u.password === password);
 
-            if (res.data.length > 0) {
-                const loggedInUser = res.data[0];
+            if (loggedInUser) {
+                console.log('login success, user=', loggedInUser);
                 setUser(loggedInUser);
-                localStorage.setItem('user', JSON.stringify(loggedInUser));
+                // persist only for current browsing session
+                sessionStorage.setItem('user', JSON.stringify(loggedInUser));
                 navigate('/');
             } else {
+                console.warn('login failed: no matching user', { email, password });
                 alert("Email hoặc mật khẩu không chính xác!");
             }
         } catch (error) {
@@ -37,7 +45,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = () => {
         setUser(null);
-        localStorage.removeItem('user');
+        sessionStorage.removeItem('user');
         navigate('/login');
     };
 
