@@ -6,6 +6,14 @@
       "email": "admin@gmail.com",
       "password": "1",
       "role": "admin"
+    },
+    {
+      "id": "b566",
+      "name": "hau",
+      "email": "hau@gmail.com",
+      "password": "123",
+      "role": "user"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

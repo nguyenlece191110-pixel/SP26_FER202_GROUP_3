@@ -9,8 +9,11 @@ export default function Login() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Gọi hàm login đã được bạn nâng cấp với Axios ở tin nhắn trước
-        login(email, password); 
+        // loại bỏ dấu cách vô ý ở đầu/cuối
+        const cleanEmail = email.trim();
+        const cleanPassword = password; // có thể trim nếu cần
+        console.debug('submitting', { cleanEmail, cleanPassword });
+        login(cleanEmail, cleanPassword);
     };
 
     return (
