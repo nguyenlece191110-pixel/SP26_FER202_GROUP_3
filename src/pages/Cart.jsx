@@ -146,18 +146,7 @@ export default function Cart() {
                                     <span className="text-muted">Tạm tính:</span>
                                 </Col>
                                 <Col className="text-end">
-                                    <span>{formatCurrency(totalPrice)}</span>
-                                </Col>
-                            </Row>
-                            
-                            <Row className="mb-3">
-                                <Col>
-                                    <span className="text-muted">Tổng đã chọn:</span>
-                                </Col>
-                                <Col className="text-end">
-                                    <span className="text-primary fw-bold">
-                                        {formatCurrency(getSelectedItemsTotal())}
-                                    </span>
+                                    <span>{formatCurrency(getSelectedItemsTotal())}</span>
                                 </Col>
                             </Row>
                             

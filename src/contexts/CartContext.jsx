@@ -9,7 +9,11 @@ const initialState = {
     totalItems: 0,
     totalPrice: 0,
     isOpen: false,
-    selectedItems: []
+    selectedItems: [],
+    discountCode: '',
+    discountAmount: 0,
+    discountType: 'percentage', // 'percentage' or 'fixed'
+    finalTotal: 0
 };
 
 // Action types
@@ -22,7 +26,9 @@ const CART_ACTIONS = {
     LOAD_CART: 'LOAD_CART',
     TOGGLE_SELECT_ITEM: 'TOGGLE_SELECT_ITEM',
     SELECT_ALL_ITEMS: 'SELECT_ALL_ITEMS',
-    DESELECT_ALL_ITEMS: 'DESELECT_ALL_ITEMS'
+    DESELECT_ALL_ITEMS: 'DESELECT_ALL_ITEMS',
+    APPLY_DISCOUNT: 'APPLY_DISCOUNT',
+    REMOVE_DISCOUNT: 'REMOVE_DISCOUNT'
 };
 
 // Reducer function
@@ -142,6 +148,42 @@ const cartReducer = (state, action) => {
             };
         }
 
+        case CART_ACTIONS.APPLY_DISCOUNT: {
+            const { code, amount, type } = action.payload;
+            const selectedTotal = state.items
+                .filter(item => state.selectedItems.includes(item.id))
+                .reduce((total, item) => total + (item.price * item.quantity), 0);
+            
+            let discountValue = 0;
+            if (type === 'percentage') {
+                discountValue = (selectedTotal * amount) / 100;
+            } else {
+                discountValue = Math.min(amount, selectedTotal);
+            }
+
+            return {
+                ...state,
+                discountCode: code,
+                discountAmount: amount,
+                discountType: type,
+                finalTotal: Math.max(0, selectedTotal - discountValue)
+            };
+        }
+
+        case CART_ACTIONS.REMOVE_DISCOUNT: {
+            const selectedTotal = state.items
+                .filter(item => state.selectedItems.includes(item.id))
+                .reduce((total, item) => total + (item.price * item.quantity), 0);
+            
+            return {
+                ...state,
+                discountCode: '',
+                discountAmount: 0,
+                discountType: 'percentage',
+                finalTotal: selectedTotal
+            };
+        }
+
         default:
             return state;
     }
@@ -252,6 +294,41 @@ export const CartProvider = ({ children }) => {
         return state.items.length > 0 && state.selectedItems.length === state.items.length;
     };
 
+    // Discount functions
+    const applyDiscount = (code, amount, type = 'percentage') => {
+        dispatch({
+            type: CART_ACTIONS.APPLY_DISCOUNT,
+            payload: { code, amount, type }
+        });
+    };
+
+    const removeDiscount = () => {
+        dispatch({
+            type: CART_ACTIONS.REMOVE_DISCOUNT
+        });
+    };
+
+    const getDiscountValue = () => {
+        const selectedTotal = state.items
+            .filter(item => state.selectedItems.includes(item.id))
+            .reduce((total, item) => total + (item.price * item.quantity), 0);
+        
+        if (state.discountType === 'percentage') {
+            return (selectedTotal * state.discountAmount) / 100;
+        } else {
+            return Math.min(state.discountAmount, selectedTotal);
+        }
+    };
+
+    const getFinalTotal = () => {
+        const selectedTotal = state.items
+            .filter(item => state.selectedItems.includes(item.id))
+            .reduce((total, item) => total + (item.price * item.quantity), 0);
+        
+        const discountValue = getDiscountValue();
+        return Math.max(0, selectedTotal - discountValue);
+    };
+
     const value = {
         ...state,
         addToCart,
@@ -265,7 +342,11 @@ export const CartProvider = ({ children }) => {
         getSelectedItemsTotal,
         getSelectedItemsCount,
         isItemSelected,
-        isAllItemsSelected
+        isAllItemsSelected,
+        applyDiscount,
+        removeDiscount,
+        getDiscountValue,
+        getFinalTotal
     };
 
     return (

@@ -101,7 +101,7 @@ const CartItem = ({ item, onUpdateQuantity, onRemove }) => {
                     </Col>
 
                     {/* Item Total */}
-                    <Col xs={6} md={1} className="mb-3 mb-md-0">
+                    <Col xs={6} md={2} className="mb-3 mb-md-0">
                         <div className="text-end">
                             <p className="mb-0 fw-bold">
                                 {new Intl.NumberFormat('vi-VN', {

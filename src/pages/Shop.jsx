@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Form, Button, Alert, Pagination } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, Alert, Pagination, Nav, Tab } from 'react-bootstrap';
 import ProductGallery from '../components/ProductGallery';
 
 // Sample product data - trong thực tế sẽ gọi API
@@ -1279,6 +1279,9 @@ export default function Shop() {
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
     const [sortBy, setSortBy] = useState('name');
+    const [filterCategory, setFilterCategory] = useState('all');
+    const [filterBrand, setFilterBrand] = useState('all');
+    const [activeTab, setActiveTab] = useState('all');
     const [currentPage, setCurrentPage] = useState(1);
     const productsPerPage = 12;
 
@@ -1295,12 +1298,26 @@ export default function Shop() {
     useEffect(() => {
         let result = [...products];
 
-        // Filter by search term
+        // Filter by search term (only by name)
         if (searchTerm) {
             result = result.filter(product =>
-                product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                product.description.toLowerCase().includes(searchTerm.toLowerCase())
+                product.name.toLowerCase().includes(searchTerm.toLowerCase())
             );
+        }
+
+        // Filter by category (from tab)
+        if (activeTab !== 'all') {
+            result = result.filter(product => product.category === activeTab);
+        }
+
+        // Filter by dropdown category
+        if (filterCategory !== 'all') {
+            result = result.filter(product => product.category === filterCategory);
+        }
+
+        // Filter by brand
+        if (filterBrand !== 'all') {
+            result = result.filter(product => product.brand === filterBrand);
         }
 
         // Sort products
@@ -1320,15 +1337,20 @@ export default function Shop() {
 
         setFilteredProducts(result);
         setCurrentPage(1); // Reset to first page when filtering
-    }, [products, searchTerm, sortBy]);
-
-    // Pagination
-    const indexOfLastProduct = currentPage * productsPerPage;
-    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-    const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
-    const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+    }, [products, searchTerm, sortBy, filterCategory, filterBrand, activeTab]);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+    // Get unique categories and brands
+    const categories = ['all', ...new Set(products.map(p => p.category))];
+    const brands = ['all', ...new Set(products.map(p => p.brand))];
+
+    // Handle tab change
+    const handleTabSelect = (tabKey) => {
+        setActiveTab(tabKey);
+        setFilterCategory('all'); // Reset dropdown when tab changes
+        setFilterBrand('all');
+    };
 
     if (loading) {
         return (
@@ -1347,85 +1369,136 @@ export default function Shop() {
         <Container className="mt-4">
             <h1 className="mb-4">Cửa hàng TechHub</h1>
             
-            {/* Search and Filter */}
-            <Row className="mb-4">
-                <Col md={6}>
-                    <Form.Control
-                        type="text"
-                        placeholder="Tìm kiếm sản phẩm..."
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                </Col>
-                <Col md={3}>
-                    <Form.Select
-                        value={sortBy}
-                        onChange={(e) => setSortBy(e.target.value)}
-                    >
-                        <option value="name">Sắp xếp theo tên</option>
-                        <option value="price-asc">Giá: Thấp đến cao</option>
-                        <option value="price-desc">Giá: Cao đến thấp</option>
-                    </Form.Select>
-                </Col>
-                <Col md={3}>
-                    <Button variant="outline-secondary" onClick={() => {
-                        setSearchTerm('');
-                        setSortBy('name');
-                    }}>
-                        Đặt lại
-                    </Button>
-                </Col>
-            </Row>
-
-            {/* Results count */}
-            <div className="mb-3">
-                <p className="text-muted">
-                    Tìm thấy {filteredProducts.length} sản phẩm
-                    {filteredProducts.length > 0 && (
-                        <span className="ms-2">
-                            - Trang {currentPage} của {totalPages}
-                        </span>
-                    )}
-                </p>
-            </div>
-
-            {/* Products Grid */}
-            <ProductGallery products={currentProducts} />
-
-            {/* Pagination */}
-            {totalPages > 1 && (
-                <div className="d-flex justify-content-center mt-4">
-                    <Pagination>
-                        <Pagination.Prev
-                            onClick={() => paginate(currentPage - 1)}
-                            disabled={currentPage === 1}
-                        />
-                        
-                        {Array.from({ length: totalPages }, (_, index) => (
-                            <Pagination.Item
-                                key={index + 1}
-                                active={index + 1 === currentPage}
-                                onClick={() => paginate(index + 1)}
-                            >
-                                {index + 1}
-                            </Pagination.Item>
-                        ))}
-                        
-                        <Pagination.Next
-                            onClick={() => paginate(currentPage + 1)}
-                            disabled={currentPage === totalPages}
-                        />
-                    </Pagination>
-                </div>
-            )}
-
-            {/* No results */}
-            {filteredProducts.length === 0 && !loading && (
-                <Alert variant="info" className="text-center">
-                    <h4>Không tìm thấy sản phẩm nào</h4>
-                    <p>Vui lòng thử lại với từ khóa khác!</p>
-                </Alert>
-            )}
+            {/* Category Tabs */}
+            <Tab.Container activeKey={activeTab} onSelect={handleTabSelect}>
+                <Nav variant="tabs" className="mb-4">
+                    <Nav.Item>
+                        <Nav.Link eventKey="all">Tất cả</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link eventKey="laptop">Laptop</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link eventKey="phone">Điện thoại</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link eventKey="accessories">Khác</Nav.Link>
+                    </Nav.Item>
+                </Nav>
+                
+                <Tab.Content>
+                    <Tab.Pane eventKey="all">
+                        <ShopContent />
+                    </Tab.Pane>
+                    <Tab.Pane eventKey="laptop">
+                        <ShopContent />
+                    </Tab.Pane>
+                    <Tab.Pane eventKey="phone">
+                        <ShopContent />
+                    </Tab.Pane>
+                    <Tab.Pane eventKey="accessories">
+                        <ShopContent />
+                    </Tab.Pane>
+                </Tab.Content>
+            </Tab.Container>
         </Container>
     );
+
+    function ShopContent() {
+        return (
+            <>
+                {/* Search and Filter */}
+                <Row className="mb-4">
+                    <Col md={4}>
+                        <Form.Control
+                            type="text"
+                            placeholder="Tìm kiếm sản phẩm..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
+                    </Col>
+                    <Col md={2}>
+                        <Form.Select
+                            value={filterBrand}
+                            onChange={(e) => setFilterBrand(e.target.value)}
+                        >
+                            <option value="all">Tất cả thương hiệu</option>
+                            {brands.filter(brand => brand !== 'all').map(brand => (
+                                <option key={brand} value={brand}>{brand}</option>
+                            ))}
+                        </Form.Select>
+                    </Col>
+                    <Col md={2}>
+                        <Form.Select
+                            value={sortBy}
+                            onChange={(e) => setSortBy(e.target.value)}
+                        >
+                            <option value="name">Sắp xếp theo tên</option>
+                            <option value="price-asc">Giá: Thấp đến cao</option>
+                            <option value="price-desc">Giá: Cao đến thấp</option>
+                        </Form.Select>
+                    </Col>
+                    <Col md={2}>
+                        <Button variant="outline-secondary" onClick={() => {
+                            setSearchTerm('');
+                            setFilterBrand('all');
+                            setSortBy('name');
+                        }}>
+                            Đặt lại
+                        </Button>
+                    </Col>
+                </Row>
+
+                {/* Results count */}
+                <div className="mb-3">
+                    <p className="text-muted">
+                        Tìm thấy {filteredProducts.length} sản phẩm
+                        {filteredProducts.length > 0 && (
+                            <span className="ms-2">
+                                - Trang {currentPage} của {Math.ceil(filteredProducts.length / productsPerPage)}
+                            </span>
+                        )}
+                    </p>
+                </div>
+
+                {/* Products Grid */}
+                <ProductGallery products={filteredProducts.slice((currentPage - 1) * productsPerPage, currentPage * productsPerPage)} />
+
+                {/* Pagination */}
+                {Math.ceil(filteredProducts.length / productsPerPage) > 1 && (
+                    <div className="d-flex justify-content-center mt-4">
+                        <Pagination>
+                            <Pagination.Prev
+                                onClick={() => paginate(currentPage - 1)}
+                                disabled={currentPage === 1}
+                            />
+                            
+                            {Array.from({ length: Math.ceil(filteredProducts.length / productsPerPage) }, (_, index) => (
+                                <Pagination.Item
+                                    key={index + 1}
+                                    active={index + 1 === currentPage}
+                                    onClick={() => paginate(index + 1)}
+                                >
+                                    {index + 1}
+                                </Pagination.Item>
+                            ))}
+                            
+                            <Pagination.Next
+                                onClick={() => paginate(currentPage + 1)}
+                                disabled={currentPage === Math.ceil(filteredProducts.length / productsPerPage)}
+                            />
+                        </Pagination>
+                    </div>
+                )}
+
+                {/* No results */}
+                {filteredProducts.length === 0 && !loading && (
+                    <Alert variant="info" className="text-center">
+                        <h4>Không tìm thấy sản phẩm nào</h4>
+                        <p>Vui lòng thử lại với từ khóa khác!</p>
+                    </Alert>
+                )}
+            </>
+        );
+    }
 }

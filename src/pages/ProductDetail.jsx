@@ -1842,10 +1842,13 @@ export default function ProductDetail() {
 
     const handleAddToCart = () => {
         if (product && product.inStock) {
+            // Calculate the discounted price
+            const finalPrice = product.discount ? product.price * (1 - product.discount / 100) : product.price;
+            
             addToCart({
                 id: product.id,
                 name: product.name,
-                price: product.price,
+                price: finalPrice, // Use discounted price
                 image: product.images[0],
                 quantity: quantity
             });

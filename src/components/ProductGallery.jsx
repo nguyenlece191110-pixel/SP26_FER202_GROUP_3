@@ -15,10 +15,13 @@ const ProductGallery = ({ products }) => {
     };
 
     const handleAddToCart = (product) => {
+        // Calculate the discounted price
+        const finalPrice = product.discount ? product.price * (1 - product.discount / 100) : product.price;
+        
         addToCart({
             id: product.id,
             name: product.name,
-            price: product.price,
+            price: finalPrice, // Use discounted price
             image: product.images?.[0] || product.image,
             quantity: 1
         });
@@ -145,5 +148,28 @@ const ProductGallery = ({ products }) => {
         </Row>
     );
 };
+
+// Add CSS styles to remove any potential "0" content
+ProductGallery.defaultProps = {
+    // Ensure no default content that could show "0"
+};
+
+// Add inline styles to prevent any "0" from appearing
+const styles = `
+    .product-card::before,
+    .product-card::after,
+    .main-image::before,
+    .main-image::after,
+    .thumbnail::before,
+    .thumbnail::after {
+        content: none !important;
+    }
+`;
+
+if (typeof document !== 'undefined') {
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = styles;
+    document.head.appendChild(styleSheet);
+}
 
 export default ProductGallery;
