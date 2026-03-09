@@ -13,6 +13,13 @@
       "email": "hau@gmail.com",
       "password": "123",
       "role": "user"
+    },
+    {
+      "id": "cbd6",
+      "name": "nguyenl",
+      "email": "nguyen@gmail.com",
+      "password": "123",
+      "role": "user"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

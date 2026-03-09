@@ -4,6 +4,7 @@ import { Container } from 'react-bootstrap';
 
 
 import { AuthProvider } from './AuthContext';
+import { CartProvider } from './contexts/CartContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -13,42 +14,47 @@ const Login = lazy(() => import('./pages/Login'));
 const Register = lazy(() => import('./pages/Register'));
 const Shop = lazy(() => import('./pages/Shop')); 
 const Cart = lazy(() => import('./pages/Cart'));
+const Checkout = lazy(() => import('./pages/Checkout'));
+const ProductDetail = lazy(() => import('./pages/ProductDetail'));
 const Admin = lazy(() => import('./pages/Admin'));
 
 function App() {
   return (
     <Router>
-     
-      <AuthProvider>
-        <Header />
-        
-
-        <Container className="mt-4" style={{ minHeight: '80vh' }}>
+      <CartProvider>
+        <AuthProvider>
+          <Header />
           
-         
-          <Suspense fallback={<div className="text-center mt-5 font-italic">Đang tải dữ liệu TechHub...</div>}>
-            <Routes>
+
+          <Container className="mt-4" style={{ minHeight: '80vh' }}>
            
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/shop" element={<Shop />} />
-              <Route path="/cart" element={<Cart />} />
-              
-             
-              <Route path="/admin" element={<Admin />} />
-              
+            
+              <Suspense fallback={<div className="text-center mt-5 font-italic">Đang tải dữ liệu TechHub...</div>}>
+                <Routes>
+               
+                  <Route path="/" element={<Home />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/shop" element={<Shop />} />
+                  <Route path="/product/:id" element={<ProductDetail />} />
+                  <Route path="/cart" element={<Cart />} />
+                  <Route path="/checkout" element={<Checkout />} />
+                  
+                 
+                  <Route path="/admin" element={<Admin />} />
+                  
         
-              <Route path="*" element={<div className="text-center mt-5"><h3>404 - Không tìm thấy trang này!</h3></div>} />
-            </Routes>
-          </Suspense>
-          
-        </Container>
+                  <Route path="*" element={<div className="text-center mt-5"><h3>404 - Không tìm thấy trang này!</h3></div>} />
+                </Routes>
+              </Suspense>
+              
+            </Container>
 
-        <Footer />
-      </AuthProvider>
-    </Router>
-  );
+            <Footer />
+          </AuthProvider>
+        </CartProvider>
+      </Router>
+    );
 }
 
 export default App;

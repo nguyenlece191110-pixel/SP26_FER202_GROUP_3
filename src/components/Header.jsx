@@ -1,10 +1,13 @@
 import React, { useContext } from 'react';
-import { Navbar, Nav, Container, Button } from 'react-bootstrap';
+import { Navbar, Nav, Container, Button, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../AuthContext';
+import { useCart } from '../contexts/CartContext';
+import { Cart3 } from 'react-bootstrap-icons';
 
 export default function Header() {
     const { user, logout } = useContext(AuthContext);
+    const { totalItems } = useCart();
 
     return (
         <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
@@ -15,7 +18,20 @@ export default function Header() {
                     <Nav className="me-auto">
                         <Nav.Link as={Link} to="/">Trang chủ</Nav.Link>
                         <Nav.Link as={Link} to="/shop">Sản phẩm</Nav.Link>
-                        <Nav.Link as={Link} to="/cart">Giỏ hàng</Nav.Link>
+                        <Nav.Link as={Link} to="/cart" className="position-relative">
+                            <Cart3 className="me-1" />
+                            Giỏ hàng
+                            {totalItems > 0 && (
+                                <Badge 
+                                    bg="danger" 
+                                    pill 
+                                    className="position-absolute top-0 start-100 translate-middle"
+                                    style={{ fontSize: '0.7em' }}
+                                >
+                                    {totalItems}
+                                </Badge>
+                            )}
+                        </Nav.Link>
                         {user?.role === 'admin' && (
                             <Nav.Link as={Link} to="/admin">Quản trị</Nav.Link>
                         )}
