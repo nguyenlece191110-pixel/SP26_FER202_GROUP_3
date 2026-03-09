@@ -1,7 +1,27 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../AuthContext'; 
+import { Container, Row, Col, Card, Alert, Button } from 'react-bootstrap';
 
 const Admin = () => {
+    const { user } = useContext(AuthContext); 
+    const navigate = useNavigate();
+
+    if (!user || user.role !== 'admin') {
+        return (
+            <Container className="mt-5 text-center">
+                <Alert variant="danger" className="py-5 shadow-sm border-0">
+                    <i className="bi bi-shield-lock display-1 d-block mb-3 text-danger"></i>
+                    <h2 className="fw-bold">TRUY CẬP BỊ TỪ CHỐI!</h2>
+                    <p className="lead text-muted">Bạn không có quyền quản trị để truy cập vào Bảng điều khiển (Dashboard).</p>
+                    <hr className="my-4" />
+                    <Button variant="primary" size="lg" onClick={() => navigate('/login')}>
+                        Đăng nhập bằng tài khoản Admin
+                    </Button>
+                </Alert>
+            </Container>
+        );
+    }
     return (
         <div className="container mt-5">
             <div className="bg-light p-5 rounded-3 shadow-sm mb-5">

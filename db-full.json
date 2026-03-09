@@ -8,6 +8,13 @@
       "role": "admin"
     },
     {
+      "id": "2",
+      "name": "Phuoc Admin",
+      "email": "phuocadmin@gmail.com",
+      "password": "123@Zxcv",
+      "role": "admin"
+    },
+    {
       "id": "b566",
       "name": "hau",
       "email": "hau@gmail.com",
@@ -24,11 +31,13 @@
   ],
   "products": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Acer Aspire 5",
       "price": 15990000,
       "description": "Laptop văn phòng hiệu năng cao với màn hình 15.6 inch Full HD, Intel Core i5, 8GB RAM, 512GB SSD",
-      "images": ["/images/AcerAspire5.png"],
+      "images": [
+        "/images/AcerAspire5.png"
+      ],
       "inStock": true,
       "discount": 5,
       "category": "laptop",
@@ -51,11 +60,13 @@
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Acer Aspire 7",
       "price": 21990000,
       "description": "Laptop gaming tầm trung với NVIDIA GeForce RTX 3050, Intel Core i5, màn hình 15.6 inch",
-      "images": ["/images/AcerAspire7.png"],
+      "images": [
+        "/images/AcerAspire7.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "laptop",
@@ -78,11 +89,13 @@
       ]
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Acer Nitro 5",
       "price": 25990000,
       "description": "Laptop gaming mạnh mẽ với RTX 3060, Intel Core i7, màn hình 15.6 inch 144Hz",
-      "images": ["/images/AcerNitro5.png"],
+      "images": [
+        "/images/AcerNitro5.png"
+      ],
       "inStock": true,
       "discount": 10,
       "category": "laptop",
@@ -105,11 +118,13 @@
       ]
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Acer Predator Helios 16",
       "price": 45990000,
       "description": "Laptop gaming cao cấp với RTX 4070, Intel Core i9, màn hình 16 inch QHD 165Hz",
-      "images": ["/images/AcerPredatorHelios16.png"],
+      "images": [
+        "/images/AcerPredatorHelios16.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "laptop",
@@ -132,11 +147,13 @@
       ]
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Acer Swift Go 14",
       "price": 18990000,
       "description": "Ultrabook mỏng nhẹ với Intel Core i7, màn hình 14 inch OLED, trọng lượng chỉ 1.3kg",
-      "images": ["/images/AcerSwiftGo14.png"],
+      "images": [
+        "/images/AcerSwiftGo14.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "laptop",
@@ -159,11 +176,13 @@
       ]
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Acer Swift X",
       "price": 32990000,
       "description": "Ultrabook creative với RTX 3050 Ti, AMD Ryzen 7, màn hình 14 inch 100% sRGB",
-      "images": ["/images/AcerSwiftX.png"],
+      "images": [
+        "/images/AcerSwiftX.png"
+      ],
       "inStock": true,
       "discount": 8,
       "category": "laptop",
@@ -186,11 +205,13 @@
       ]
     },
     {
-      "id": 7,
+      "id": "7",
       "name": "AKKO 3087 Silent",
       "price": 2499000,
       "description": "Bàn phím cơ gaming silent switch, layout TKL, RGB lighting",
-      "images": ["/images/AKKO3087Silent.png"],
+      "images": [
+        "/images/AKKO3087Silent.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "accessories",
@@ -213,11 +234,13 @@
       ]
     },
     {
-      "id": 8,
+      "id": "8",
       "name": "Apple AirPods 3",
       "price": 4990000,
       "description": "Tai nghe không dây thế hệ thứ 3 với Spatial Audio, Adaptive EQ",
-      "images": ["/images/AppleAirPods3.png"],
+      "images": [
+        "/images/AppleAirPods3.png"
+      ],
       "inStock": true,
       "discount": 5,
       "category": "accessories",
@@ -240,11 +263,13 @@
       ]
     },
     {
-      "id": 9,
+      "id": "9",
       "name": "ASUS ExpertBook B5",
       "price": 28990000,
       "description": "Laptop doanh nhân với Intel Core i7, màn hình 14 inch, bảo mật vân tay",
-      "images": ["/images/ASUSExpertBookB5.png"],
+      "images": [
+        "/images/ASUSExpertBookB5.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "laptop",
@@ -267,11 +292,13 @@
       ]
     },
     {
-      "id": 10,
+      "id": "10",
       "name": "ASUS ROG Zephyrus G16",
       "price": 52990000,
       "description": "Laptop gaming cao cấp với RTX 4080, Intel Core i9, màn hình 16 inch QHD 240Hz",
-      "images": ["/images/ASUSROGZephyrusG16.png"],
+      "images": [
+        "/images/ASUSROGZephyrusG16.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "laptop",
@@ -294,11 +321,13 @@
       ]
     },
     {
-      "id": 11,
+      "id": "11",
       "name": "ASUS TUF Gaming F15",
       "price": 22990000,
       "description": "Laptop gaming bền bỉ với RTX 4060, Intel Core i7, màn hình 15.6 inch 144Hz",
-      "images": ["/images/ASUSTUFGamingF15.png"],
+      "images": [
+        "/images/ASUSTUFGamingF15.png"
+      ],
       "inStock": true,
       "discount": 7,
       "category": "laptop",
@@ -321,11 +350,13 @@
       ]
     },
     {
-      "id": 12,
+      "id": "12",
       "name": "ASUS Vivobook 15",
       "price": 12990000,
       "description": "Laptop văn phòng giá tốt với Intel Core i5, màn hình 15.6 inch, thiết kế mỏng nhẹ",
-      "images": ["/images/ASUSVivobook15.png"],
+      "images": [
+        "/images/ASUSVivobook15.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "laptop",
@@ -348,11 +379,13 @@
       ]
     },
     {
-      "id": 13,
+      "id": "13",
       "name": "ASUS Zenbook 14",
       "price": 24990000,
       "description": "Ultrabook cao cấp với Intel Core i7, màn hình 14 inch OLED, trọng lượng siêu nhẹ",
-      "images": ["/images/ASUSZenbook14.png"],
+      "images": [
+        "/images/ASUSZenbook14.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "laptop",
@@ -375,11 +408,13 @@
       ]
     },
     {
-      "id": 14,
+      "id": "14",
       "name": "Baseus Adaman",
       "price": 890000,
       "description": "Sạc dự phòng 20000mAh nhanh, hỗ trợ PD 65W, thiết kế kim loại",
-      "images": ["/images/BaseusAdaman.png"],
+      "images": [
+        "/images/BaseusAdaman.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "accessories",
@@ -402,11 +437,13 @@
       ]
     },
     {
-      "id": 15,
+      "id": "15",
       "name": "Dell G15",
       "price": 19990000,
       "description": "Laptop gaming tầm trung với RTX 4050, Intel Core i5, màn hình 15.6 inch 120Hz",
-      "images": ["/images/DellG15.png"],
+      "images": [
+        "/images/DellG15.png"
+      ],
       "inStock": true,
       "discount": 10,
       "category": "laptop",
@@ -429,11 +466,13 @@
       ]
     },
     {
-      "id": 16,
+      "id": "16",
       "name": "Dell G16",
       "price": 34990000,
       "description": "Laptop gaming cao cấp với RTX 4070, Intel Core i7, màn hình 16 inch QHD 165Hz",
-      "images": ["/images/DellG16.png"],
+      "images": [
+        "/images/DellG16.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "laptop",
@@ -456,11 +495,13 @@
       ]
     },
     {
-      "id": 17,
+      "id": "17",
       "name": "Dell Inspiron 14",
       "price": 15990000,
       "description": "Laptop văn phòng nhỏ gọn với Intel Core i5, màn hình 14 inch, thiết kế hiện đại",
-      "images": ["/images/DellInspiron14.png"],
+      "images": [
+        "/images/DellInspiron14.png"
+      ],
       "inStock": true,
       "discount": 5,
       "category": "laptop",
@@ -483,11 +524,13 @@
       ]
     },
     {
-      "id": 18,
+      "id": "18",
       "name": "Dell Inspiron 16",
       "price": 18990000,
       "description": "Laptop văn phòng màn hình lớn 16 inch với Intel Core i7, RAM 16GB",
-      "images": ["/images/DellInspiron16.png"],
+      "images": [
+        "/images/DellInspiron16.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "laptop",
@@ -510,11 +553,13 @@
       ]
     },
     {
-      "id": 19,
+      "id": "19",
       "name": "Dell XPS 13",
       "price": 35990000,
       "description": "Ultrabook cao cấp với Intel Core i7, màn hình 13.4 inch 4K, thiết kế siêu mỏng",
-      "images": ["/images/DellXPS13.png"],
+      "images": [
+        "/images/DellXPS13.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "laptop",
@@ -537,11 +582,13 @@
       ]
     },
     {
-      "id": 20,
+      "id": "20",
       "name": "Dell XPS 15",
       "price": 52990000,
       "description": "Laptop creative cao cấp với Intel Core i9, RTX 4060, màn hình 15.6 inch 4K OLED",
-      "images": ["/images/DellXPS15.png"],
+      "images": [
+        "/images/DellXPS15.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "laptop",
@@ -564,11 +611,13 @@
       ]
     },
     {
-      "id": 21,
+      "id": "21",
       "name": "HP Envy x360",
       "price": 27990000,
       "description": "Laptop 2-in-1 với Intel Core i7, màn hình 15.6 inch touchscreen, bút cảm ứng",
-      "images": ["/images/HPEnvyx360.png"],
+      "images": [
+        "/images/HPEnvyx360.png"
+      ],
       "inStock": true,
       "discount": 8,
       "category": "laptop",
@@ -591,11 +640,13 @@
       ]
     },
     {
-      "id": 22,
+      "id": "22",
       "name": "HP Laptop 15s",
       "price": 11990000,
       "description": "Laptop giá tốt cho sinh viên với Intel Core i3, màn hình 15.6 inch",
-      "images": ["/images/HPLaptop15s.png"],
+      "images": [
+        "/images/HPLaptop15s.png"
+      ],
       "inStock": true,
       "discount": 10,
       "category": "laptop",
@@ -618,11 +669,13 @@
       ]
     },
     {
-      "id": 23,
+      "id": "23",
       "name": "HP Omen 16",
       "price": 38990000,
       "description": "Laptop gaming cao cấp với RTX 4070, Intel Core i7, màn hình 16 inch QHD 165Hz",
-      "images": ["/images/HPOMen16.png"],
+      "images": [
+        "/images/HPOMen16.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "laptop",
@@ -645,11 +698,13 @@
       ]
     },
     {
-      "id": 24,
+      "id": "24",
       "name": "HP Pavilion 14",
       "price": 14990000,
       "description": "Laptop văn phòng nhẹ với Intel Core i5, màn hình 14 inch, thiết kế trẻ trung",
-      "images": ["/images/HPPavilion14.png"],
+      "images": [
+        "/images/HPPavilion14.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "laptop",
@@ -672,11 +727,13 @@
       ]
     },
     {
-      "id": 25,
+      "id": "25",
       "name": "HP Spectre x360",
       "price": 42990000,
       "description": "Laptop premium 2-in-1 với Intel Core i7, màn hình 13.5 inch 4K OLED, bút cảm ứng",
-      "images": ["/images/HPSpectrex360.png"],
+      "images": [
+        "/images/HPSpectrex360.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "laptop",
@@ -699,11 +756,13 @@
       ]
     },
     {
-      "id": 26,
+      "id": "26",
       "name": "HP Victus 16",
       "price": 24990000,
       "description": "Laptop gaming giá tốt với RTX 4060, Intel Core i5, màn hình 16 inch 144Hz",
-      "images": ["/images/HPVictus16.png"],
+      "images": [
+        "/images/HPVictus16.png"
+      ],
       "inStock": true,
       "discount": 5,
       "category": "laptop",
@@ -726,11 +785,13 @@
       ]
     },
     {
-      "id": 27,
+      "id": "27",
       "name": "iPhone 14",
       "price": 18990000,
       "description": "iPhone thế hệ 14 với chip A15, màn hình 6.1 inch, camera 12MP",
-      "images": ["/images/iphone14.png"],
+      "images": [
+        "/images/iphone14.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "phone",
@@ -754,11 +815,13 @@
       ]
     },
     {
-      "id": 28,
+      "id": "28",
       "name": "iPhone 14 Pro Max",
       "price": 28990000,
       "description": "iPhone Pro Max với chip A16, màn hình 6.7 inch, camera 48MP, Dynamic Island",
-      "images": ["/images/iphone14promax.png"],
+      "images": [
+        "/images/iphone14promax.png"
+      ],
       "inStock": true,
       "discount": 5,
       "category": "phone",
@@ -782,11 +845,13 @@
       ]
     },
     {
-      "id": 29,
+      "id": "29",
       "name": "iPhone 16 Pro",
       "price": 32990000,
       "description": "iPhone 16 Pro với chip A18 Pro, màn hình 6.3 inch, camera 48MP, titanium",
-      "images": ["/images/iphone16pro.png"],
+      "images": [
+        "/images/iphone16pro.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "phone",
@@ -810,11 +875,13 @@
       ]
     },
     {
-      "id": 30,
+      "id": "30",
       "name": "iPhone 17",
       "price": 24990000,
       "description": "iPhone thế hệ mới với chip A19, màn hình 6.1 inch, camera cải tiến",
-      "images": ["/images/iphone17.png"],
+      "images": [
+        "/images/iphone17.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "phone",
@@ -838,11 +905,13 @@
       ]
     },
     {
-      "id": 31,
+      "id": "31",
       "name": "iPhone 17 Plus",
       "price": 27990000,
       "description": "iPhone 17 Plus màn hình lớn 6.7 inch với chip A19, camera nâng cấp",
-      "images": ["/images/iphone17plus.png"],
+      "images": [
+        "/images/iphone17plus.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "phone",
@@ -866,11 +935,13 @@
       ]
     },
     {
-      "id": 32,
+      "id": "32",
       "name": "iPhone 17 Pro",
       "price": 34990000,
       "description": "iPhone 17 Pro với chip A19 Pro, màn hình 6.3 inch, camera 48MP ProRAW",
-      "images": ["/images/iphone17pro.png"],
+      "images": [
+        "/images/iphone17pro.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "phone",
@@ -894,11 +965,13 @@
       ]
     },
     {
-      "id": 33,
+      "id": "33",
       "name": "iPhone 17 Pro Max",
       "price": 39990000,
       "description": "iPhone 17 Pro Max flagship với chip A19 Pro, màn hình 6.9 inch, camera 48MP",
-      "images": ["/images/iphone17promax.png"],
+      "images": [
+        "/images/iphone17promax.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "phone",
@@ -922,11 +995,13 @@
       ]
     },
     {
-      "id": 34,
+      "id": "34",
       "name": "Laptop ASUS Vivobook S14",
       "price": 17990000,
       "description": "Laptop mỏng nhẹ với Intel Core i5, màn hình 14 inch OLED, thiết kế hiện đại",
-      "images": ["/images/LaptopASUSVivobookS14.png"],
+      "images": [
+        "/images/LaptopASUSVivobookS14.png"
+      ],
       "inStock": true,
       "discount": 7,
       "category": "laptop",
@@ -948,11 +1023,13 @@
       ]
     },
     {
-      "id": 35,
+      "id": "35",
       "name": "Lenovo IdeaPad 3",
       "price": 10990000,
       "description": "Laptop giá tốt cho sinh viên với AMD Ryzen 5, màn hình 15.6 inch",
-      "images": ["/images/LenovoIdeaPad3.png"],
+      "images": [
+        "/images/LenovoIdeaPad3.png"
+      ],
       "inStock": true,
       "discount": 10,
       "category": "laptop",
@@ -975,11 +1052,13 @@
       ]
     },
     {
-      "id": 36,
+      "id": "36",
       "name": "Lenovo IdeaPad Slim 5",
       "price": 14990000,
       "description": "Laptop mỏng nhẹ với AMD Ryzen 7, màn hình 14 inch, thiết kế hiện đại",
-      "images": ["/images/LenovoIdeaPadSlim5.png"],
+      "images": [
+        "/images/LenovoIdeaPadSlim5.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "laptop",
@@ -1002,11 +1081,13 @@
       ]
     },
     {
-      "id": 37,
+      "id": "37",
       "name": "Lenovo Legion 5 Pro",
       "price": 32990000,
       "description": "Laptop gaming với RTX 4070, AMD Ryzen 7, màn hình 16 inch QHD 165Hz",
-      "images": ["/images/LenovoLegion5Pro.png"],
+      "images": [
+        "/images/LenovoLegion5Pro.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "laptop",
@@ -1029,11 +1110,13 @@
       ]
     },
     {
-      "id": 38,
+      "id": "38",
       "name": "Lenovo Legion 7i",
       "price": 49990000,
       "description": "Laptop gaming cao cấp với RTX 4080, Intel Core i9, màn hình 16 inch QHD 240Hz",
-      "images": ["/images/LenovoLegion7i.png"],
+      "images": [
+        "/images/LenovoLegion7i.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "laptop",
@@ -1056,11 +1139,13 @@
       ]
     },
     {
-      "id": 39,
+      "id": "39",
       "name": "Lenovo Yoga 7i",
       "price": 24990000,
       "description": "Laptop 2-in-1 với Intel Core i7, màn hình 14 inch touchscreen, bút cảm ứng",
-      "images": ["/images/LenovoYoga7i.png"],
+      "images": [
+        "/images/LenovoYoga7i.png"
+      ],
       "inStock": true,
       "discount": 5,
       "category": "laptop",
@@ -1083,11 +1168,13 @@
       ]
     },
     {
-      "id": 40,
+      "id": "40",
       "name": "Lenovo Yoga 9i",
       "price": 38990000,
       "description": "Laptop premium 2-in-1 với Intel Core i7, màn hình 14 inch 4K OLED, bút cảm ứng",
-      "images": ["/images/LenovoYoga9i.png"],
+      "images": [
+        "/images/LenovoYoga9i.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "laptop",
@@ -1110,11 +1197,13 @@
       ]
     },
     {
-      "id": 41,
+      "id": "41",
       "name": "Redmi Note 11 Pro+",
       "price": 8990000,
       "description": "Điện thoại gaming với Snapdragon 870, màn hình 120Hz, sạc 120W",
-      "images": ["/images/nubiaredmagic11proplus.png"],
+      "images": [
+        "/images/nubiaredmagic11proplus.png"
+      ],
       "inStock": true,
       "discount": 10,
       "category": "phone",
@@ -1138,11 +1227,13 @@
       ]
     },
     {
-      "id": 42,
+      "id": "42",
       "name": "OPPO A3",
       "price": 3990000,
       "description": "Điện thoại giá tốt với MediaTek Helio, màn hình 6.7 inch, pin 5000mAh",
-      "images": ["/images/oppoa3.png"],
+      "images": [
+        "/images/oppoa3.png"
+      ],
       "inStock": true,
       "discount": 5,
       "category": "phone",
@@ -1166,11 +1257,13 @@
       ]
     },
     {
-      "id": 43,
+      "id": "43",
       "name": "OPPO A59",
       "price": 4490000,
       "description": "Điện thoại tầm trung với MediaTek Dimensity, màn hình 6.56 inch",
-      "images": ["/images/oppoa59.png"],
+      "images": [
+        "/images/oppoa59.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "phone",
@@ -1194,11 +1287,13 @@
       ]
     },
     {
-      "id": 44,
+      "id": "44",
       "name": "OPPO A79",
       "price": 5990000,
       "description": "Điện thoại tầm trung với MediaTek Helio, màn hình 6.72 inch, camera 50MP",
-      "images": ["/images/oppoa79.png"],
+      "images": [
+        "/images/oppoa79.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "phone",
@@ -1222,11 +1317,13 @@
       ]
     },
     {
-      "id": 45,
+      "id": "45",
       "name": "OPPO Find N3",
       "price": 24990000,
       "description": "Điện thoại gập cao cấp với Snapdragon 8 Gen 2, màn hình gập 7.82 inch",
-      "images": ["/images/oppofindn3.png"],
+      "images": [
+        "/images/oppofindn3.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "phone",
@@ -1250,11 +1347,13 @@
       ]
     },
     {
-      "id": 46,
+      "id": "46",
       "name": "OPPO Find X7 Ultra",
       "price": 22990000,
       "description": "Điện thoại flagship với Snapdragon 8 Gen 3, camera Hasselblad, màn hình 120Hz",
-      "images": ["/images/oppofindx7ultra.png"],
+      "images": [
+        "/images/oppofindx7ultra.png"
+      ],
       "inStock": true,
       "discount": 5,
       "category": "phone",
@@ -1278,11 +1377,13 @@
       ]
     },
     {
-      "id": 47,
+      "id": "47",
       "name": "OPPO K12x",
       "price": 4990000,
       "description": "Điện thoại gaming giá tốt với MediaTek Helio, màn hình 120Hz, pin 5000mAh",
-      "images": ["/images/oppok12x.png"],
+      "images": [
+        "/images/oppok12x.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "phone",
@@ -1306,11 +1407,13 @@
       ]
     },
     {
-      "id": 48,
+      "id": "48",
       "name": "OPPO Reno 12",
       "price": 8990000,
       "description": "Điện thoại camera mạnh với MediaTek Dimensity, màn hình 120Hz, thiết kế đẹp",
-      "images": ["/images/opporeno12.png"],
+      "images": [
+        "/images/opporeno12.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "phone",
@@ -1334,11 +1437,13 @@
       ]
     },
     {
-      "id": 49,
+      "id": "49",
       "name": "OPPO Reno 12 Pro",
       "price": 12990000,
       "description": "Điện thoại camera chuyên nghiệp với Snapdragon 7 Gen 3, telephoto 2x",
-      "images": ["/images/opporeno12pro.png"],
+      "images": [
+        "/images/opporeno12pro.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "phone",
@@ -1362,11 +1467,13 @@
       ]
     },
     {
-      "id": 50,
+      "id": "50",
       "name": "Realme 12 Pro+",
       "price": 7990000,
       "description": "Điện thoại camera telephoto 3x với Snapdragon 6 Gen 1, màn hình 120Hz",
-      "images": ["/images/realme12pro+.png"],
+      "images": [
+        "/images/realme12pro+.png"
+      ],
       "inStock": true,
       "discount": 10,
       "category": "phone",
@@ -1390,11 +1497,13 @@
       ]
     },
     {
-      "id": 51,
+      "id": "51",
       "name": "Realme 13 Pro",
       "price": 8990000,
       "description": "Điện thoại tầm trung với Snapdragon 7s Gen 2, camera 50MP, sạc 67W",
-      "images": ["/images/realme13pro.png"],
+      "images": [
+        "/images/realme13pro.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "phone",
@@ -1418,11 +1527,13 @@
       ]
     },
     {
-      "id": 52,
+      "id": "52",
       "name": "Realme 15 Pro 5G",
       "price": 10990000,
       "description": "Điện thoại 5G tầm trung với Snapdragon 6 Gen 1, màn hình 120Hz",
-      "images": ["/images/realme15pro5g.png"],
+      "images": [
+        "/images/realme15pro5g.png"
+      ],
       "inStock": true,
       "discount": 5,
       "category": "phone",
@@ -1446,11 +1557,13 @@
       ]
     },
     {
-      "id": 53,
+      "id": "53",
       "name": "Realme C63",
       "price": 3490000,
       "description": "Điện thoại giá tốt với Unisoc T606, màn hình 6.8 inch, pin 5000mAh",
-      "images": ["/images/realmeC63.png"],
+      "images": [
+        "/images/realmeC63.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "phone",
@@ -1474,11 +1587,13 @@
       ]
     },
     {
-      "id": 54,
+      "id": "54",
       "name": "Realme C67",
       "price": 4290000,
       "description": "Điện thoại giá tốt với Snapdragon 685, màn hình 90Hz, sạc 33W",
-      "images": ["/images/realmeC67.png"],
+      "images": [
+        "/images/realmeC67.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "phone",
@@ -1502,11 +1617,13 @@
       ]
     },
     {
-      "id": 55,
+      "id": "55",
       "name": "Realme GT 6",
       "price": 15990000,
       "description": "Điện thoại flagship với Snapdragon 8 Gen 3, màn hình 144Hz, sạc 120W",
-      "images": ["/images/realmeGT6.png"],
+      "images": [
+        "/images/realmeGT6.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "phone",
@@ -1530,11 +1647,13 @@
       ]
     },
     {
-      "id": 56,
+      "id": "56",
       "name": "Realme Narzo 70 Pro",
       "price": 6990000,
       "description": "Điện thoại gaming giá tốt với MediaTek Dimensity 7050, màn hình 120Hz",
-      "images": ["/images/realmenarzo70pro.png"],
+      "images": [
+        "/images/realmenarzo70pro.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "phone",
@@ -1558,11 +1677,13 @@
       ]
     },
     {
-      "id": 57,
+      "id": "57",
       "name": "Realme Note 50",
       "price": 2990000,
       "description": "Điện thoại giá rẻ với Unisoc T606, màn hình 6.74 inch, pin 5000mAh",
-      "images": ["/images/realmeNote50.png"],
+      "images": [
+        "/images/realmeNote50.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "phone",
@@ -1586,11 +1707,13 @@
       ]
     },
     {
-      "id": 58,
+      "id": "58",
       "name": "Samsung Galaxy A55",
       "price": 9490000,
       "description": "Điện thoại tầm trung với Exynos 1480, màn hình 120Hz, camera 50MP",
-      "images": ["/images/samsunggalaxya55.png"],
+      "images": [
+        "/images/samsunggalaxya55.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "phone",
@@ -1614,11 +1737,13 @@
       ]
     },
     {
-      "id": 59,
+      "id": "59",
       "name": "Samsung Galaxy M55",
       "price": 8990000,
       "description": "Điện thoại tầm trung với Snapdragon 7 Gen 1, màn hình 120Hz, sạc 45W",
-      "images": ["/images/samsunggalaxym55.png"],
+      "images": [
+        "/images/samsunggalaxym55.png"
+      ],
       "inStock": true,
       "discount": 5,
       "category": "phone",
@@ -1642,11 +1767,13 @@
       ]
     },
     {
-      "id": 60,
+      "id": "60",
       "name": "Samsung Galaxy S24 FE",
       "price": 14990000,
       "description": "Điện thoại flagship giá tốt với Exynos 2400, màn hình 120Hz, camera 50MP",
-      "images": ["/images/samsunggalaxys24fe.png"],
+      "images": [
+        "/images/samsunggalaxys24fe.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "phone",
@@ -1670,11 +1797,13 @@
       ]
     },
     {
-      "id": 61,
+      "id": "61",
       "name": "Samsung Galaxy S25",
       "price": 22990000,
       "description": "Điện thoại flagship với Snapdragon 8 Gen 3, màn hình 120Hz, AI Galaxy",
-      "images": ["/images/samsunggalaxys25.png"],
+      "images": [
+        "/images/samsunggalaxys25.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "phone",
@@ -1699,11 +1828,13 @@
       ]
     },
     {
-      "id": 62,
+      "id": "62",
       "name": "Samsung Galaxy S25 Plus",
       "price": 27990000,
       "description": "Điện thoại flagship màn hình lớn với Snapdragon 8 Gen 3, camera 50MP",
-      "images": ["/images/samsunggalaxys25plus.png"],
+      "images": [
+        "/images/samsunggalaxys25plus.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "phone",
@@ -1727,11 +1858,13 @@
       ]
     },
     {
-      "id": 63,
+      "id": "63",
       "name": "Samsung Galaxy S25 Ultra",
       "price": 34990000,
       "description": "Điện thoại flagship cao cấp với Snapdragon 8 Gen 3, S Pen, camera 200MP",
-      "images": ["/images/samsunggalaxys25ultra.png"],
+      "images": [
+        "/images/samsunggalaxys25ultra.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "phone",
@@ -1755,11 +1888,13 @@
       ]
     },
     {
-      "id": 64,
+      "id": "64",
       "name": "Samsung Galaxy Z Flip 6",
       "price": 24990000,
       "description": "Điện thoại gập màn hình nhỏ với Snapdragon 8 Gen 3, Flex Mode, camera 50MP",
-      "images": ["/images/samsunggalaxyzflip6.png"],
+      "images": [
+        "/images/samsunggalaxyzflip6.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "phone",
@@ -1784,11 +1919,13 @@
       ]
     },
     {
-      "id": 65,
+      "id": "65",
       "name": "Samsung Galaxy Z Fold 6",
       "price": 39990000,
       "description": "Điện thoại gập cao cấp với Snapdragon 8 Gen 3, màn hình gập 7.6 inch",
-      "images": ["/images/samsunggalaxyzfold6.png"],
+      "images": [
+        "/images/samsunggalaxyzfold6.png"
+      ],
       "inStock": true,
       "discount": 0,
       "category": "phone",
@@ -1810,6 +1947,21 @@
         "Android 14",
         "Bảo hành 12 tháng"
       ]
+    },
+    {
+      "id": "c5b7",
+      "name": "Macbook neo 2026",
+      "price": 16000000,
+      "category": "laptop",
+      "brand": "Apple",
+      "image": "\\images\\Apple-MacBook-Neo.jpg",
+      "description": "DÀNH CHO SINH VIÊN!",
+      "discount": 10,
+      "inStock": true,
+      "images": [
+        "\\images\\Apple-MacBook-Neo.jpg"
+      ]
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
