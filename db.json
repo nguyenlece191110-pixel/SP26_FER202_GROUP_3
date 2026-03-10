@@ -1,0 +1,1988 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Hậu Admin",
+      "email": "admin@gmail.com",
+      "password": "1",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "name": "Phuoc Admin",
+      "email": "phuocadmin@gmail.com",
+      "password": "123@Zxcv",
+      "role": "admin"
+    },
+    {
+      "id": "b566",
+      "name": "hau",
+      "email": "hau@gmail.com",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "cbd6",
+      "name": "nguyenl",
+      "email": "nguyen@gmail.com",
+      "password": "123",
+      "role": "user"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "Acer Aspire 5",
+      "price": 15990000,
+      "description": "Laptop văn phòng hiệu năng cao với màn hình 15.6 inch Full HD, Intel Core i5, 8GB RAM, 512GB SSD",
+      "images": [
+        "/images/AcerAspire5.png"
+      ],
+      "inStock": true,
+      "discount": 5,
+      "category": "laptop",
+      "brand": "Acer",
+      "specs": {
+        "cpu": "Intel Core i5-1335U",
+        "ram": "8GB DDR4",
+        "storage": "512GB NVMe SSD",
+        "display": "15.6\" Full HD (1920x1080)",
+        "graphics": "Intel Iris Xe",
+        "weight": "1.8kg"
+      },
+      "features": [
+        "Màn hình Full HD sắc nét",
+        "Hiệu năng mạnh mẽ với Intel Core i5",
+        "SSD siêu nhanh 512GB",
+        "Thiết kế mỏng nhẹ 1.8kg",
+        "Pin lâu dài",
+        "Bảo hành 24 tháng"
+      ],
+      "discountPrice": 15190500
+    },
+    {
+      "id": "2",
+      "name": "Acer Aspire 7",
+      "price": 21990000,
+      "description": "Laptop gaming tầm trung với NVIDIA GeForce RTX 3050, Intel Core i5, màn hình 15.6 inch",
+      "images": [
+        "/images/AcerAspire7.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "laptop",
+      "brand": "Acer",
+      "specs": {
+        "cpu": "Intel Core i5-12450H",
+        "ram": "8GB DDR4",
+        "storage": "512GB NVMe SSD",
+        "display": "15.6\" Full HD 144Hz",
+        "graphics": "NVIDIA RTX 3050 4GB",
+        "weight": "2.1kg"
+      },
+      "features": [
+        "Card đồ họa RTX 3050",
+        "Màn hình 144Hz mượt mà",
+        "CPU Intel Core i5 thế hệ mới",
+        "SSD NVMe tốc độ cao",
+        "Thiết kế gaming hiện đại",
+        "Bảo hành 24 tháng"
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Acer Nitro 5",
+      "price": 25990000,
+      "description": "Laptop gaming mạnh mẽ với RTX 3060, Intel Core i7, màn hình 15.6 inch 144Hz",
+      "images": [
+        "/images/AcerNitro5.png"
+      ],
+      "inStock": true,
+      "discount": 10,
+      "category": "laptop",
+      "brand": "Acer",
+      "specs": {
+        "cpu": "Intel Core i7-11800H",
+        "ram": "16GB DDR4",
+        "storage": "1TB NVMe SSD",
+        "display": "15.6\" Full HD 144Hz",
+        "graphics": "NVIDIA RTX 3060 6GB",
+        "weight": "2.3kg"
+      },
+      "features": [
+        "RTX 3060 6GB VRAM",
+        "Intel Core i7 8 cores",
+        "RAM 16GB DDR4",
+        "SSD 1TB siêu nhanh",
+        "Màn hình 144Hz",
+        "Bảo hành 24 tháng"
+      ],
+      "discountPrice": 23391000
+    },
+    {
+      "id": "4",
+      "name": "Acer Predator Helios 16",
+      "price": 45990000,
+      "description": "Laptop gaming cao cấp với RTX 4070, Intel Core i9, màn hình 16 inch QHD 165Hz",
+      "images": [
+        "/images/AcerPredatorHelios16.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "laptop",
+      "brand": "Acer",
+      "specs": {
+        "cpu": "Intel Core i9-13900HX",
+        "ram": "32GB DDR5",
+        "storage": "2TB NVMe SSD",
+        "display": "16\" QHD 165Hz IPS",
+        "graphics": "NVIDIA RTX 4070 8GB",
+        "weight": "2.8kg"
+      },
+      "features": [
+        "RTX 4070 8GB VRAM",
+        "Intel Core i9 24 cores",
+        "RAM DDR5 32GB",
+        "SSD 2TB siêu nhanh",
+        "Màn hình QHD 165Hz",
+        "Bảo hành 24 tháng"
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Acer Swift Go 14",
+      "price": 18990000,
+      "description": "Ultrabook mỏng nhẹ với Intel Core i7, màn hình 14 inch OLED, trọng lượng chỉ 1.3kg",
+      "images": [
+        "/images/AcerSwiftGo14.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "laptop",
+      "brand": "Acer",
+      "specs": {
+        "cpu": "Intel Core i7-13700H",
+        "ram": "16GB LPDDR5",
+        "storage": "1TB NVMe SSD",
+        "display": "14\" 2.8K OLED",
+        "graphics": "Intel Iris Xe",
+        "weight": "1.3kg"
+      },
+      "features": [
+        "Màn hình OLED 2.8K",
+        "Intel Core i7 thế hệ mới",
+        "Thiết kế siêu mỏng nhẹ",
+        "RAM LPDDR5 tiết kiệm điện",
+        "SSD 1TB tốc độ cao",
+        "Bảo hành 24 tháng"
+      ]
+    },
+    {
+      "id": "6",
+      "name": "Acer Swift X",
+      "price": 32990000,
+      "description": "Ultrabook creative với RTX 3050 Ti, AMD Ryzen 7, màn hình 14 inch 100% sRGB",
+      "images": [
+        "/images/AcerSwiftX.png"
+      ],
+      "inStock": true,
+      "discount": 8,
+      "category": "laptop",
+      "brand": "Acer",
+      "specs": {
+        "cpu": "AMD Ryzen 7 5800U",
+        "ram": "16GB LPDDR4X",
+        "storage": "1TB NVMe SSD",
+        "display": "14\" Full HD 100% sRGB",
+        "graphics": "NVIDIA RTX 3050 Ti 4GB",
+        "weight": "1.4kg"
+      },
+      "features": [
+        "RTX 3050 Ti 4GB",
+        "AMD Ryzen 7 8 cores",
+        "Màn hình 100% sRGB",
+        "Thiết kế mỏng nhẹ",
+        "SSD 1TB siêu nhanh",
+        "Bảo hành 24 tháng"
+      ],
+      "discountPrice": 30350800
+    },
+    {
+      "id": "7",
+      "name": "AKKO 3087 Silent",
+      "price": 2499000,
+      "description": "Bàn phím cơ gaming silent switch, layout TKL, RGB lighting",
+      "images": [
+        "/images/AKKO3087Silent.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "accessories",
+      "brand": "AKKO",
+      "specs": {
+        "type": "Mechanical Gaming Keyboard",
+        "switch": "AKKO Silent Switch",
+        "layout": "87-Key TKL",
+        "connectivity": "USB-C",
+        "backlight": "RGB",
+        "weight": "650g"
+      },
+      "features": [
+        "Switch silent không tiếng",
+        "Layout TKL compact",
+        "RGB lighting",
+        "USB-C reversible",
+        "Hot-swappable switches",
+        "Bảo hành 12 tháng"
+      ]
+    },
+    {
+      "id": "8",
+      "name": "Apple AirPods 3",
+      "price": 4990000,
+      "description": "Tai nghe không dây thế hệ thứ 3 với Spatial Audio, Adaptive EQ",
+      "images": [
+        "/images/AppleAirPods3.png"
+      ],
+      "inStock": true,
+      "discount": 5,
+      "category": "accessories",
+      "brand": "Apple",
+      "specs": {
+        "type": "Wireless Earbuds",
+        "driver": "Custom high-excursion",
+        "battery": "6 hours + 24 hours case",
+        "connectivity": "Bluetooth 5.0",
+        "features": "Spatial Audio, Adaptive EQ",
+        "weight": "4.4g per earbud"
+      },
+      "features": [
+        "Spatial Audio",
+        "Adaptive EQ",
+        "Bluetooth 5.0",
+        "Pin 24 tiếng với case",
+        "Chống nước IPX4",
+        "Bảo hành 12 tháng"
+      ],
+      "discountPrice": 4740500
+    },
+    {
+      "id": "9",
+      "name": "ASUS ExpertBook B5",
+      "price": 28990000,
+      "description": "Laptop doanh nhân với Intel Core i7, màn hình 14 inch, bảo mật vân tay",
+      "images": [
+        "/images/ASUSExpertBookB5.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "laptop",
+      "brand": "ASUS",
+      "specs": {
+        "cpu": "Intel Core i7-1360P",
+        "ram": "16GB LPDDR5",
+        "storage": "1TB NVMe SSD",
+        "display": "14\" Full HD 400nits",
+        "graphics": "Intel Iris Xe",
+        "weight": "1.1kg"
+      },
+      "features": [
+        "Intel Core i7 thế hệ mới",
+        "RAM LPDDR5 16GB",
+        "SSD 1TB NVMe",
+        "Bảo mật vân tay",
+        "Thiết kế siêu mỏng nhẹ",
+        "Bảo hành 24 tháng"
+      ]
+    },
+    {
+      "id": "10",
+      "name": "ASUS ROG Zephyrus G16",
+      "price": 52990000,
+      "description": "Laptop gaming cao cấp với RTX 4080, Intel Core i9, màn hình 16 inch QHD 240Hz",
+      "images": [
+        "/images/ASUSROGZephyrusG16.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "laptop",
+      "brand": "ASUS",
+      "specs": {
+        "cpu": "Intel Core i9-13900H",
+        "ram": "32GB DDR5",
+        "storage": "2TB NVMe SSD",
+        "display": "16\" QHD 240Hz IPS",
+        "graphics": "NVIDIA RTX 4080 12GB",
+        "weight": "2.1kg"
+      },
+      "features": [
+        "RTX 4080 12GB VRAM",
+        "Intel Core i9 24 cores",
+        "RAM DDR5 32GB",
+        "SSD 2TB siêu nhanh",
+        "Màn hình QHD 240Hz",
+        "Bảo hành 24 tháng"
+      ]
+    },
+    {
+      "id": "11",
+      "name": "ASUS TUF Gaming F15",
+      "price": 22990000,
+      "description": "Laptop gaming bền bỉ với RTX 4060, Intel Core i7, màn hình 15.6 inch 144Hz",
+      "images": [
+        "/images/ASUSTUFGamingF15.png"
+      ],
+      "inStock": true,
+      "discount": 7,
+      "category": "laptop",
+      "brand": "ASUS",
+      "specs": {
+        "cpu": "Intel Core i7-12700H",
+        "ram": "16GB DDR4",
+        "storage": "1TB NVMe SSD",
+        "display": "15.6\" Full HD 144Hz",
+        "graphics": "NVIDIA RTX 4060 8GB",
+        "weight": "2.3kg"
+      },
+      "features": [
+        "RTX 4060 8GB VRAM",
+        "Intel Core i7 20 cores",
+        "RAM DDR4 16GB",
+        "SSD NVMe 1TB",
+        "Màn hình 144Hz",
+        "Bảo hành 24 tháng"
+      ],
+      "discountPrice": 21380700
+    },
+    {
+      "id": "12",
+      "name": "ASUS Vivobook 15",
+      "price": 12990000,
+      "description": "Laptop văn phòng giá tốt với Intel Core i5, màn hình 15.6 inch, thiết kế mỏng nhẹ",
+      "images": [
+        "/images/ASUSVivobook15.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "laptop",
+      "brand": "ASUS",
+      "specs": {
+        "cpu": "Intel Core i5-1335U",
+        "ram": "8GB DDR4",
+        "storage": "512GB NVMe SSD",
+        "display": "15.6\" Full HD",
+        "graphics": "Intel Iris Xe",
+        "weight": "1.8kg"
+      },
+      "features": [
+        "Intel Core i5 thế hệ mới",
+        "RAM DDR4 8GB",
+        "SSD NVMe 512GB",
+        "Thiết kế mỏng nhẹ",
+        "Màn hình Full HD",
+        "Bảo hành 24 tháng"
+      ]
+    },
+    {
+      "id": "13",
+      "name": "ASUS Zenbook 14",
+      "price": 24990000,
+      "description": "Ultrabook cao cấp với Intel Core i7, màn hình 14 inch OLED, trọng lượng siêu nhẹ",
+      "images": [
+        "/images/ASUSZenbook14.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "laptop",
+      "brand": "ASUS",
+      "specs": {
+        "cpu": "Intel Core i7-1360P",
+        "ram": "16GB LPDDR5",
+        "storage": "1TB NVMe SSD",
+        "display": "14\" 2.8K OLED",
+        "graphics": "Intel Iris Xe",
+        "weight": "1.2kg"
+      },
+      "features": [
+        "Màn hình OLED 2.8K",
+        "Intel Core i7 thế hệ mới",
+        "Thiết kế siêu mỏng nhẹ",
+        "RAM LPDDR5 16GB",
+        "SSD NVMe 1TB",
+        "Bảo hành 24 tháng"
+      ]
+    },
+    {
+      "id": "14",
+      "name": "Baseus Adaman",
+      "price": 890000,
+      "description": "Sạc dự phòng 20000mAh nhanh, hỗ trợ PD 65W, thiết kế kim loại",
+      "images": [
+        "/images/BaseusAdaman.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "accessories",
+      "brand": "Baseus",
+      "specs": {
+        "capacity": "20000mAh",
+        "output": "65W PD",
+        "ports": "2x USB-C, 2x USB-A",
+        "charging": "USB-C 30W input",
+        "weight": "420g",
+        "features": "LED Display, Metal Case"
+      },
+      "features": [
+        "Dung lượng 20000mAh",
+        "Sạc nhanh PD 65W",
+        "4 cổng sạc đa năng",
+        "Màn hình LED",
+        "Thiết kế kim loại",
+        "Bảo hành 12 tháng"
+      ]
+    },
+    {
+      "id": "15",
+      "name": "Dell G15",
+      "price": 19990000,
+      "description": "Laptop gaming tầm trung với RTX 4050, Intel Core i5, màn hình 15.6 inch 120Hz",
+      "images": [
+        "/images/DellG15.png"
+      ],
+      "inStock": true,
+      "discount": 10,
+      "category": "laptop",
+      "brand": "Dell",
+      "specs": {
+        "cpu": "Intel Core i5-12450H",
+        "ram": "8GB DDR4",
+        "storage": "512GB NVMe SSD",
+        "display": "15.6\" Full HD 120Hz",
+        "graphics": "NVIDIA RTX 4050 6GB",
+        "weight": "2.6kg"
+      },
+      "features": [
+        "RTX 4050 6GB VRAM",
+        "Intel Core i5 thế hệ mới",
+        "RAM DDR4 8GB",
+        "SSD NVMe 512GB",
+        "Màn hình 120Hz",
+        "Bảo hành 24 tháng"
+      ],
+      "discountPrice": 17991000
+    },
+    {
+      "id": "16",
+      "name": "Dell G16",
+      "price": 34990000,
+      "description": "Laptop gaming cao cấp với RTX 4070, Intel Core i7, màn hình 16 inch QHD 165Hz",
+      "images": [
+        "/images/DellG16.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "laptop",
+      "brand": "Dell",
+      "specs": {
+        "cpu": "Intel Core i7-13700HX",
+        "ram": "16GB DDR5",
+        "storage": "1TB NVMe SSD",
+        "display": "16\" QHD 165Hz",
+        "graphics": "NVIDIA RTX 4070 8GB",
+        "weight": "2.8kg"
+      },
+      "features": [
+        "RTX 4070 8GB VRAM",
+        "Intel Core i7 16 cores",
+        "RAM DDR5 16GB",
+        "SSD NVMe 1TB",
+        "Màn hình QHD 165Hz",
+        "Bảo hành 24 tháng"
+      ]
+    },
+    {
+      "id": "17",
+      "name": "Dell Inspiron 14",
+      "price": 15990000,
+      "description": "Laptop văn phòng nhỏ gọn với Intel Core i5, màn hình 14 inch, thiết kế hiện đại",
+      "images": [
+        "/images/DellInspiron14.png"
+      ],
+      "inStock": true,
+      "discount": 5,
+      "category": "laptop",
+      "brand": "Dell",
+      "specs": {
+        "cpu": "Intel Core i5-1335U",
+        "ram": "8GB DDR4",
+        "storage": "512GB NVMe SSD",
+        "display": "14\" Full HD",
+        "graphics": "Intel Iris Xe",
+        "weight": "1.5kg"
+      },
+      "features": [
+        "Intel Core i5 thế hệ mới",
+        "RAM DDR4 8GB",
+        "SSD NVMe 512GB",
+        "Thiết kế nhỏ gọn",
+        "Màn hình Full HD",
+        "Bảo hành 24 tháng"
+      ],
+      "discountPrice": 15190500
+    },
+    {
+      "id": "18",
+      "name": "Dell Inspiron 16",
+      "price": 18990000,
+      "description": "Laptop văn phòng màn hình lớn 16 inch với Intel Core i7, RAM 16GB",
+      "images": [
+        "/images/DellInspiron16.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "laptop",
+      "brand": "Dell",
+      "specs": {
+        "cpu": "Intel Core i7-1360P",
+        "ram": "16GB DDR4",
+        "storage": "1TB NVMe SSD",
+        "display": "16\" Full HD",
+        "graphics": "Intel Iris Xe",
+        "weight": "1.9kg"
+      },
+      "features": [
+        "Intel Core i7 thế hệ mới",
+        "RAM DDR4 16GB",
+        "SSD NVMe 1TB",
+        "Màn hình 16 inch",
+        "Thiết kế hiện đại",
+        "Bảo hành 24 tháng"
+      ]
+    },
+    {
+      "id": "19",
+      "name": "Dell XPS 13",
+      "price": 35990000,
+      "description": "Ultrabook cao cấp với Intel Core i7, màn hình 13.4 inch 4K, thiết kế siêu mỏng",
+      "images": [
+        "/images/DellXPS13.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "laptop",
+      "brand": "Dell",
+      "specs": {
+        "cpu": "Intel Core i7-1360P",
+        "ram": "16GB LPDDR5",
+        "storage": "1TB NVMe SSD",
+        "display": "13.4\" 4K OLED",
+        "graphics": "Intel Iris Xe",
+        "weight": "1.2kg"
+      },
+      "features": [
+        "Màn hình 4K OLED",
+        "Intel Core i7 thế hệ mới",
+        "RAM LPDDR5 16GB",
+        "SSD NVMe 1TB",
+        "Thiết kế siêu mỏng",
+        "Bảo hành 24 tháng"
+      ]
+    },
+    {
+      "id": "20",
+      "name": "Dell XPS 15",
+      "price": 52990000,
+      "description": "Laptop creative cao cấp với Intel Core i9, RTX 4060, màn hình 15.6 inch 4K OLED",
+      "images": [
+        "/images/DellXPS15.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "laptop",
+      "brand": "Dell",
+      "specs": {
+        "cpu": "Intel Core i9-13900H",
+        "ram": "32GB DDR5",
+        "storage": "2TB NVMe SSD",
+        "display": "15.6\" 4K OLED",
+        "graphics": "NVIDIA RTX 4060 8GB",
+        "weight": "1.8kg"
+      },
+      "features": [
+        "RTX 4060 8GB VRAM",
+        "Intel Core i9 24 cores",
+        "RAM DDR5 32GB",
+        "SSD 2TB siêu nhanh",
+        "Màn hình 4K OLED",
+        "Bảo hành 24 tháng"
+      ]
+    },
+    {
+      "id": "21",
+      "name": "HP Envy x360",
+      "price": 27990000,
+      "description": "Laptop 2-in-1 với Intel Core i7, màn hình 15.6 inch touchscreen, bút cảm ứng",
+      "images": [
+        "/images/HPEnvyx360.png"
+      ],
+      "inStock": true,
+      "discount": 8,
+      "category": "laptop",
+      "brand": "HP",
+      "specs": {
+        "cpu": "Intel Core i7-1355U",
+        "ram": "16GB DDR4",
+        "storage": "1TB NVMe SSD",
+        "display": "15.6\" Full HD Touch",
+        "graphics": "Intel Iris Xe",
+        "weight": "1.4kg"
+      },
+      "features": [
+        "Màn hình cảm ứng",
+        "Intel Core i7 thế hệ mới",
+        "RAM DDR4 16GB",
+        "SSD NVMe 1TB",
+        "Thiết kế 2-in-1",
+        "Bảo hành 24 tháng"
+      ],
+      "discountPrice": 25750800
+    },
+    {
+      "id": "22",
+      "name": "HP Laptop 15s",
+      "price": 11990000,
+      "description": "Laptop giá tốt cho sinh viên với Intel Core i3, màn hình 15.6 inch",
+      "images": [
+        "/images/HPLaptop15s.png"
+      ],
+      "inStock": true,
+      "discount": 10,
+      "category": "laptop",
+      "brand": "HP",
+      "specs": {
+        "cpu": "Intel Core i3-1215U",
+        "ram": "8GB DDR4",
+        "storage": "512GB NVMe SSD",
+        "display": "15.6\" Full HD",
+        "graphics": "Intel UHD Graphics",
+        "weight": "1.7kg"
+      },
+      "features": [
+        "Intel Core i3 thế hệ mới",
+        "RAM DDR4 8GB",
+        "SSD NVMe 512GB",
+        "Giá sinh viên",
+        "Màn hình Full HD",
+        "Bảo hành 24 tháng"
+      ],
+      "discountPrice": 10791000
+    },
+    {
+      "id": "23",
+      "name": "HP Omen 16",
+      "price": 38990000,
+      "description": "Laptop gaming cao cấp với RTX 4070, Intel Core i7, màn hình 16 inch QHD 165Hz",
+      "images": [
+        "/images/HPOMen16.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "laptop",
+      "brand": "HP",
+      "specs": {
+        "cpu": "Intel Core i7-13700HX",
+        "ram": "16GB DDR5",
+        "storage": "1TB NVMe SSD",
+        "display": "16\" QHD 165Hz",
+        "graphics": "NVIDIA RTX 4070 8GB",
+        "weight": "2.3kg"
+      },
+      "features": [
+        "RTX 4070 8GB VRAM",
+        "Intel Core i7 16 cores",
+        "RAM DDR5 16GB",
+        "SSD NVMe 1TB",
+        "Màn hình QHD 165Hz",
+        "Bảo hành 24 tháng"
+      ]
+    },
+    {
+      "id": "24",
+      "name": "HP Pavilion 14",
+      "price": 14990000,
+      "description": "Laptop văn phòng nhẹ với Intel Core i5, màn hình 14 inch, thiết kế trẻ trung",
+      "images": [
+        "/images/HPPavilion14.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "laptop",
+      "brand": "HP",
+      "specs": {
+        "cpu": "Intel Core i5-1335U",
+        "ram": "8GB DDR4",
+        "storage": "512GB NVMe SSD",
+        "display": "14\" Full HD",
+        "graphics": "Intel Iris Xe",
+        "weight": "1.4kg"
+      },
+      "features": [
+        "Intel Core i5 thế hệ mới",
+        "RAM DDR4 8GB",
+        "SSD NVMe 512GB",
+        "Thiết kế trẻ trung",
+        "Màn hình Full HD",
+        "Bảo hành 24 tháng"
+      ]
+    },
+    {
+      "id": "25",
+      "name": "HP Spectre x360",
+      "price": 42990000,
+      "description": "Laptop premium 2-in-1 với Intel Core i7, màn hình 13.5 inch 4K OLED, bút cảm ứng",
+      "images": [
+        "/images/HPSpectrex360.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "laptop",
+      "brand": "HP",
+      "specs": {
+        "cpu": "Intel Core i7-1360P",
+        "ram": "16GB LPDDR5",
+        "storage": "1TB NVMe SSD",
+        "display": "13.5\" 4K OLED Touch",
+        "graphics": "Intel Iris Xe",
+        "weight": "1.4kg"
+      },
+      "features": [
+        "Màn hình 4K OLED cảm ứng",
+        "Intel Core i7 thế hệ mới",
+        "RAM LPDDR5 16GB",
+        "SSD NVMe 1TB",
+        "Thiết kế 2-in-1 cao cấp",
+        "Bảo hành 24 tháng"
+      ]
+    },
+    {
+      "id": "26",
+      "name": "HP Victus 16",
+      "price": 24990000,
+      "description": "Laptop gaming giá tốt với RTX 4060, Intel Core i5, màn hình 16 inch 144Hz",
+      "images": [
+        "/images/HPVictus16.png"
+      ],
+      "inStock": true,
+      "discount": 5,
+      "category": "laptop",
+      "brand": "HP",
+      "specs": {
+        "cpu": "Intel Core i5-13420H",
+        "ram": "16GB DDR4",
+        "storage": "512GB NVMe SSD",
+        "display": "16\" Full HD 144Hz",
+        "graphics": "NVIDIA RTX 4060 8GB",
+        "weight": "2.4kg"
+      },
+      "features": [
+        "RTX 4060 8GB VRAM",
+        "Intel Core i5 thế hệ mới",
+        "RAM DDR4 16GB",
+        "SSD NVMe 512GB",
+        "Màn hình 144Hz",
+        "Bảo hành 24 tháng"
+      ],
+      "discountPrice": 23740500
+    },
+    {
+      "id": "27",
+      "name": "iPhone 14",
+      "price": 18990000,
+      "description": "iPhone thế hệ 14 với chip A15, màn hình 6.1 inch, camera 12MP",
+      "images": [
+        "/images/iphone14.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "phone",
+      "brand": "Apple",
+      "specs": {
+        "cpu": "A15 Bionic",
+        "ram": "6GB",
+        "storage": "128GB",
+        "display": "6.1\" Super Retina XDR",
+        "camera": "12MP + 12MP",
+        "battery": "3279mAh",
+        "weight": "172g"
+      },
+      "features": [
+        "Chip A15 Bionic",
+        "Màn hình Super Retina XDR",
+        "Camera kép 12MP",
+        "iOS 16",
+        "5G",
+        "Bảo hành 12 tháng"
+      ]
+    },
+    {
+      "id": "28",
+      "name": "iPhone 14 Pro Max",
+      "price": 28990000,
+      "description": "iPhone Pro Max với chip A16, màn hình 6.7 inch, camera 48MP, Dynamic Island",
+      "images": [
+        "/images/iphone14promax.png"
+      ],
+      "inStock": true,
+      "discount": 5,
+      "category": "phone",
+      "brand": "Apple",
+      "specs": {
+        "cpu": "A16 Bionic",
+        "ram": "6GB",
+        "storage": "256GB",
+        "display": "6.7\" Super Retina XDR ProMotion",
+        "camera": "48MP + 12MP + 12MP",
+        "battery": "4323mAh",
+        "weight": "240g"
+      },
+      "features": [
+        "Chip A16 Bionic",
+        "Dynamic Island",
+        "Camera 48MP ProRAW",
+        "Màn hình ProMotion 120Hz",
+        "5G",
+        "Bảo hành 12 tháng"
+      ],
+      "discountPrice": 27540500
+    },
+    {
+      "id": "29",
+      "name": "iPhone 16 Pro",
+      "price": 32990000,
+      "description": "iPhone 16 Pro với chip A18 Pro, màn hình 6.3 inch, camera 48MP, titanium",
+      "images": [
+        "/images/iphone16pro.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "phone",
+      "brand": "Apple",
+      "specs": {
+        "cpu": "A18 Pro",
+        "ram": "8GB",
+        "storage": "256GB",
+        "display": "6.3\" Super Retina XDR ProMotion",
+        "camera": "48MP + 12MP + 12MP",
+        "battery": "3582mAh",
+        "weight": "197g"
+      },
+      "features": [
+        "Chip A18 Pro",
+        "Thân máy titanium",
+        "Camera 48MP ProRAW",
+        "Màn hình ProMotion 120Hz",
+        "5G",
+        "Bảo hành 12 tháng"
+      ]
+    },
+    {
+      "id": "30",
+      "name": "iPhone 17",
+      "price": 24990000,
+      "description": "iPhone thế hệ mới với chip A19, màn hình 6.1 inch, camera cải tiến",
+      "images": [
+        "/images/iphone17.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "phone",
+      "brand": "Apple",
+      "specs": {
+        "cpu": "A19",
+        "ram": "8GB",
+        "storage": "256GB",
+        "display": "6.1\" Super Retina XDR",
+        "camera": "24MP + 12MP",
+        "battery": "3349mAh",
+        "weight": "171g"
+      },
+      "features": [
+        "Chip A19 thế hệ mới",
+        "Camera 24MP cải tiến",
+        "Màn hình Super Retina XDR",
+        "5G",
+        "iOS 18",
+        "Bảo hành 12 tháng"
+      ]
+    },
+    {
+      "id": "31",
+      "name": "iPhone 17 Plus",
+      "price": 27990000,
+      "description": "iPhone 17 Plus màn hình lớn 6.7 inch với chip A19, camera nâng cấp",
+      "images": [
+        "/images/iphone17plus.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "phone",
+      "brand": "Apple",
+      "specs": {
+        "cpu": "A19",
+        "ram": "8GB",
+        "storage": "256GB",
+        "display": "6.7\" Super Retina XDR",
+        "camera": "24MP + 12MP",
+        "battery": "4352mAh",
+        "weight": "199g"
+      },
+      "features": [
+        "Chip A19 thế hệ mới",
+        "Màn hình 6.7 inch lớn",
+        "Camera 24MP cải tiến",
+        "5G",
+        "iOS 18",
+        "Bảo hành 12 tháng"
+      ]
+    },
+    {
+      "id": "32",
+      "name": "iPhone 17 Pro",
+      "price": 34990000,
+      "description": "iPhone 17 Pro với chip A19 Pro, màn hình 6.3 inch, camera 48MP ProRAW",
+      "images": [
+        "/images/iphone17pro.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "phone",
+      "brand": "Apple",
+      "specs": {
+        "cpu": "A19 Pro",
+        "ram": "12GB",
+        "storage": "512GB",
+        "display": "6.3\" Super Retina XDR ProMotion",
+        "camera": "48MP + 12MP + 12MP",
+        "battery": "3582mAh",
+        "weight": "197g"
+      },
+      "features": [
+        "Chip A19 Pro",
+        "Camera 48MP ProRAW",
+        "Màn hình ProMotion 120Hz",
+        "5G",
+        "iOS 18",
+        "Bảo hành 12 tháng"
+      ]
+    },
+    {
+      "id": "33",
+      "name": "iPhone 17 Pro Max",
+      "price": 39990000,
+      "description": "iPhone 17 Pro Max flagship với chip A19 Pro, màn hình 6.9 inch, camera 48MP",
+      "images": [
+        "/images/iphone17promax.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "phone",
+      "brand": "Apple",
+      "specs": {
+        "cpu": "A19 Pro",
+        "ram": "12GB",
+        "storage": "1TB",
+        "display": "6.9\" Super Retina XDR ProMotion",
+        "camera": "48MP + 12MP + 12MP",
+        "battery": "4422mAh",
+        "weight": "221g"
+      },
+      "features": [
+        "Chip A19 Pro",
+        "Màn hình 6.9 inch lớn",
+        "Camera 48MP ProRAW",
+        "5G",
+        "iOS 18",
+        "Bảo hành 12 tháng"
+      ]
+    },
+    {
+      "id": "34",
+      "name": "Laptop ASUS Vivobook S14",
+      "price": 17990000,
+      "description": "Laptop mỏng nhẹ với Intel Core i5, màn hình 14 inch OLED, thiết kế hiện đại",
+      "images": [
+        "/images/LaptopASUSVivobookS14.png"
+      ],
+      "inStock": true,
+      "discount": 7,
+      "category": "laptop",
+      "brand": "ASUS",
+      "specs": {
+        "cpu": "Intel Core i5-1335U",
+        "ram": "8GB LPDDR4",
+        "storage": "512GB NVMe SSD",
+        "display": "14\" Full HD OLED",
+        "graphics": "Intel Iris Xe",
+        "weight": "1.4kg"
+      },
+      "features": [
+        "Màn hình OLED",
+        "Intel Core i5 thế hệ mới",
+        "Thiết kế mỏng nhẹ",
+        "SSD NVMe 512GB",
+        "Bảo hành 24 tháng"
+      ],
+      "discountPrice": 16730700
+    },
+    {
+      "id": "35",
+      "name": "Lenovo IdeaPad 3",
+      "price": 10990000,
+      "description": "Laptop giá tốt cho sinh viên với AMD Ryzen 5, màn hình 15.6 inch",
+      "images": [
+        "/images/LenovoIdeaPad3.png"
+      ],
+      "inStock": true,
+      "discount": 10,
+      "category": "laptop",
+      "brand": "Lenovo",
+      "specs": {
+        "cpu": "AMD Ryzen 5 5500U",
+        "ram": "8GB DDR4",
+        "storage": "512GB NVMe SSD",
+        "display": "15.6\" Full HD",
+        "graphics": "AMD Radeon Graphics",
+        "weight": "1.8kg"
+      },
+      "features": [
+        "AMD Ryzen 5 thế hệ mới",
+        "RAM DDR4 8GB",
+        "SSD NVMe 512GB",
+        "Giá sinh viên",
+        "Màn hình Full HD",
+        "Bảo hành 24 tháng"
+      ],
+      "discountPrice": 9891000
+    },
+    {
+      "id": "36",
+      "name": "Lenovo IdeaPad Slim 5",
+      "price": 14990000,
+      "description": "Laptop mỏng nhẹ với AMD Ryzen 7, màn hình 14 inch, thiết kế hiện đại",
+      "images": [
+        "/images/LenovoIdeaPadSlim5.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "laptop",
+      "brand": "Lenovo",
+      "specs": {
+        "cpu": "AMD Ryzen 7 7730U",
+        "ram": "16GB LPDDR5",
+        "storage": "512GB NVMe SSD",
+        "display": "14\" Full HD",
+        "graphics": "AMD Radeon Graphics",
+        "weight": "1.3kg"
+      },
+      "features": [
+        "AMD Ryzen 7 thế hệ mới",
+        "RAM LPDDR5 16GB",
+        "SSD NVMe 512GB",
+        "Thiết kế mỏng nhẹ",
+        "Màn hình Full HD",
+        "Bảo hành 24 tháng"
+      ]
+    },
+    {
+      "id": "37",
+      "name": "Lenovo Legion 5 Pro",
+      "price": 32990000,
+      "description": "Laptop gaming với RTX 4070, AMD Ryzen 7, màn hình 16 inch QHD 165Hz",
+      "images": [
+        "/images/LenovoLegion5Pro.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "laptop",
+      "brand": "Lenovo",
+      "specs": {
+        "cpu": "AMD Ryzen 7 7840HS",
+        "ram": "32GB DDR5",
+        "storage": "1TB NVMe SSD",
+        "display": "16\" QHD 165Hz IPS",
+        "graphics": "NVIDIA RTX 4070 8GB",
+        "weight": "2.5kg"
+      },
+      "features": [
+        "RTX 4070 8GB VRAM",
+        "AMD Ryzen 7 8 cores",
+        "RAM DDR5 32GB",
+        "SSD NVMe 1TB",
+        "Màn hình QHD 165Hz",
+        "Bảo hành 24 tháng"
+      ]
+    },
+    {
+      "id": "38",
+      "name": "Lenovo Legion 7i",
+      "price": 49990000,
+      "description": "Laptop gaming cao cấp với RTX 4080, Intel Core i9, màn hình 16 inch QHD 240Hz",
+      "images": [
+        "/images/LenovoLegion7i.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "laptop",
+      "brand": "Lenovo",
+      "specs": {
+        "cpu": "Intel Core i9-13900HX",
+        "ram": "32GB DDR5",
+        "storage": "2TB NVMe SSD",
+        "display": "16\" QHD 240Hz IPS",
+        "graphics": "NVIDIA RTX 4080 12GB",
+        "weight": "2.8kg"
+      },
+      "features": [
+        "RTX 4080 12GB VRAM",
+        "Intel Core i9 24 cores",
+        "RAM DDR5 32GB",
+        "SSD 2TB siêu nhanh",
+        "Màn hình QHD 240Hz",
+        "Bảo hành 24 tháng"
+      ]
+    },
+    {
+      "id": "39",
+      "name": "Lenovo Yoga 7i",
+      "price": 24990000,
+      "description": "Laptop 2-in-1 với Intel Core i7, màn hình 14 inch touchscreen, bút cảm ứng",
+      "images": [
+        "/images/LenovoYoga7i.png"
+      ],
+      "inStock": true,
+      "discount": 5,
+      "category": "laptop",
+      "brand": "Lenovo",
+      "specs": {
+        "cpu": "Intel Core i7-1355U",
+        "ram": "16GB LPDDR5",
+        "storage": "1TB NVMe SSD",
+        "display": "14\" Full HD Touch",
+        "graphics": "Intel Iris Xe",
+        "weight": "1.4kg"
+      },
+      "features": [
+        "Màn hình cảm ứng",
+        "Intel Core i7 thế hệ mới",
+        "RAM LPDDR5 16GB",
+        "SSD NVMe 1TB",
+        "Thiết kế 2-in-1",
+        "Bảo hành 24 tháng"
+      ],
+      "discountPrice": 23740500
+    },
+    {
+      "id": "40",
+      "name": "Lenovo Yoga 9i",
+      "price": 38990000,
+      "description": "Laptop premium 2-in-1 với Intel Core i7, màn hình 14 inch 4K OLED, bút cảm ứng",
+      "images": [
+        "/images/LenovoYoga9i.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "laptop",
+      "brand": "Lenovo",
+      "specs": {
+        "cpu": "Intel Core i7-1360P",
+        "ram": "16GB LPDDR5",
+        "storage": "1TB NVMe SSD",
+        "display": "14\" 4K OLED Touch",
+        "graphics": "Intel Iris Xe",
+        "weight": "1.4kg"
+      },
+      "features": [
+        "Màn hình 4K OLED cảm ứng",
+        "Intel Core i7 thế hệ mới",
+        "RAM LPDDR5 16GB",
+        "SSD NVMe 1TB",
+        "Thiết kế 2-in-1 cao cấp",
+        "Bảo hành 24 tháng"
+      ]
+    },
+    {
+      "id": "41",
+      "name": "Redmi Note 11 Pro+",
+      "price": 8990000,
+      "description": "Điện thoại gaming với Snapdragon 870, màn hình 120Hz, sạc 120W",
+      "images": [
+        "/images/nubiaredmagic11proplus.png"
+      ],
+      "inStock": true,
+      "discount": 10,
+      "category": "phone",
+      "brand": "Redmi",
+      "specs": {
+        "cpu": "Snapdragon 870",
+        "ram": "8GB",
+        "storage": "256GB",
+        "display": "6.67\" AMOLED 120Hz",
+        "camera": "108MP + 8MP + 2MP",
+        "battery": "4500mAh",
+        "weight": "204g"
+      },
+      "features": [
+        "Snapdragon 870",
+        "Màn hình AMOLED 120Hz",
+        "Camera 108MP",
+        "Sạc nhanh 120W",
+        "5G",
+        "Bảo hành 12 tháng"
+      ],
+      "discountPrice": 8091000
+    },
+    {
+      "id": "42",
+      "name": "OPPO A3",
+      "price": 3990000,
+      "description": "Điện thoại giá tốt với MediaTek Helio, màn hình 6.7 inch, pin 5000mAh",
+      "images": [
+        "/images/oppoa3.png"
+      ],
+      "inStock": true,
+      "discount": 5,
+      "category": "phone",
+      "brand": "OPPO",
+      "specs": {
+        "cpu": "MediaTek Helio G85",
+        "ram": "6GB",
+        "storage": "128GB",
+        "display": "6.7\" HD+",
+        "camera": "50MP + 2MP",
+        "battery": "5000mAh",
+        "weight": "188g"
+      },
+      "features": [
+        "MediaTek Helio G85",
+        "Màn hình 6.7 inch",
+        "Camera 50MP",
+        "Pin 5000mAh",
+        "5G",
+        "Bảo hành 12 tháng"
+      ],
+      "discountPrice": 3790500
+    },
+    {
+      "id": "43",
+      "name": "OPPO A59",
+      "price": 4490000,
+      "description": "Điện thoại tầm trung với MediaTek Dimensity, màn hình 6.56 inch",
+      "images": [
+        "/images/oppoa59.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "phone",
+      "brand": "OPPO",
+      "specs": {
+        "cpu": "MediaTek Dimensity 700",
+        "ram": "6GB",
+        "storage": "128GB",
+        "display": "6.56\" HD+",
+        "camera": "13MP + 2MP",
+        "battery": "5000mAh",
+        "weight": "189g"
+      },
+      "features": [
+        "MediaTek Dimensity 700",
+        "Màn hình 6.56 inch",
+        "Camera 13MP",
+        "Pin 5000mAh",
+        "5G",
+        "Bảo hành 12 tháng"
+      ]
+    },
+    {
+      "id": "44",
+      "name": "OPPO A79",
+      "price": 5990000,
+      "description": "Điện thoại tầm trung với MediaTek Helio, màn hình 6.72 inch, camera 50MP",
+      "images": [
+        "/images/oppoa79.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "phone",
+      "brand": "OPPO",
+      "specs": {
+        "cpu": "MediaTek Helio G85",
+        "ram": "8GB",
+        "storage": "128GB",
+        "display": "6.72\" HD+",
+        "camera": "50MP + 2MP",
+        "battery": "5000mAh",
+        "weight": "195g"
+      },
+      "features": [
+        "MediaTek Helio G85",
+        "Màn hình 6.72 inch",
+        "Camera 50MP",
+        "Pin 5000mAh",
+        "5G",
+        "Bảo hành 12 tháng"
+      ]
+    },
+    {
+      "id": "45",
+      "name": "OPPO Find N3",
+      "price": 24990000,
+      "description": "Điện thoại gập cao cấp với Snapdragon 8 Gen 2, màn hình gập 7.82 inch",
+      "images": [
+        "/images/oppofindn3.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "phone",
+      "brand": "OPPO",
+      "specs": {
+        "cpu": "Snapdragon 8 Gen 2",
+        "ram": "16GB",
+        "storage": "512GB",
+        "display": "7.82\" Foldable AMOLED",
+        "camera": "50MP + 48MP + 32MP",
+        "battery": "4805mAh",
+        "weight": "236g"
+      },
+      "features": [
+        "Snapdragon 8 Gen 2",
+        "Màn hình gập 7.82 inch",
+        "Camera 50MP",
+        "RAM 16GB",
+        "Android 13",
+        "Bảo hành 12 tháng"
+      ]
+    },
+    {
+      "id": "46",
+      "name": "OPPO Find X7 Ultra",
+      "price": 22990000,
+      "description": "Điện thoại flagship với Snapdragon 8 Gen 3, camera Hasselblad, màn hình 120Hz",
+      "images": [
+        "/images/oppofindx7ultra.png"
+      ],
+      "inStock": true,
+      "discount": 5,
+      "category": "phone",
+      "brand": "OPPO",
+      "specs": {
+        "cpu": "Snapdragon 8 Gen 3",
+        "ram": "16GB",
+        "storage": "256GB",
+        "display": "6.82\" AMOLED 120Hz",
+        "camera": "50MP + 50MP + 50MP",
+        "battery": "5000mAh",
+        "weight": "221g"
+      },
+      "features": [
+        "Snapdragon 8 Gen 3",
+        "Camera Hasselblad",
+        "Màn hình AMOLED 120Hz",
+        "RAM 16GB",
+        "Android 14",
+        "Bảo hành 12 tháng"
+      ],
+      "discountPrice": 21840500
+    },
+    {
+      "id": "47",
+      "name": "OPPO K12x",
+      "price": 4990000,
+      "description": "Điện thoại gaming giá tốt với MediaTek Helio, màn hình 120Hz, pin 5000mAh",
+      "images": [
+        "/images/oppok12x.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "phone",
+      "brand": "OPPO",
+      "specs": {
+        "cpu": "MediaTek Helio G99",
+        "ram": "8GB",
+        "storage": "128GB",
+        "display": "6.67\" AMOLED 120Hz",
+        "camera": "64MP + 8MP",
+        "battery": "5000mAh",
+        "weight": "186g"
+      },
+      "features": [
+        "MediaTek Helio G99",
+        "Màn hình AMOLED 120Hz",
+        "Camera 64MP",
+        "Pin 5000mAh",
+        "5G",
+        "Bảo hành 12 tháng"
+      ]
+    },
+    {
+      "id": "48",
+      "name": "OPPO Reno 12",
+      "price": 8990000,
+      "description": "Điện thoại camera mạnh với MediaTek Dimensity, màn hình 120Hz, thiết kế đẹp",
+      "images": [
+        "/images/opporeno12.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "phone",
+      "brand": "OPPO",
+      "specs": {
+        "cpu": "MediaTek Dimensity 8200",
+        "ram": "8GB",
+        "storage": "256GB",
+        "display": "6.7\" AMOLED 120Hz",
+        "camera": "50MP + 32MP + 8MP",
+        "battery": "4800mAh",
+        "weight": "182g"
+      },
+      "features": [
+        "MediaTek Dimensity 8200",
+        "Màn hình AMOLED 120Hz",
+        "Camera 50MP",
+        "Pin 4800mAh",
+        "5G",
+        "Bảo hành 12 tháng"
+      ]
+    },
+    {
+      "id": "49",
+      "name": "OPPO Reno 12 Pro",
+      "price": 12990000,
+      "description": "Điện thoại camera chuyên nghiệp với Snapdragon 7 Gen 3, telephoto 2x",
+      "images": [
+        "/images/opporeno12pro.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "phone",
+      "brand": "OPPO",
+      "specs": {
+        "cpu": "Snapdragon 7 Gen 3",
+        "ram": "12GB",
+        "storage": "256GB",
+        "display": "6.7\" AMOLED 120Hz",
+        "camera": "50MP + 50MP + 8MP",
+        "battery": "4800mAh",
+        "weight": "184g"
+      },
+      "features": [
+        "Snapdragon 7 Gen 3",
+        "Camera telephoto 2x",
+        "Màn hình AMOLED 120Hz",
+        "RAM 12GB",
+        "Android 14",
+        "Bảo hành 12 tháng"
+      ]
+    },
+    {
+      "id": "50",
+      "name": "Realme 12 Pro+",
+      "price": 7990000,
+      "description": "Điện thoại camera telephoto 3x với Snapdragon 6 Gen 1, màn hình 120Hz",
+      "images": [
+        "/images/realme12pro+.png"
+      ],
+      "inStock": true,
+      "discount": 10,
+      "category": "phone",
+      "brand": "Realme",
+      "specs": {
+        "cpu": "Snapdragon 6 Gen 1",
+        "ram": "8GB",
+        "storage": "256GB",
+        "display": "6.7\" AMOLED 120Hz",
+        "camera": "50MP + 8MP + 32MP",
+        "battery": "5000mAh",
+        "weight": "196g"
+      },
+      "features": [
+        "Snapdragon 6 Gen 1",
+        "Camera telephoto 3x",
+        "Màn hình AMOLED 120Hz",
+        "RAM 8GB",
+        "Android 13",
+        "Bảo hành 12 tháng"
+      ],
+      "discountPrice": 7191000
+    },
+    {
+      "id": "51",
+      "name": "Realme 13 Pro",
+      "price": 8990000,
+      "description": "Điện thoại tầm trung với Snapdragon 7s Gen 2, camera 50MP, sạc 67W",
+      "images": [
+        "/images/realme13pro.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "phone",
+      "brand": "Realme",
+      "specs": {
+        "cpu": "Snapdragon 7s Gen 2",
+        "ram": "8GB",
+        "storage": "256GB",
+        "display": "6.7\" AMOLED 120Hz",
+        "camera": "50MP + 8MP",
+        "battery": "5000mAh",
+        "weight": "191g"
+      },
+      "features": [
+        "Snapdragon 7s Gen 2",
+        "Màn hình AMOLED 120Hz",
+        "Camera 50MP",
+        "Sạc nhanh 67W",
+        "5G",
+        "Bảo hành 12 tháng"
+      ]
+    },
+    {
+      "id": "52",
+      "name": "Realme 15 Pro 5G",
+      "price": 10990000,
+      "description": "Điện thoại 5G tầm trung với Snapdragon 6 Gen 1, màn hình 120Hz",
+      "images": [
+        "/images/realme15pro5g.png"
+      ],
+      "inStock": true,
+      "discount": 5,
+      "category": "phone",
+      "brand": "Realme",
+      "specs": {
+        "cpu": "Snapdragon 6 Gen 1",
+        "ram": "8GB",
+        "storage": "256GB",
+        "display": "6.7\" AMOLED 120Hz",
+        "camera": "64MP + 8MP + 2MP",
+        "battery": "5000mAh",
+        "weight": "189g"
+      },
+      "features": [
+        "Snapdragon 6 Gen 1",
+        "Màn hình AMOLED 120Hz",
+        "Camera 64MP",
+        "5G",
+        "Android 13",
+        "Bảo hành 12 tháng"
+      ],
+      "discountPrice": 10440500
+    },
+    {
+      "id": "53",
+      "name": "Realme C63",
+      "price": 3490000,
+      "description": "Điện thoại giá tốt với Unisoc T606, màn hình 6.8 inch, pin 5000mAh",
+      "images": [
+        "/images/realmeC63.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "phone",
+      "brand": "Realme",
+      "specs": {
+        "cpu": "Unisoc T606",
+        "ram": "4GB",
+        "storage": "64GB",
+        "display": "6.8\" HD+",
+        "camera": "50MP + 0.08MP",
+        "battery": "5000mAh",
+        "weight": "199g"
+      },
+      "features": [
+        "Unisoc T606",
+        "Màn hình 6.8 inch",
+        "Camera 50MP",
+        "Pin 5000mAh",
+        "Android 13",
+        "Bảo hành 12 tháng"
+      ]
+    },
+    {
+      "id": "54",
+      "name": "Realme C67",
+      "price": 4290000,
+      "description": "Điện thoại giá tốt với Snapdragon 685, màn hình 90Hz, sạc 33W",
+      "images": [
+        "/images/realmeC67.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "phone",
+      "brand": "Realme",
+      "specs": {
+        "cpu": "Snapdragon 685",
+        "ram": "6GB",
+        "storage": "128GB",
+        "display": "6.72\" HD+ 90Hz",
+        "camera": "50MP + 2MP",
+        "battery": "5000mAh",
+        "weight": "189g"
+      },
+      "features": [
+        "Snapdragon 685",
+        "Màn hình 90Hz",
+        "Camera 50MP",
+        "Sạc nhanh 33W",
+        "Android 13",
+        "Bảo hành 12 tháng"
+      ]
+    },
+    {
+      "id": "55",
+      "name": "Realme GT 6",
+      "price": 15990000,
+      "description": "Điện thoại flagship với Snapdragon 8 Gen 3, màn hình 144Hz, sạc 120W",
+      "images": [
+        "/images/realmeGT6.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "phone",
+      "brand": "Realme",
+      "specs": {
+        "cpu": "Snapdragon 8 Gen 3",
+        "ram": "16GB",
+        "storage": "256GB",
+        "display": "6.78\" AMOLED 144Hz",
+        "camera": "50MP + 50MP + 8MP",
+        "battery": "5500mAh",
+        "weight": "199g"
+      },
+      "features": [
+        "Snapdragon 8 Gen 3",
+        "Màn hình AMOLED 144Hz",
+        "Camera 50MP",
+        "Sạc nhanh 120W",
+        "5G",
+        "Bảo hành 12 tháng"
+      ]
+    },
+    {
+      "id": "56",
+      "name": "Realme Narzo 70 Pro",
+      "price": 6990000,
+      "description": "Điện thoại gaming giá tốt với MediaTek Dimensity 7050, màn hình 120Hz",
+      "images": [
+        "/images/realmenarzo70pro.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "phone",
+      "brand": "Realme",
+      "specs": {
+        "cpu": "MediaTek Dimensity 7050",
+        "ram": "8GB",
+        "storage": "256GB",
+        "display": "6.67\" AMOLED 120Hz",
+        "camera": "50MP + 8MP",
+        "battery": "5000mAh",
+        "weight": "188g"
+      },
+      "features": [
+        "MediaTek Dimensity 7050",
+        "Màn hình AMOLED 120Hz",
+        "Camera 50MP",
+        "Pin 5000mAh",
+        "5G",
+        "Bảo hành 12 tháng"
+      ]
+    },
+    {
+      "id": "57",
+      "name": "Realme Note 50",
+      "price": 2990000,
+      "description": "Điện thoại giá rẻ với Unisoc T606, màn hình 6.74 inch, pin 5000mAh",
+      "images": [
+        "/images/realmeNote50.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "phone",
+      "brand": "Realme",
+      "specs": {
+        "cpu": "Unisoc T606",
+        "ram": "4GB",
+        "storage": "64GB",
+        "display": "6.74\" HD+",
+        "camera": "13MP + 0.08MP",
+        "battery": "5000mAh",
+        "weight": "187g"
+      },
+      "features": [
+        "Unisoc T606",
+        "Màn hình 6.74 inch",
+        "Camera 13MP",
+        "Pin 5000mAh",
+        "Android 13",
+        "Bảo hành 12 tháng"
+      ]
+    },
+    {
+      "id": "58",
+      "name": "Samsung Galaxy A55",
+      "price": 9490000,
+      "description": "Điện thoại tầm trung với Exynos 1480, màn hình 120Hz, camera 50MP",
+      "images": [
+        "/images/samsunggalaxya55.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "phone",
+      "brand": "Samsung",
+      "specs": {
+        "cpu": "Exynos 1480",
+        "ram": "8GB",
+        "storage": "256GB",
+        "display": "6.6\" Super AMOLED 120Hz",
+        "camera": "50MP + 12MP + 5MP",
+        "battery": "5000mAh",
+        "weight": "213g"
+      },
+      "features": [
+        "Exynos 1480",
+        "Màn hình Super AMOLED 120Hz",
+        "Camera 50MP",
+        "Pin 5000mAh",
+        "5G",
+        "Bảo hành 12 tháng"
+      ]
+    },
+    {
+      "id": "59",
+      "name": "Samsung Galaxy M55",
+      "price": 8990000,
+      "description": "Điện thoại tầm trung với Snapdragon 7 Gen 1, màn hình 120Hz, sạc 45W",
+      "images": [
+        "/images/samsunggalaxym55.png"
+      ],
+      "inStock": true,
+      "discount": 5,
+      "category": "phone",
+      "brand": "Samsung",
+      "specs": {
+        "cpu": "Snapdragon 7 Gen 1",
+        "ram": "8GB",
+        "storage": "256GB",
+        "display": "6.7\" Super AMOLED 120Hz",
+        "camera": "50MP + 8MP + 2MP",
+        "battery": "5000mAh",
+        "weight": "183g"
+      },
+      "features": [
+        "Snapdragon 7 Gen 1",
+        "Màn hình Super AMOLED 120Hz",
+        "Camera 50MP",
+        "Sạc nhanh 45W",
+        "5G",
+        "Bảo hành 12 tháng"
+      ],
+      "discountPrice": 8540500
+    },
+    {
+      "id": "60",
+      "name": "Samsung Galaxy S24 FE",
+      "price": 14990000,
+      "description": "Điện thoại flagship giá tốt với Exynos 2400, màn hình 120Hz, camera 50MP",
+      "images": [
+        "/images/samsunggalaxys24fe.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "phone",
+      "brand": "Samsung",
+      "specs": {
+        "cpu": "Exynos 2400",
+        "ram": "8GB",
+        "storage": "256GB",
+        "display": "6.4\" Dynamic AMOLED 120Hz",
+        "camera": "50MP + 12MP + 10MP",
+        "battery": "4500mAh",
+        "weight": "209g"
+      },
+      "features": [
+        "Exynos 2400",
+        "Màn hình Dynamic AMOLED 120Hz",
+        "Camera 50MP",
+        "5G",
+        "Android 14",
+        "Bảo hành 12 tháng"
+      ]
+    },
+    {
+      "id": "61",
+      "name": "Samsung Galaxy S25",
+      "price": 22990000,
+      "description": "Điện thoại flagship với Snapdragon 8 Gen 3, màn hình 120Hz, AI Galaxy",
+      "images": [
+        "/images/samsunggalaxys25.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "phone",
+      "brand": "Samsung",
+      "specs": {
+        "cpu": "Snapdragon 8 Gen 3",
+        "ram": "8GB",
+        "storage": "256GB",
+        "display": "6.2\" Dynamic AMOLED 120Hz",
+        "camera": "50MP + 12MP + 10MP",
+        "battery": "4000mAh",
+        "weight": "167g"
+      },
+      "features": [
+        "Snapdragon 8 Gen 3",
+        "AI Galaxy",
+        "Màn hình Dynamic AMOLED 120Hz",
+        "Camera 50MP",
+        "5G",
+        "Android 14",
+        "Bảo hành 12 tháng"
+      ]
+    },
+    {
+      "id": "62",
+      "name": "Samsung Galaxy S25 Plus",
+      "price": 27990000,
+      "description": "Điện thoại flagship màn hình lớn với Snapdragon 8 Gen 3, camera 50MP",
+      "images": [
+        "/images/samsunggalaxys25plus.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "phone",
+      "brand": "Samsung",
+      "specs": {
+        "cpu": "Snapdragon 8 Gen 3",
+        "ram": "12GB",
+        "storage": "512GB",
+        "display": "6.7\" Dynamic AMOLED 120Hz",
+        "camera": "50MP + 12MP + 10MP",
+        "battery": "4900mAh",
+        "weight": "195g"
+      },
+      "features": [
+        "Snapdragon 8 Gen 3",
+        "Màn hình 6.7 inch lớn",
+        "Camera 50MP",
+        "5G",
+        "Android 14",
+        "Bảo hành 12 tháng"
+      ]
+    },
+    {
+      "id": "63",
+      "name": "Samsung Galaxy S25 Ultra",
+      "price": 34990000,
+      "description": "Điện thoại flagship cao cấp với Snapdragon 8 Gen 3, S Pen, camera 200MP",
+      "images": [
+        "/images/samsunggalaxys25ultra.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "phone",
+      "brand": "Samsung",
+      "specs": {
+        "cpu": "Snapdragon 8 Gen 3",
+        "ram": "12GB",
+        "storage": "1TB",
+        "display": "6.8\" Dynamic AMOLED 120Hz",
+        "camera": "200MP + 50MP + 12MP + 10MP",
+        "battery": "5000mAh",
+        "weight": "234g"
+      },
+      "features": [
+        "Snapdragon 8 Gen 3",
+        "S Pen",
+        "Camera 200MP",
+        "5G",
+        "Android 14",
+        "Bảo hành 12 tháng"
+      ]
+    },
+    {
+      "id": "64",
+      "name": "Samsung Galaxy Z Flip 6",
+      "price": 24990000,
+      "description": "Điện thoại gập màn hình nhỏ với Snapdragon 8 Gen 3, Flex Mode, camera 50MP",
+      "images": [
+        "/images/samsunggalaxyzflip6.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "phone",
+      "brand": "Samsung",
+      "specs": {
+        "cpu": "Snapdragon 8 Gen 3",
+        "ram": "12GB",
+        "storage": "512GB",
+        "display": "6.7\" Dynamic AMOLED 120Hz",
+        "camera": "50MP + 12MP + 10MP",
+        "battery": "4000mAh",
+        "weight": "187g"
+      },
+      "features": [
+        "Snapdragon 8 Gen 3",
+        "Flex Mode",
+        "Màn hình gập 6.7 inch",
+        "Camera 50MP",
+        "5G",
+        "Android 14",
+        "Bảo hành 12 tháng"
+      ]
+    },
+    {
+      "id": "65",
+      "name": "Samsung Galaxy Z Fold 6",
+      "price": 39990000,
+      "description": "Điện thoại gập cao cấp với Snapdragon 8 Gen 3, màn hình gập 7.6 inch",
+      "images": [
+        "/images/samsunggalaxyzfold6.png"
+      ],
+      "inStock": true,
+      "discount": 0,
+      "category": "phone",
+      "brand": "Samsung",
+      "specs": {
+        "cpu": "Snapdragon 8 Gen 3",
+        "ram": "12GB",
+        "storage": "1TB",
+        "display": "7.6\" Dynamic AMOLED 120Hz",
+        "camera": "50MP + 12MP + 10MP",
+        "battery": "4400mAh",
+        "weight": "239g"
+      },
+      "features": [
+        "Snapdragon 8 Gen 3",
+        "Màn hình gập 7.6 inch",
+        "Camera 50MP",
+        "RAM 12GB",
+        "Android 14",
+        "Bảo hành 12 tháng"
+      ]
+    },
+    {
+      "id": "c5b7",
+      "name": "Macbook neo 2026",
+      "price": 16000000,
+      "category": "laptop",
+      "brand": "Apple",
+      "image": "\\images\\Apple-MacBook-Neo.jpg",
+      "description": "DÀNH CHO SINH VIÊN!",
+      "discount": 10,
+      "inStock": true,
+      "images": [
+        "\\images\\Apple-MacBook-Neo.jpg"
+      ],
+      "discountPrice": 14400000
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

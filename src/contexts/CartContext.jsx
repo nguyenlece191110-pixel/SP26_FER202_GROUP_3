@@ -46,15 +46,19 @@ const cartReducer = (state, action) => {
                         : item
                 );
             } else {
-                // Add new item
-                newItems = [...state.items, { ...action.payload, quantity: action.payload.quantity || 1 }];
+                // Add new item - lưu giá gốc làm giá mua
+                newItems = [...state.items, { 
+                    ...action.payload, 
+                    quantity: action.payload.quantity || 1,
+                    purchasePrice: action.payload.originalPrice || action.payload.price // Giá thực tế mua
+                }];
             }
 
             return {
                 ...state,
                 items: newItems,
                 totalItems: newItems.reduce((sum, item) => sum + item.quantity, 0),
-                totalPrice: newItems.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+                totalPrice: newItems.reduce((sum, item) => sum + (item.purchasePrice * item.quantity), 0)
             };
         }
 
@@ -66,7 +70,7 @@ const cartReducer = (state, action) => {
                 items: newItems,
                 selectedItems: newSelectedItems,
                 totalItems: newItems.reduce((sum, item) => sum + item.quantity, 0),
-                totalPrice: newItems.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+                totalPrice: newItems.reduce((sum, item) => sum + (item.purchasePrice * item.quantity), 0)
             };
         }
 
@@ -82,7 +86,7 @@ const cartReducer = (state, action) => {
                     items: newItems,
                     selectedItems: newSelectedItems,
                     totalItems: newItems.reduce((sum, item) => sum + item.quantity, 0),
-                    totalPrice: newItems.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+                    totalPrice: newItems.reduce((sum, item) => sum + (item.purchasePrice * item.quantity), 0)
                 };
             }
 
@@ -96,7 +100,7 @@ const cartReducer = (state, action) => {
                 ...state,
                 items: newItems,
                 totalItems: newItems.reduce((sum, item) => sum + item.quantity, 0),
-                totalPrice: newItems.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+                totalPrice: newItems.reduce((sum, item) => sum + (item.purchasePrice * item.quantity), 0)
             };
         }
 

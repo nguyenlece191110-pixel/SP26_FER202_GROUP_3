@@ -4,11 +4,6 @@ import { Container, Row, Col, Card, Button, Badge, Alert, Tabs, Tab, Form } from
 import { useCart } from '../contexts/CartContext';
 import { Cart3, ArrowLeft, Star, Truck, Shield, CreditCard, Plus, Dash } from 'react-bootstrap-icons';
 
-// Sample product data - trong thực tế sẽ gọi API
-const sampleProducts = [
-    // ... (rest of the data remains the same)
-];
-
 export default function ProductDetail() {
     const { id } = useParams();
     const { addToCart } = useCart();
@@ -17,11 +12,12 @@ export default function ProductDetail() {
     const [quantity, setQuantity] = useState(1);
     const [selectedImage, setSelectedImage] = useState(0);
     const [activeTab, setActiveTab] = useState('description');
+    const [showDiscountAlert, setShowDiscountAlert] = useState(false);
 
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/products/${id}`);
+                const response = await fetch(`http://localhost:5001/products/${id}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch product');
                 }
@@ -39,16 +35,24 @@ export default function ProductDetail() {
 
     const handleAddToCart = () => {
         if (product && product.inStock) {
-            // Calculate the discounted price
-            const finalPrice = product.discount ? product.price * (1 - product.discount / 100) : product.price;
+            // Lấy giá giảm từ db.json nếu có, nếu không thì tính
+            const discountPrice = product.discountPrice || (product.discount ? product.price * (1 - product.discount / 100) : product.price);
             
             addToCart({
                 id: product.id,
                 name: product.name,
-                price: finalPrice, // Use discounted price
+                price: discountPrice, // Use discounted price for calculation
+                originalPrice: product.price, // Store original price
+                discount: product.discount || 0, // Store discount percentage
                 image: product.images[0],
                 quantity: quantity
             });
+
+            // Hiển thị thông báo giảm giá
+            if (product.discount && product.discount > 0) {
+                setShowDiscountAlert(true);
+                setTimeout(() => setShowDiscountAlert(false), 3000);
+            }
         }
     };
 
@@ -119,6 +123,15 @@ export default function ProductDetail() {
                     <li className="breadcrumb-item active">{product.name}</li>
                 </ol>
             </nav>
+
+            {/* Discount Alert */}
+            {showDiscountAlert && (
+                <Alert variant="success" className="mb-4">
+                    <strong>Chúc mừng! Bạn đã được giảm giá {product.discount}% cho sản phẩm này.</strong>
+                    <br />
+                    <small>Giá gốc: {formatCurrency(product.price)} → Giá giảm: {formatCurrency(discountedPrice)}</small>
+                </Alert>
+            )}
 
             {/* Back Button */}
             <Button variant="outline-secondary" href="/shop" className="mb-4">
@@ -195,16 +208,18 @@ export default function ProductDetail() {
                         {/* Price */}
                         <div className="price-section mb-4">
                             {product.discount ? (
-                                <div className="d-flex align-items-baseline">
-                                    <span className="text-decoration-line-through text-muted me-3 h5">
+                                <div className="d-flex flex-column align-items-start">
+                                    <span className="fw-bold h5">
                                         {formatCurrency(product.price)}
                                     </span>
-                                    <span className="text-danger h2">
-                                        {formatCurrency(discountedPrice)}
-                                    </span>
-                                    <Badge bg="danger" className="ms-2">
-                                        -{product.discount}%
-                                    </Badge>
+                                    <div className="d-flex align-items-baseline">
+                                        <span className="text-danger h2">
+                                            {formatCurrency(discountedPrice)}
+                                        </span>
+                                        <Badge bg="danger" className="ms-2">
+                                            -{product.discount}%
+                                        </Badge>
+                                    </div>
                                 </div>
                             ) : (
                                 <span className="h2 text-primary">

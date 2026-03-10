@@ -20,12 +20,6 @@ export default function Cart() {
         deselectAllItems
     } = useCart();
 
-    const handleClearCart = () => {
-        if (window.confirm('Bạn có chắc chắn muốn xóa toàn bộ giỏ hàng?')) {
-            clearCart();
-        }
-    };
-
     const formatCurrency = (amount) => {
         return new Intl.NumberFormat('vi-VN', {
             style: 'currency',
@@ -58,14 +52,6 @@ export default function Cart() {
                     <Cart3 className="me-2" />
                     Giỏ hàng ({totalItems} sản phẩm)
                 </h2>
-                <Button 
-                    variant="outline-danger" 
-                    size="sm"
-                    onClick={handleClearCart}
-                >
-                    <Trash3 className="me-1" />
-                    Xóa tất cả
-                </Button>
             </div>
 
             {/* Select All Bar */}
@@ -105,7 +91,6 @@ export default function Cart() {
                             key={item.id}
                             item={item}
                             onUpdateQuantity={updateQuantity}
-                            onRemove={removeFromCart}
                         />
                     ))}
                 </Col>
@@ -150,14 +135,6 @@ export default function Cart() {
                                 </Col>
                             </Row>
                             
-                            <Row className="mb-3">
-                                <Col>
-                                    <span className="text-muted">Phí vận chuyển:</span>
-                                </Col>
-                                <Col className="text-end">
-                                    <span className="text-success">Miễn phí</span>
-                                </Col>
-                            </Row>
 
                             <hr />
 
@@ -206,22 +183,6 @@ export default function Cart() {
                 </Col>
             </Row>
 
-            {/* Additional Info */}
-            <Alert variant="info" className="mt-4">
-                <h6 className="alert-heading">
-                    <i className="bi bi-info-circle me-2"></i>
-                    Thông tin đơn hàng
-                </h6>
-                <p className="mb-2">
-                    • Miễn phí vận chuyển cho đơn hàng từ 500.000 VNĐ
-                </p>
-                <p className="mb-2">
-                    • Đổi trả trong vòng 7 ngày nếu sản phẩm có lỗi
-                </p>
-                <p className="mb-0">
-                    • Bảo hành chính hãng 12 tháng
-                </p>
-            </Alert>
         </Container>
     );
 }

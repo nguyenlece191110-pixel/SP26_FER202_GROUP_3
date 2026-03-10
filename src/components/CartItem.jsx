@@ -1,27 +1,54 @@
 import React from 'react';
-import { Card, Button, Row, Col, Form } from 'react-bootstrap';
-import { Trash3, Plus, Dash } from 'react-bootstrap-icons';
+import { Card, Row, Col, Form } from 'react-bootstrap';
 import { useCart } from '../contexts/CartContext';
 
-const CartItem = ({ item, onUpdateQuantity, onRemove }) => {
+const CartItem = ({ item, onUpdateQuantity }) => {
     const { isItemSelected, toggleSelectItem } = useCart();
 
     const handleQuantityChange = (newQuantity) => {
-        if (newQuantity >= 1 && newQuantity <= 99) {
+        if (newQuantity >= 0 && newQuantity <= 99) {
             onUpdateQuantity(item.id, newQuantity);
         }
     };
 
-    const handleIncrement = () => {
-        handleQuantityChange(item.quantity + 1);
-    };
+    const renderPrice = (product) => {
+        // Ưu tiên discountPrice từ db.json, nếu không có thì tính từ originalPrice và discount
+        const discountPrice = product.discountPrice || (product.originalPrice && product.discount > 0 
+            ? product.originalPrice * (1 - product.discount / 100)
+            : product.price);
 
-    const handleDecrement = () => {
-        handleQuantityChange(item.quantity - 1);
-    };
+        if (product.originalPrice && product.discount > 0) {
+            const percent = Math.round(((product.originalPrice - discountPrice) / product.originalPrice) * 100);
+            
+            return (
+                <div className="d-flex align-items-baseline">
+                    <span style={{textDecoration: 'line-through', color: '#6c757d', marginRight: '6px'}}>
+                        {new Intl.NumberFormat('vi-VN', {
+                            style: 'currency',
+                            currency: 'VND'
+                        }).format(product.originalPrice)}
+                    </span>
+                    <span style={{color: 'red', fontWeight: 'bold', marginRight: '6px'}}>
+                        {new Intl.NumberFormat('vi-VN', {
+                            style: 'currency',
+                            currency: 'VND'
+                        }).format(discountPrice)}
+                    </span>
+                    <span style={{color: 'white', background: 'red', padding: '2px 6px', borderRadius: '4px', fontSize: '0.8em'}}>
+                        -{percent}%
+                    </span>
+                </div>
+            );
+        }
 
-    const handleRemove = () => {
-        onRemove(item.id);
+        return (
+            <span className="fw-bold">
+                {new Intl.NumberFormat('vi-VN', {
+                    style: 'currency',
+                    currency: 'VND'
+                }).format(product.price)}
+            </span>
+        );
     };
 
     const itemTotal = item.price * item.quantity;
@@ -57,51 +84,26 @@ const CartItem = ({ item, onUpdateQuantity, onRemove }) => {
                     {/* Product Info */}
                     <Col xs={12} md={4} className="mb-3 mb-md-0">
                         <h6 className="mb-1 fw-bold">{item.name}</h6>
-                        <p className="text-muted mb-0 small">
-                            {new Intl.NumberFormat('vi-VN', {
-                                style: 'currency',
-                                currency: 'VND'
-                            }).format(item.price)}
-                        </p>
+                        <div className="mb-1">
+                            {renderPrice(item)}
+                        </div>
                     </Col>
 
                     {/* Quantity Control */}
                     <Col xs={12} md={3} className="mb-3 mb-md-0">
-                        <div className="d-flex align-items-center">
-                            <Button
-                                variant="outline-secondary"
-                                size="sm"
-                                onClick={handleDecrement}
-                                disabled={item.quantity <= 1}
-                                className="quantity-btn"
-                            >
-                                <Dash size={12} />
-                            </Button>
-                            
-                            <Form.Control
-                                type="number"
-                                value={item.quantity}
-                                onChange={(e) => handleQuantityChange(parseInt(e.target.value) || 1)}
-                                min="1"
-                                max="99"
-                                className="mx-2 text-center quantity-input"
-                                style={{ width: '60px' }}
-                            />
-                            
-                            <Button
-                                variant="outline-secondary"
-                                size="sm"
-                                onClick={handleIncrement}
-                                disabled={item.quantity >= 99}
-                                className="quantity-btn"
-                            >
-                                <Plus size={12} />
-                            </Button>
-                        </div>
+                        <Form.Control
+                            type="number"
+                            value={item.quantity}
+                            onChange={(e) => handleQuantityChange(parseInt(e.target.value) || 0)}
+                            min="0"
+                            max="99"
+                            className="text-center"
+                            style={{ width: '100px' }}
+                        />
                     </Col>
 
                     {/* Item Total */}
-                    <Col xs={6} md={2} className="mb-3 mb-md-0">
+                    <Col xs={12} md={2} className="mb-3 mb-md-0">
                         <div className="text-end">
                             <p className="mb-0 fw-bold">
                                 {new Intl.NumberFormat('vi-VN', {
@@ -109,21 +111,6 @@ const CartItem = ({ item, onUpdateQuantity, onRemove }) => {
                                     currency: 'VND'
                                 }).format(itemTotal)}
                             </p>
-                        </div>
-                    </Col>
-
-                    {/* Remove Button */}
-                    <Col xs={6} md={1}>
-                        <div className="text-end">
-                            <Button
-                                variant="outline-danger"
-                                size="sm"
-                                onClick={handleRemove}
-                                className="remove-btn"
-                                title="Xóa khỏi giỏ hàng"
-                            >
-                                <Trash3 size={16} />
-                            </Button>
                         </div>
                     </Col>
                 </Row>
