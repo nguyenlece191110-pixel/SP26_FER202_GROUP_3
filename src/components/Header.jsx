@@ -3,7 +3,7 @@ import { Navbar, Nav, Container, Button, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../AuthContext';
 import { useCart } from '../contexts/CartContext';
-import { Cart3 } from 'react-bootstrap-icons';
+import { Cart3, Clipboard2, ListUl } from 'react-bootstrap-icons';
 
 export default function Header() {
     const { user, logout } = useContext(AuthContext);
@@ -32,6 +32,12 @@ export default function Header() {
                                 </Badge>
                             )}
                         </Nav.Link>
+                        {user && (
+                            <Nav.Link as={Link} to="/orders">
+                                <Clipboard2 className="me-1" />
+                                Đơn hàng
+                            </Nav.Link>
+                        )}
                         {user?.role === 'admin' && (
                             <Nav.Link as={Link} to="/admin">Quản trị</Nav.Link>
                         )}

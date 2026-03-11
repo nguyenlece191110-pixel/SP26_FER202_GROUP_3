@@ -27,6 +27,13 @@
       "email": "nguyen@gmail.com",
       "password": "123",
       "role": "user"
+    },
+    {
+      "id": "3bde",
+      "name": "ninh",
+      "email": "ninhtl.ce190997@gmail.com",
+      "password": "123",
+      "role": "user"
     }
   ],
   "products": [
@@ -1961,6 +1968,69 @@
       "images": [
         "\\images\\Apple-MacBook-Neo.jpg"
       ]
+    }
+  ],
+  "orders": [
+    {
+      "id": "order001",
+      "userId": "b566",
+      "items": [
+        {
+          "id": "1",
+          "name": "Acer Aspire 5",
+          "price": 15990000,
+          "quantity": 1,
+          "image": "/images/AcerAspire5.png"
+        }
+      ],
+      "totalAmount": 15990000,
+      "shippingInfo": {
+        "fullName": "Nguyen Van A",
+        "email": "nguyenvana@example.com",
+        "phone": "0901234567",
+        "address": "123 Nguyen Hue",
+        "city": "hcmc",
+        "district": "quan1",
+        "zipCode": "700000"
+      },
+      "paymentMethod": "cod",
+      "status": "delivered",
+      "createdAt": "2024-01-15T10:30:00.000Z",
+      "note": "Giao hàng giờ hành chính"
+    },
+    {
+      "id": "order002",
+      "userId": "cbd6",
+      "items": [
+        {
+          "id": "2",
+          "name": "Dell XPS 13",
+          "price": 25990000,
+          "quantity": 1,
+          "image": "/images/DellXPS13.png"
+        },
+        {
+          "id": "3",
+          "name": "Logitech MX Master 3",
+          "price": 2490000,
+          "quantity": 1,
+          "image": "/images/LogitechMXMaster3.png"
+        }
+      ],
+      "totalAmount": 28480000,
+      "shippingInfo": {
+        "fullName": "Tran Thi B",
+        "email": "tranthib@example.com",
+        "phone": "0912345678",
+        "address": "456 Le Loi",
+        "city": "hanoi",
+        "district": "hoankiem",
+        "zipCode": "100000"
+      },
+      "paymentMethod": "transfer",
+      "status": "processing",
+      "createdAt": "2024-02-20T14:15:00.000Z",
+      "note": ""
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
