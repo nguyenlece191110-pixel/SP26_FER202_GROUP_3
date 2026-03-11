@@ -278,6 +278,20 @@ export const CartProvider = ({ children }) => {
         });
     };
 
+    const clearSelectedItems = () => {
+        const newItems = state.items.filter(item => !state.selectedItems.includes(item.id));
+        dispatch({
+            type: CART_ACTIONS.LOAD_CART,
+            payload: {
+                ...state,
+                items: newItems,
+                selectedItems: [],
+                totalItems: newItems.reduce((sum, item) => sum + item.quantity, 0),
+                totalPrice: newItems.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+            }
+        });
+    };
+
     const getSelectedItemsTotal = () => {
         return state.items
             .filter(item => state.selectedItems.includes(item.id))
@@ -343,6 +357,7 @@ export const CartProvider = ({ children }) => {
         toggleSelectItem,
         selectAllItems,
         deselectAllItems,
+        clearSelectedItems,
         getSelectedItemsTotal,
         getSelectedItemsCount,
         isItemSelected,

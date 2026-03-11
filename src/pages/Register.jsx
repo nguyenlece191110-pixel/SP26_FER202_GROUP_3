@@ -14,7 +14,7 @@ export default function Register() {
         const newUser = { name, email, password, role: "user" };
         try {
             // Lệnh quan trọng nhất để dữ liệu hiện lên tab Network
-            await axios.post('http://localhost:5000/users', newUser);
+            await axios.post('http://localhost:5001/users', newUser);
             alert('Đăng ký thành công!');
             navigate('/login');
         } catch (error) {

@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
         console.debug('login called with', { email, password });
         try {
             // fetch full list then filter locally to avoid query encoding quirks
-            const res = await axios.get('http://localhost:5000/users');
+            const res = await axios.get('http://localhost:5001/users');
             console.log('fetched users', res.data);
             const candidates = Array.isArray(res.data) ? res.data : [];
             const loggedInUser = candidates.find(u => u.email === email && u.password === password);

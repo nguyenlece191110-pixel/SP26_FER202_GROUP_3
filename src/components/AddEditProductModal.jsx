@@ -27,7 +27,7 @@ const AddEditProductModal = ({ show, handleClose, currentProduct, refreshData })
         if (formData.price <= 0) return alert("Giá sản phẩm phải lớn hơn 0!");
 
         const isEdit = !!currentProduct;
-        const url = isEdit ? `http://localhost:5000/products/${currentProduct.id}` : 'http://localhost:5000/products';
+        const url = isEdit ? `http://localhost:5001/products/${currentProduct.id}` : 'http://localhost:5001/products';
         
         const payload = {
             ...formData,

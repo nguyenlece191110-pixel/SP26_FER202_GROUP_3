@@ -42,6 +42,18 @@ const Admin = () => {
                         </div>
                     </div>
                 </div>
+                <div className="col-md-4">
+                    <div className="card text-white bg-primary h-100 shadow border-0">
+                        <div className="card-body d-flex flex-column align-items-center justify-content-center py-5">
+                            <i className="bi bi-clipboard-data display-1 mb-3 text-warning"></i>
+                            <h4 className="card-title fw-bold">Quản Lý Đơn Hàng</h4>
+                            <p className="text-center text-light opacity-75">Xem, cập nhật trạng thái và quản lý đơn hàng.</p>
+                            <Link to="/admin/orders" className="btn btn-warning mt-3 fw-bold px-4">
+                                Truy cập ngay
+                            </Link>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
