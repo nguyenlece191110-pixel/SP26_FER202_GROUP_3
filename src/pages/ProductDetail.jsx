@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { Container, Row, Col, Card, Button, Badge, Alert, Tabs, Tab, Form } from 'react-bootstrap';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import { Container, Row, Col, Card, Button, Alert, Spinner, Form } from 'react-bootstrap';
 import { useCart } from '../contexts/CartContext';
+import { API_ENDPOINTS } from '../config/api';
 import { Cart3, ArrowLeft, Star, Truck, Shield, CreditCard, Plus, Dash } from 'react-bootstrap-icons';
 
 export default function ProductDetail() {
@@ -17,7 +18,7 @@ export default function ProductDetail() {
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const response = await fetch(`http://localhost:5001/products/${id}`);
+                const response = await fetch(API_ENDPOINTS.PRODUCT(id));
                 if (!response.ok) {
                     throw new Error('Failed to fetch product');
                 }
@@ -41,9 +42,10 @@ export default function ProductDetail() {
             addToCart({
                 id: product.id,
                 name: product.name,
-                price: discountPrice, // Use discounted price for calculation
-                originalPrice: product.price, // Store original price
-                discount: product.discount || 0, // Store discount percentage
+                price: product.price, // Giá gốc
+                originalPrice: product.price, // Giá gốc
+                discountPrice: discountPrice, // Giá giảm
+                discount: product.discount || 0, // % giảm giá
                 image: product.images[0],
                 quantity: quantity
             });

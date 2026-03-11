@@ -6,19 +6,23 @@ const CartItem = ({ item, onUpdateQuantity }) => {
     const { isItemSelected, toggleSelectItem } = useCart();
 
     const handleQuantityChange = (newQuantity) => {
-        if (newQuantity >= 0 && newQuantity <= 99) {
+        // Nếu quantity = 0 thì xóa sản phẩm
+        if (newQuantity === 0) {
+            onUpdateQuantity(item.id, 0);
+        } else if (newQuantity >= 0 && newQuantity <= 99) {
             onUpdateQuantity(item.id, newQuantity);
         }
     };
 
     const renderPrice = (product) => {
-        // Ưu tiên discountPrice từ db.json, nếu không có thì tính từ originalPrice và discount
-        const discountPrice = product.discountPrice || (product.originalPrice && product.discount > 0 
-            ? product.originalPrice * (1 - product.discount / 100)
-            : product.price);
+        // Sử dụng data từ cart đã được truyền từ ProductDetail
+        const originalPrice = product.originalPrice || product.price;
+        const discountPrice = product.discountPrice || product.price;
+        const discount = product.discount || 0;
 
-        if (product.originalPrice && product.discount > 0) {
-            const percent = Math.round(((product.originalPrice - discountPrice) / product.originalPrice) * 100);
+        // Nếu có giảm giá
+        if (discount > 0 && discountPrice !== originalPrice) {
+            const percent = Math.round(((originalPrice - discountPrice) / originalPrice) * 100);
             
             return (
                 <div className="d-flex align-items-baseline">
@@ -26,7 +30,7 @@ const CartItem = ({ item, onUpdateQuantity }) => {
                         {new Intl.NumberFormat('vi-VN', {
                             style: 'currency',
                             currency: 'VND'
-                        }).format(product.originalPrice)}
+                        }).format(originalPrice)}
                     </span>
                     <span style={{color: 'red', fontWeight: 'bold', marginRight: '6px'}}>
                         {new Intl.NumberFormat('vi-VN', {
@@ -41,17 +45,28 @@ const CartItem = ({ item, onUpdateQuantity }) => {
             );
         }
 
+        // Nếu không có giảm giá
         return (
             <span className="fw-bold">
                 {new Intl.NumberFormat('vi-VN', {
                     style: 'currency',
                     currency: 'VND'
-                }).format(product.price)}
+                }).format(discountPrice)}
             </span>
         );
     };
 
-    const itemTotal = item.price * item.quantity;
+    // Giá giảm (ưu tiên discountPrice, nếu không có thì dùng price)
+    const finalPrice = item.discountPrice || item.price;
+    const itemTotal = finalPrice * item.quantity;
+
+    // Hàm format tiền VND
+    const formatMoney = (amount) => {
+        return new Intl.NumberFormat('vi-VN', {
+            style: 'currency',
+            currency: 'VND'
+        }).format(amount);
+    };
 
     return (
         <Card className="mb-3 cart-item">
@@ -68,7 +83,7 @@ const CartItem = ({ item, onUpdateQuantity }) => {
                     </Col>
 
                     {/* Product Image */}
-                    <Col xs={11} md={2} className="mb-3 mb-md-0">
+                    <Col xs={11} md={3} className="mb-3 mb-md-0">
                         <img
                             src={item.image}
                             alt={item.name}
@@ -90,7 +105,7 @@ const CartItem = ({ item, onUpdateQuantity }) => {
                     </Col>
 
                     {/* Quantity Control */}
-                    <Col xs={12} md={3} className="mb-3 mb-md-0">
+                    <Col xs={12} md={2} className="mb-3 mb-md-0">
                         <Form.Control
                             type="number"
                             value={item.quantity}
@@ -115,40 +130,6 @@ const CartItem = ({ item, onUpdateQuantity }) => {
                     </Col>
                 </Row>
             </Card.Body>
-            
-            <style jsx>{`
-                .cart-item {
-                    transition: box-shadow 0.2s ease-in-out;
-                }
-                
-                .cart-item:hover {
-                    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-                }
-                
-                .quantity-btn {
-                    border-radius: 4px;
-                    padding: 0.25rem 0.5rem;
-                }
-                
-                .quantity-input {
-                    border-radius: 4px;
-                }
-                
-                .remove-btn:hover {
-                    transform: scale(1.1);
-                    transition: transform 0.2s ease-in-out;
-                }
-                
-                @media (max-width: 768px) {
-                    .cart-item .row {
-                        text-align: center;
-                    }
-                    
-                    .cart-item .text-end {
-                        text-align: center !important;
-                    }
-                }
-            `}</style>
         </Card>
     );
 };

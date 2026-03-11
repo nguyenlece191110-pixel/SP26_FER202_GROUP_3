@@ -2,14 +2,13 @@ import React from 'react';
 import { Container, Row, Col, Button, Alert, Card, Form } from 'react-bootstrap';
 import { useCart } from '../contexts/CartContext';
 import CartItem from '../components/CartItem';
-import { Cart3, CreditCard, Trash3 } from 'react-bootstrap-icons';
+import { Cart3, CreditCard } from 'react-bootstrap-icons';
 
 export default function Cart() {
     const { 
         items, 
         totalItems, 
         totalPrice, 
-        clearCart, 
         updateQuantity, 
         removeFromCart,
         selectedItems,
@@ -71,17 +70,11 @@ export default function Cart() {
                                     Đã chọn {selectedItems.length} sản phẩm
                                 </span>
                             </div>
-                            <Button
-                                variant="outline-secondary"
-                                size="sm"
-                                onClick={() => isAllItemsSelected() ? deselectAllItems() : selectAllItems()}
-                            >
-                                {isAllItemsSelected() ? 'Bỏ chọn tất cả' : 'Chọn tất cả'}
-                            </Button>
                         </div>
                     </Card.Body>
                 </Card>
             )}
+
 
             <Row>
                 {/* Cart Items */}
@@ -114,14 +107,6 @@ export default function Cart() {
                                         <span>{totalItems}</span>
                                     </Col>
                                 </Row>
-                                <Row className="mb-2">
-                                    <Col>
-                                        <span className="text-muted">Sản phẩm đã chọn:</span>
-                                    </Col>
-                                    <Col className="text-end">
-                                        <span className="text-primary fw-bold">{getSelectedItemsCount()}</span>
-                                    </Col>
-                                </Row>
                             </div>
                             
                             <hr />
@@ -131,7 +116,7 @@ export default function Cart() {
                                     <span className="text-muted">Tạm tính:</span>
                                 </Col>
                                 <Col className="text-end">
-                                    <span>{formatCurrency(getSelectedItemsTotal())}</span>
+                                    <span>{formatCurrency(totalPrice)}</span>
                                 </Col>
                             </Row>
                             
@@ -144,33 +129,21 @@ export default function Cart() {
                                 </Col>
                                 <Col className="text-end">
                                     <h5 className="mb-0 text-primary">
-                                        {formatCurrency(getSelectedItemsTotal())}
+                                        {formatCurrency(totalPrice)}
                                     </h5>
                                 </Col>
                             </Row>
 
-                            <div className="d-grid gap-2 mb-3">
+                            <div className="d-grid mb-3">
                                 <Button 
                                     variant="primary" 
                                     size="lg"
                                     href="/checkout"
-                                    disabled={selectedItems.length === 0}
+                                    disabled={items.length === 0}
                                 >
-                                    {selectedItems.length > 0 
-                                        ? `Thanh toán (${getSelectedItemsCount()} sản phẩm)` 
-                                        : 'Chọn sản phẩm để thanh toán'
-                                    }
-                                </Button>
-                                <Button variant="outline-secondary" href="/shop">
-                                    Tiếp tục mua sắm
+                                    Thanh toán ({totalItems} sản phẩm)
                                 </Button>
                             </div>
-
-                            {selectedItems.length === 0 && items.length > 0 && (
-                                <Alert variant="info" className="text-center">
-                                    <small>Vui lòng chọn ít nhất một sản phẩm để thanh toán</small>
-                                </Alert>
-                            )}
 
                             <div className="mt-3 text-center">
                                 <small className="text-muted">
