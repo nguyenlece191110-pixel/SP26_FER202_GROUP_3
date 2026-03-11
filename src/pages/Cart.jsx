@@ -1,16 +1,19 @@
 import React from 'react';
 import { Container, Row, Col, Button, Alert, Card, Form } from 'react-bootstrap';
 import { useCart } from '../contexts/CartContext';
+import { useAuth } from '../AuthContext';
 import CartItem from '../components/CartItem';
 import { Cart3, CreditCard } from 'react-bootstrap-icons';
 
 export default function Cart() {
+    const { user } = useAuth(); // Lấy thông tin user
     const { 
         items, 
         totalItems, 
         totalPrice, 
         updateQuantity, 
         removeFromCart,
+        clearCart,
         selectedItems,
         getSelectedItemsTotal,
         getSelectedItemsCount,
@@ -18,6 +21,13 @@ export default function Cart() {
         selectAllItems,
         deselectAllItems
     } = useCart();
+
+    // Nếu chưa đăng nhập và có sản phẩm trong giỏ, xóa giỏ hàng
+    React.useEffect(() => {
+        if (!user && items.length > 0) {
+            clearCart();
+        }
+    }, [user, items.length, clearCart]);
 
     const formatCurrency = (amount) => {
         return new Intl.NumberFormat('vi-VN', {
@@ -35,6 +45,13 @@ export default function Cart() {
                     <div className="text-muted mb-4">
                         <p>Giỏ hàng của bạn đang trống</p>
                         <p>Hãy thêm một số sản phẩm vào giỏ hàng!</p>
+                        {!user && (
+                            <Alert variant="info" className="mt-3">
+                                <strong>Đăng nhập để quản lý giỏ hàng</strong>
+                                <br />
+                                <small>Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng và thực hiện thanh toán.</small>
+                            </Alert>
+                        )}
                     </div>
                     <Button variant="primary" href="/shop">
                         Tiếp tục mua sắm
@@ -80,11 +97,22 @@ export default function Cart() {
                 {/* Cart Items */}
                 <Col lg={8}>
                     {items.map(item => (
-                        <CartItem
-                            key={item.id}
-                            item={item}
-                            onUpdateQuantity={updateQuantity}
-                        />
+                        user ? (
+                            // Đã đăng nhập: Hiển thị CartItem đầy đủ
+                            <CartItem
+                                key={item.id}
+                                item={item}
+                                onUpdateQuantity={updateQuantity}
+                            />
+                        ) : (
+                            // Chưa đăng nhập: Hiển thị CartItem chỉ xem
+                            <CartItem
+                                key={item.id}
+                                item={item}
+                                onUpdateQuantity={() => {}} // Không cho thay đổi quantity
+                                readOnly={true}
+                            />
+                        )
                     ))}
                 </Col>
 

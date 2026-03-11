@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Row, Col, Form } from 'react-bootstrap';
 import { useCart } from '../contexts/CartContext';
 
-const CartItem = ({ item, onUpdateQuantity }) => {
+const CartItem = ({ item, onUpdateQuantity, readOnly = false }) => {
     const { isItemSelected, toggleSelectItem } = useCart();
 
     const handleQuantityChange = (newQuantity) => {
@@ -26,19 +26,22 @@ const CartItem = ({ item, onUpdateQuantity }) => {
             
             return (
                 <div className="d-flex align-items-baseline">
-                    <span style={{textDecoration: 'line-through', color: '#6c757d', marginRight: '6px'}}>
+                    <span style={{color: '#333', marginRight: '8px'}}>
                         {new Intl.NumberFormat('vi-VN', {
                             style: 'currency',
                             currency: 'VND'
                         }).format(originalPrice)}
                     </span>
-                    <span style={{color: 'red', fontWeight: 'bold', marginRight: '6px'}}>
+                    <span style={{color: '#dc3545', fontWeight: 'bold', marginRight: '8px'}}>
+                        →
+                    </span>
+                    <span style={{color: '#dc3545', fontWeight: 'bold', marginRight: '8px'}}>
                         {new Intl.NumberFormat('vi-VN', {
                             style: 'currency',
                             currency: 'VND'
                         }).format(discountPrice)}
                     </span>
-                    <span style={{color: 'white', background: 'red', padding: '2px 6px', borderRadius: '4px', fontSize: '0.8em'}}>
+                    <span style={{color: 'white', background: '#dc3545', padding: '2px 6px', borderRadius: '4px', fontSize: '0.8em'}}>
                         -{percent}%
                     </span>
                 </div>
@@ -89,9 +92,11 @@ const CartItem = ({ item, onUpdateQuantity }) => {
                             alt={item.name}
                             className="img-fluid rounded"
                             style={{ 
-                                maxHeight: '80px', 
-                                objectFit: 'cover',
-                                width: '100%'
+                                maxHeight: '120px', 
+                                objectFit: 'contain',
+                                width: '100%',
+                                backgroundColor: '#f8f9fa',
+                                padding: '10px'
                             }}
                         />
                     </Col>
@@ -99,9 +104,6 @@ const CartItem = ({ item, onUpdateQuantity }) => {
                     {/* Product Info */}
                     <Col xs={12} md={4} className="mb-3 mb-md-0">
                         <h6 className="mb-1 fw-bold">{item.name}</h6>
-                        <div className="mb-1">
-                            {renderPrice(item)}
-                        </div>
                     </Col>
 
                     {/* Quantity Control */}
@@ -109,11 +111,12 @@ const CartItem = ({ item, onUpdateQuantity }) => {
                         <Form.Control
                             type="number"
                             value={item.quantity}
-                            onChange={(e) => handleQuantityChange(parseInt(e.target.value) || 0)}
+                            onChange={(e) => !readOnly && handleQuantityChange(parseInt(e.target.value) || 0)}
                             min="0"
                             max="99"
                             className="text-center"
                             style={{ width: '100px' }}
+                            disabled={readOnly} // Vô hiệu hóa khi chưa đăng nhập
                         />
                     </Col>
 

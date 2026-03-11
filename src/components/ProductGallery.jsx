@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Card, Button, Row, Col, Badge } from 'react-bootstrap';
 import { useCart } from '../contexts/CartContext';
-import { Link } from 'react-router-dom';
+import { useAuth } from '../AuthContext';
+import { useNavigate, Link } from 'react-router-dom';
 
 const ProductGallery = ({ products }) => {
     const { addToCart } = useCart();
+    const { user } = useAuth();
+    const navigate = useNavigate();
     const [selectedImage, setSelectedImage] = useState({});
 
     const handleImageClick = (productId, imageUrl) => {
@@ -15,6 +18,13 @@ const ProductGallery = ({ products }) => {
     };
 
     const handleAddToCart = (product) => {
+        // Kiểm tra user đã đăng nhập chưa
+        if (!user) {
+            // Nếu chưa đăng nhập, chuyển đến trang đăng nhập
+            navigate('/login');
+            return;
+        }
+
         // Calculate the discounted price
         const finalPrice = product.discount ? product.price * (1 - product.discount / 100) : product.price;
         

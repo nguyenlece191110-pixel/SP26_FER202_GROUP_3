@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -13,7 +13,21 @@ export const AuthProvider = ({ children }) => {
         // sessionStorage is cleared automatically when browser/tab closes
         const storedUser = sessionStorage.getItem('user');
         if (storedUser) {
-            setUser(JSON.parse(storedUser));
+            try {
+                const parsedUser = JSON.parse(storedUser);
+                // Kiểm tra user có hợp lệ không (có trong database)
+                // Nếu không hợp lệ, xóa và đăng xuất lại
+                if (!parsedUser || !parsedUser.email) {
+                    sessionStorage.removeItem('user');
+                    setUser(null);
+                    return;
+                }
+                setUser(parsedUser);
+            } catch (error) {
+                console.error('Error parsing stored user:', error);
+                sessionStorage.removeItem('user');
+                setUser(null);
+            }
         }
     }, []);
 
@@ -54,4 +68,13 @@ export const AuthProvider = ({ children }) => {
             {children}
         </AuthContext.Provider>
     );
+};
+
+// Custom hook để sử dụng AuthContext
+export const useAuth = () => {
+    const context = useContext(AuthContext);
+    if (!context) {
+        throw new Error('useAuth must be used within an AuthProvider');
+    }
+    return context;
 };

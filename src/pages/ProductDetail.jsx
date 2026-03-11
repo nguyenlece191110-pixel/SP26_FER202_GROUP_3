@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { Container, Row, Col, Card, Button, Alert, Spinner, Form } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button, Alert, Spinner, Form, Badge, Tabs, Tab } from 'react-bootstrap';
 import { useCart } from '../contexts/CartContext';
+import { useAuth } from '../AuthContext';
 import { API_ENDPOINTS } from '../config/api';
 import { Cart3, ArrowLeft, Star, Truck, Shield, CreditCard, Plus, Dash } from 'react-bootstrap-icons';
 
 export default function ProductDetail() {
     const { id } = useParams();
+    const navigate = useNavigate(); // Khai báo navigate
     const { addToCart } = useCart();
+    const { user } = useAuth(); // Lấy thông tin user
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
     const [quantity, setQuantity] = useState(1);
@@ -36,6 +39,13 @@ export default function ProductDetail() {
 
     const handleAddToCart = () => {
         if (product && product.inStock) {
+            // Kiểm tra user đã đăng nhập chưa
+            if (!user) {
+                // Nếu chưa đăng nhập, chuyển đến trang đăng nhập
+                navigate('/login');
+                return;
+            }
+
             // Lấy giá giảm từ db.json nếu có, nếu không thì tính
             const discountPrice = product.discountPrice || (product.discount ? product.price * (1 - product.discount / 100) : product.price);
             
@@ -254,7 +264,7 @@ export default function ProductDetail() {
                                     variant="outline-secondary"
                                     size="sm"
                                     onClick={() => handleQuantityChange(quantity - 1)}
-                                    disabled={quantity <= 1}
+                                    disabled={quantity <= 1 || !user}
                                 >
                                     <Dash size={16} />
                                 </Button>
@@ -266,12 +276,13 @@ export default function ProductDetail() {
                                     max="99"
                                     className="mx-3 text-center"
                                     style={{ width: '80px' }}
+                                    disabled={!user}
                                 />
                                 <Button
                                     variant="outline-secondary"
                                     size="sm"
                                     onClick={() => handleQuantityChange(quantity + 1)}
-                                    disabled={quantity >= 99}
+                                    disabled={quantity >= 99 || !user}
                                 >
                                     <Plus size={16} />
                                 </Button>
