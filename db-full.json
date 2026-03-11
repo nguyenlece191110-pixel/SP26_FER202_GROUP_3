@@ -68,7 +68,6 @@
         "/images/AcerAspire7.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "laptop",
       "brand": "Acer",
       "specs": {
@@ -126,8 +125,8 @@
         "/images/AcerPredatorHelios16.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "laptop",
+
       "brand": "Acer",
       "specs": {
         "cpu": "Intel Core i9-13900HX",
@@ -155,7 +154,6 @@
         "/images/AcerSwiftGo14.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "laptop",
       "brand": "Acer",
       "specs": {
@@ -213,7 +211,6 @@
         "/images/AKKO3087Silent.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "accessories",
       "brand": "AKKO",
       "specs": {
@@ -271,7 +268,6 @@
         "/images/ASUSExpertBookB5.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "laptop",
       "brand": "ASUS",
       "specs": {
@@ -300,7 +296,6 @@
         "/images/ASUSROGZephyrusG16.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "laptop",
       "brand": "ASUS",
       "specs": {
@@ -358,7 +353,6 @@
         "/images/ASUSVivobook15.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "laptop",
       "brand": "ASUS",
       "specs": {
@@ -387,7 +381,6 @@
         "/images/ASUSZenbook14.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "laptop",
       "brand": "ASUS",
       "specs": {
@@ -416,7 +409,6 @@
         "/images/BaseusAdaman.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "accessories",
       "brand": "Baseus",
       "specs": {
@@ -474,7 +466,6 @@
         "/images/DellG16.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "laptop",
       "brand": "Dell",
       "specs": {
@@ -532,7 +523,6 @@
         "/images/DellInspiron16.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "laptop",
       "brand": "Dell",
       "specs": {
@@ -561,7 +551,6 @@
         "/images/DellXPS13.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "laptop",
       "brand": "Dell",
       "specs": {
@@ -590,7 +579,6 @@
         "/images/DellXPS15.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "laptop",
       "brand": "Dell",
       "specs": {
@@ -677,7 +665,6 @@
         "/images/HPOMen16.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "laptop",
       "brand": "HP",
       "specs": {
@@ -706,7 +693,6 @@
         "/images/HPPavilion14.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "laptop",
       "brand": "HP",
       "specs": {
@@ -735,7 +721,6 @@
         "/images/HPSpectrex360.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "laptop",
       "brand": "HP",
       "specs": {
@@ -793,7 +778,6 @@
         "/images/iphone14.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "phone",
       "brand": "Apple",
       "specs": {
@@ -853,7 +837,6 @@
         "/images/iphone16pro.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "phone",
       "brand": "Apple",
       "specs": {
@@ -883,7 +866,6 @@
         "/images/iphone17.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "phone",
       "brand": "Apple",
       "specs": {
@@ -913,7 +895,6 @@
         "/images/iphone17plus.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "phone",
       "brand": "Apple",
       "specs": {
@@ -943,7 +924,6 @@
         "/images/iphone17pro.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "phone",
       "brand": "Apple",
       "specs": {
@@ -973,7 +953,6 @@
         "/images/iphone17promax.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "phone",
       "brand": "Apple",
       "specs": {
@@ -1060,7 +1039,6 @@
         "/images/LenovoIdeaPadSlim5.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "laptop",
       "brand": "Lenovo",
       "specs": {
@@ -1089,7 +1067,6 @@
         "/images/LenovoLegion5Pro.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "laptop",
       "brand": "Lenovo",
       "specs": {
@@ -1118,7 +1095,6 @@
         "/images/LenovoLegion7i.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "laptop",
       "brand": "Lenovo",
       "specs": {
@@ -1176,7 +1152,6 @@
         "/images/LenovoYoga9i.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "laptop",
       "brand": "Lenovo",
       "specs": {
@@ -1265,7 +1240,6 @@
         "/images/oppoa59.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "phone",
       "brand": "OPPO",
       "specs": {
@@ -1295,7 +1269,6 @@
         "/images/oppoa79.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "phone",
       "brand": "OPPO",
       "specs": {
@@ -1325,7 +1298,6 @@
         "/images/oppofindn3.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "phone",
       "brand": "OPPO",
       "specs": {
@@ -1385,7 +1357,6 @@
         "/images/oppok12x.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "phone",
       "brand": "OPPO",
       "specs": {
@@ -1415,7 +1386,6 @@
         "/images/opporeno12.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "phone",
       "brand": "OPPO",
       "specs": {
@@ -1445,7 +1415,6 @@
         "/images/opporeno12pro.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "phone",
       "brand": "OPPO",
       "specs": {
@@ -1505,7 +1474,6 @@
         "/images/realme13pro.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "phone",
       "brand": "Realme",
       "specs": {
@@ -1565,7 +1533,6 @@
         "/images/realmeC63.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "phone",
       "brand": "Realme",
       "specs": {
@@ -1595,7 +1562,6 @@
         "/images/realmeC67.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "phone",
       "brand": "Realme",
       "specs": {
@@ -1625,7 +1591,6 @@
         "/images/realmeGT6.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "phone",
       "brand": "Realme",
       "specs": {
@@ -1655,7 +1620,6 @@
         "/images/realmenarzo70pro.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "phone",
       "brand": "Realme",
       "specs": {
@@ -1685,7 +1649,6 @@
         "/images/realmeNote50.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "phone",
       "brand": "Realme",
       "specs": {
@@ -1715,7 +1678,6 @@
         "/images/samsunggalaxya55.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "phone",
       "brand": "Samsung",
       "specs": {
@@ -1775,7 +1737,6 @@
         "/images/samsunggalaxys24fe.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "phone",
       "brand": "Samsung",
       "specs": {
@@ -1805,7 +1766,6 @@
         "/images/samsunggalaxys25.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "phone",
       "brand": "Samsung",
       "specs": {
@@ -1836,7 +1796,6 @@
         "/images/samsunggalaxys25plus.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "phone",
       "brand": "Samsung",
       "specs": {
@@ -1866,7 +1825,6 @@
         "/images/samsunggalaxys25ultra.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "phone",
       "brand": "Samsung",
       "specs": {
@@ -1896,7 +1854,6 @@
         "/images/samsunggalaxyzflip6.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "phone",
       "brand": "Samsung",
       "specs": {
@@ -1927,7 +1884,6 @@
         "/images/samsunggalaxyzfold6.png"
       ],
       "inStock": true,
-      "discount": 0,
       "category": "phone",
       "brand": "Samsung",
       "specs": {

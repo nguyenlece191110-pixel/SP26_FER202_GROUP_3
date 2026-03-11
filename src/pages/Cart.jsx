@@ -2,14 +2,13 @@ import React from 'react';
 import { Container, Row, Col, Button, Alert, Card, Form } from 'react-bootstrap';
 import { useCart } from '../contexts/CartContext';
 import CartItem from '../components/CartItem';
-import { Cart3, CreditCard, Trash3 } from 'react-bootstrap-icons';
+import { Cart3, CreditCard } from 'react-bootstrap-icons';
 
 export default function Cart() {
     const { 
         items, 
         totalItems, 
         totalPrice, 
-        clearCart, 
         updateQuantity, 
         removeFromCart,
         selectedItems,
@@ -19,12 +18,6 @@ export default function Cart() {
         selectAllItems,
         deselectAllItems
     } = useCart();
-
-    const handleClearCart = () => {
-        if (window.confirm('Bạn có chắc chắn muốn xóa toàn bộ giỏ hàng?')) {
-            clearCart();
-        }
-    };
 
     const formatCurrency = (amount) => {
         return new Intl.NumberFormat('vi-VN', {
@@ -58,14 +51,6 @@ export default function Cart() {
                     <Cart3 className="me-2" />
                     Giỏ hàng ({totalItems} sản phẩm)
                 </h2>
-                <Button 
-                    variant="outline-danger" 
-                    size="sm"
-                    onClick={handleClearCart}
-                >
-                    <Trash3 className="me-1" />
-                    Xóa tất cả
-                </Button>
             </div>
 
             {/* Select All Bar */}
@@ -85,17 +70,11 @@ export default function Cart() {
                                     Đã chọn {selectedItems.length} sản phẩm
                                 </span>
                             </div>
-                            <Button
-                                variant="outline-secondary"
-                                size="sm"
-                                onClick={() => isAllItemsSelected() ? deselectAllItems() : selectAllItems()}
-                            >
-                                {isAllItemsSelected() ? 'Bỏ chọn tất cả' : 'Chọn tất cả'}
-                            </Button>
                         </div>
                     </Card.Body>
                 </Card>
             )}
+
 
             <Row>
                 {/* Cart Items */}
@@ -105,7 +84,6 @@ export default function Cart() {
                             key={item.id}
                             item={item}
                             onUpdateQuantity={updateQuantity}
-                            onRemove={removeFromCart}
                         />
                     ))}
                 </Col>
@@ -129,14 +107,6 @@ export default function Cart() {
                                         <span>{totalItems}</span>
                                     </Col>
                                 </Row>
-                                <Row className="mb-2">
-                                    <Col>
-                                        <span className="text-muted">Sản phẩm đã chọn:</span>
-                                    </Col>
-                                    <Col className="text-end">
-                                        <span className="text-primary fw-bold">{getSelectedItemsCount()}</span>
-                                    </Col>
-                                </Row>
                             </div>
                             
                             <hr />
@@ -146,7 +116,7 @@ export default function Cart() {
                                     <span className="text-muted">Tạm tính:</span>
                                 </Col>
                                 <Col className="text-end">
-                                    <span>{formatCurrency(getSelectedItemsTotal())}</span>
+                                    <span>{formatCurrency(totalPrice)}</span>
                                 </Col>
                             </Row>
                             
@@ -167,33 +137,21 @@ export default function Cart() {
                                 </Col>
                                 <Col className="text-end">
                                     <h5 className="mb-0 text-primary">
-                                        {formatCurrency(getSelectedItemsTotal())}
+                                        {formatCurrency(totalPrice)}
                                     </h5>
                                 </Col>
                             </Row>
 
-                            <div className="d-grid gap-2 mb-3">
+                            <div className="d-grid mb-3">
                                 <Button 
                                     variant="primary" 
                                     size="lg"
                                     href="/checkout"
-                                    disabled={selectedItems.length === 0}
+                                    disabled={items.length === 0}
                                 >
-                                    {selectedItems.length > 0 
-                                        ? `Thanh toán (${getSelectedItemsCount()} sản phẩm)` 
-                                        : 'Chọn sản phẩm để thanh toán'
-                                    }
-                                </Button>
-                                <Button variant="outline-secondary" href="/shop">
-                                    Tiếp tục mua sắm
+                                    Thanh toán ({totalItems} sản phẩm)
                                 </Button>
                             </div>
-
-                            {selectedItems.length === 0 && items.length > 0 && (
-                                <Alert variant="info" className="text-center">
-                                    <small>Vui lòng chọn ít nhất một sản phẩm để thanh toán</small>
-                                </Alert>
-                            )}
 
                             <div className="mt-3 text-center">
                                 <small className="text-muted">
@@ -206,22 +164,6 @@ export default function Cart() {
                 </Col>
             </Row>
 
-            {/* Additional Info */}
-            <Alert variant="info" className="mt-4">
-                <h6 className="alert-heading">
-                    <i className="bi bi-info-circle me-2"></i>
-                    Thông tin đơn hàng
-                </h6>
-                <p className="mb-2">
-                    • Miễn phí vận chuyển cho đơn hàng từ 500.000 VNĐ
-                </p>
-                <p className="mb-2">
-                    • Đổi trả trong vòng 7 ngày nếu sản phẩm có lỗi
-                </p>
-                <p className="mb-0">
-                    • Bảo hành chính hãng 12 tháng
-                </p>
-            </Alert>
         </Container>
     );
 }
