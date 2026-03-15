@@ -1,11 +1,12 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../AuthContext'; 
 import { Container, Form, Button, Card } from 'react-bootstrap';
+import { GoogleLogin } from '@react-oauth/google';
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { login } = useContext(AuthContext);
+    const { login, loginWithGoogle } = useContext(AuthContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -31,6 +32,17 @@ export default function Login() {
                     </Form.Group>
                     <Button variant="primary" type="submit" className="w-100">Vào hệ thống</Button>
                 </Form>
+
+                <div className="text-center text-muted my-3">hoặc</div>
+
+                <div className="d-flex justify-content-center">
+                    <GoogleLogin
+                        onSuccess={loginWithGoogle}
+                        onError={() => alert('Đăng nhập Google thất bại. Vui lòng thử lại.')}
+                        text="signin_with"
+                        shape="pill"
+                    />
+                </div>
             </Card>
         </Container>
     );

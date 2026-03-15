@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { jwtDecode } from 'jwt-decode';
 
 export const AuthContext = createContext();
 
@@ -43,6 +44,48 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    const loginWithGoogle = async (credentialResponse) => {
+        try {
+            if (!credentialResponse?.credential) {
+                alert('Không nhận được dữ liệu từ Google. Vui lòng thử lại.');
+                return;
+            }
+
+            const decoded = jwtDecode(credentialResponse.credential);
+            const googleEmail = decoded?.email;
+
+            if (!googleEmail) {
+                alert('Không thể đọc email từ tài khoản Google.');
+                return;
+            }
+
+            const usersResponse = await axios.get('http://localhost:5000/users');
+            const candidates = Array.isArray(usersResponse.data) ? usersResponse.data : [];
+            let loggedInUser = candidates.find((u) => u.email === googleEmail);
+
+            if (!loggedInUser) {
+                const newGoogleUser = {
+                    name: decoded?.name || googleEmail,
+                    email: googleEmail,
+                    password: '',
+                    role: 'user',
+                    googleId: decoded?.sub || null,
+                    avatar: decoded?.picture || ''
+                };
+
+                const createdUserRes = await axios.post('http://localhost:5000/users', newGoogleUser);
+                loggedInUser = createdUserRes.data;
+            }
+
+            setUser(loggedInUser);
+            sessionStorage.setItem('user', JSON.stringify(loggedInUser));
+            navigate('/');
+        } catch (error) {
+            console.error('Google login error:', error);
+            alert('Đăng nhập Google thất bại. Vui lòng thử lại.');
+        }
+    };
+
     const logout = () => {
         setUser(null);
         sessionStorage.removeItem('user');
@@ -50,7 +93,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, login, logout }}>
+        <AuthContext.Provider value={{ user, login, loginWithGoogle, logout }}>
             {children}
         </AuthContext.Provider>
     );

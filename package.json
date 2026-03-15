@@ -3,12 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-oauth/google": "^0.13.4",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.13.6",
     "bootstrap": "^5.3.8",
+<<<<<<< Updated upstream
+=======
+    "json-server": "^1.0.0-beta.12",
+    "jwt-decode": "^4.0.0",
+    "qrcode": "^1.5.4",
+>>>>>>> Stashed changes
     "react": "^19.2.4",
     "react-bootstrap": "^2.10.10",
     "react-dom": "^19.2.4",
@@ -21,7 +28,13 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+<<<<<<< Updated upstream
     "server":"npx json-server --watch db.json --port 5000"
+=======
+    "server": "npx json-server --watch db-full.json --port 5000",
+    "css": "npm install react-router-dom react-bootstrap bootstrap --legacy-peer-deps",
+    "gg": "npm install @react-oauth/google jwt-decode --legacy-peer-deps"
+>>>>>>> Stashed changes
   },
   "eslintConfig": {
     "extends": [

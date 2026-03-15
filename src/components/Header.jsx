@@ -2,6 +2,11 @@ import React, { useContext } from 'react';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../AuthContext';
+<<<<<<< Updated upstream
+=======
+import { useCart } from '../contexts/CartContext';
+import { Cart3, Clipboard2 } from 'react-bootstrap-icons';
+>>>>>>> Stashed changes
 
 export default function Header() {
     const { user, logout } = useContext(AuthContext);
