@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { Container, Row, Col, Card, Button, Alert, Spinner, Form, Badge, Tabs, Tab } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button, Alert, Form, Badge, Tabs, Tab } from 'react-bootstrap';
 import { useCart } from '../contexts/CartContext';
 import { useAuth } from '../AuthContext';
 import { API_ENDPOINTS } from '../config/api';

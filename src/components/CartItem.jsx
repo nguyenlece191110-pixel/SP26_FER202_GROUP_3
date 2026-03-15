@@ -14,62 +14,9 @@ const CartItem = ({ item, onUpdateQuantity, readOnly = false }) => {
         }
     };
 
-    const renderPrice = (product) => {
-        // Sử dụng data từ cart đã được truyền từ ProductDetail
-        const originalPrice = product.originalPrice || product.price;
-        const discountPrice = product.discountPrice || product.price;
-        const discount = product.discount || 0;
-
-        // Nếu có giảm giá
-        if (discount > 0 && discountPrice !== originalPrice) {
-            const percent = Math.round(((originalPrice - discountPrice) / originalPrice) * 100);
-            
-            return (
-                <div className="d-flex align-items-baseline">
-                    <span style={{color: '#333', marginRight: '8px'}}>
-                        {new Intl.NumberFormat('vi-VN', {
-                            style: 'currency',
-                            currency: 'VND'
-                        }).format(originalPrice)}
-                    </span>
-                    <span style={{color: '#dc3545', fontWeight: 'bold', marginRight: '8px'}}>
-                        →
-                    </span>
-                    <span style={{color: '#dc3545', fontWeight: 'bold', marginRight: '8px'}}>
-                        {new Intl.NumberFormat('vi-VN', {
-                            style: 'currency',
-                            currency: 'VND'
-                        }).format(discountPrice)}
-                    </span>
-                    <span style={{color: 'white', background: '#dc3545', padding: '2px 6px', borderRadius: '4px', fontSize: '0.8em'}}>
-                        -{percent}%
-                    </span>
-                </div>
-            );
-        }
-
-        // Nếu không có giảm giá
-        return (
-            <span className="fw-bold">
-                {new Intl.NumberFormat('vi-VN', {
-                    style: 'currency',
-                    currency: 'VND'
-                }).format(discountPrice)}
-            </span>
-        );
-    };
-
     // Giá giảm (ưu tiên discountPrice, nếu không có thì dùng price)
     const finalPrice = item.discountPrice || item.price;
     const itemTotal = finalPrice * item.quantity;
-
-    // Hàm format tiền VND
-    const formatMoney = (amount) => {
-        return new Intl.NumberFormat('vi-VN', {
-            style: 'currency',
-            currency: 'VND'
-        }).format(amount);
-    };
 
     return (
         <Card className="mb-3 cart-item">

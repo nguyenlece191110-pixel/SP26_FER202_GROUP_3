@@ -3,10 +3,7 @@ import { Container, Row, Col, Card, Button, Form, Alert, Spinner, Modal } from '
 import { useCart } from '../contexts/CartContext';
 import { useAuth } from '../AuthContext';
 import { useOrder } from '../contexts/OrderContext';
-import { Person, Envelope, Telephone, House, CreditCard, Cash, Phone, ArrowLeft, QrCode, Eye, Truck, CheckCircle, Clock, XCircle, Cart3, Trash3, Dash, Plus, Trash2 } from 'react-bootstrap-icons';
-import QRCode from 'qrcode';
-import { Link } from 'react-router-dom';
-import CartItem from '../components/CartItem';
+import { Person, Envelope, Telephone, House, CreditCard, Cash, Phone, ArrowLeft, QrCode, Cart3, Dash, Plus, Trash2 } from 'react-bootstrap-icons';
 
 export default function Cart() {
     const { user } = useAuth();
@@ -14,7 +11,6 @@ export default function Cart() {
     const { 
         items, 
         totalItems, 
-        totalPrice, 
         updateQuantity, 
         removeFromCart,
         clearCart,
@@ -57,18 +53,14 @@ export default function Cart() {
         }
     }, [user, items.length, clearCart]);
 
-    const handleClearCart = () => {
-        if (window.confirm('Bạn có chắc chắn muốn xóa toàn bộ giỏ hàng?')) {
-            clearCart();
-        }
-    };
-
     const formatCurrency = (amount) => {
         return new Intl.NumberFormat('vi-VN', {
             style: 'currency',
             currency: 'VND'
         }).format(amount);
     };
+
+    const totalPrice = getSelectedItemsTotal();
 
     // District data for each city
     const districtsData = {
@@ -166,27 +158,13 @@ export default function Cart() {
     };
 
     // Generate QR Code for payment
-    const generateQRCode = async (paymentInfo) => {
-        try {
-            // Use static QR codes instead of generating
-            if (selectedPaymentMethod === 'momo') {
-                // Use MoMo QR code image
-                setQrCodeUrl('/images/momo-qr.png');
-            } else {
-                // Use Banking QR code image
-                setQrCodeUrl('/images/banking-qr.png');
-            }
-        } catch (error) {
-            console.error('Error setting QR code:', error);
-            // Fallback to placeholder
-            setQrCodeUrl('');
-        }
-    };
-
     // Generate QR code when moving to step 3
     useEffect(() => {
         if (paymentStep === 3 && selectedPaymentMethod !== 'cod') {
-            generateQRCode({});
+            setQrCodeUrl(selectedPaymentMethod === 'momo' ? '/images/momo-qr.png' : '/images/banking-qr.png');
+        }
+        if (paymentStep !== 3 || selectedPaymentMethod === 'cod') {
+            setQrCodeUrl('');
         }
     }, [paymentStep, selectedPaymentMethod]);
 
@@ -326,7 +304,7 @@ export default function Cart() {
     };
 
     // CartItem component
-    const CartItem = ({ item, onUpdateQuantity, onRemove }) => {
+    const CartItem = ({ item, onUpdateQuantity, onRemove, readOnly = false }) => {
         const [quantity, setQuantity] = useState(item.quantity);
         const isSelected = selectedItems.includes(item.id);
 
@@ -338,6 +316,9 @@ export default function Cart() {
         };
 
         const handleRemove = () => {
+            if (readOnly) {
+                return;
+            }
             if (window.confirm(`Bạn có chắc chắn muốn xóa "${item.name}" khỏi giỏ hàng?`)) {
                 onRemove(item.id);
             }
@@ -376,7 +357,7 @@ export default function Cart() {
                                         variant="outline-secondary"
                                         size="sm"
                                         onClick={() => handleQuantityChange(quantity - 1)}
-                                        disabled={quantity <= 1}
+                                        disabled={readOnly || quantity <= 1}
                                     >
                                         <Dash size={12} />
                                     </Button>
@@ -385,7 +366,7 @@ export default function Cart() {
                                         variant="outline-secondary"
                                         size="sm"
                                         onClick={() => handleQuantityChange(quantity + 1)}
-                                        disabled={quantity >= 99}
+                                            disabled={readOnly || quantity >= 99}
                                     >
                                         <Plus size={12} />
                                     </Button>
@@ -400,6 +381,7 @@ export default function Cart() {
                                 variant="outline-danger"
                                 size="sm"
                                 onClick={handleRemove}
+                                disabled={readOnly}
                             >
                                 <Trash2 size={14} />
                             </Button>
@@ -478,6 +460,7 @@ export default function Cart() {
                                 key={item.id}
                                 item={item}
                                 onUpdateQuantity={updateQuantity}
+                                onRemove={removeFromCart}
                             />
                         ) : (
                             // Chưa đăng nhập: Hiển thị CartItem chỉ xem
@@ -485,6 +468,7 @@ export default function Cart() {
                                 key={item.id}
                                 item={item}
                                 onUpdateQuantity={() => {}} // Không cho thay đổi quantity
+                                onRemove={removeFromCart}
                                 readOnly={true}
                             />
                         )

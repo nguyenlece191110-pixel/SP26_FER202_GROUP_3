@@ -2,16 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Card, Badge, Button, Alert, Spinner, Modal } from 'react-bootstrap';
 import { useOrder } from '../contexts/OrderContext';
 import { useAuth } from '../AuthContext';
-import { Eye, Truck, CheckCircle, Clock, XCircle, ArrowLeft, Trash } from 'react-bootstrap-icons';
-
-const statusConfig = {
-  pending: { color: 'warning', icon: Clock, text: 'Chờ xử lý' },
-  processing: { color: 'info', icon: Truck, text: 'Đang xử lý' },
-  shipped: { color: 'primary', icon: Truck, text: 'Đang giao hàng' },
-  delivered: { color: 'success', icon: CheckCircle, text: 'Đã giao hàng' },
-  cancelled: { color: 'danger', icon: XCircle, text: 'Đã hủy' },
-  awaiting_payment: { color: 'secondary', icon: Clock, text: 'Chờ thanh toán' }
-};
+import { Eye, Clock, Trash } from 'react-bootstrap-icons';
 
 export default function OrderHistory() {
   const { user } = useAuth();

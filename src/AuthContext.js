@@ -7,6 +7,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const navigate = useNavigate();
+    const USERS_API = 'http://localhost:5000/users';
 
     // Kiểm tra trạng thái đăng nhập khi load lại trang
     useEffect(() => {
@@ -36,7 +37,7 @@ export const AuthProvider = ({ children }) => {
         console.debug('login called with', { email, password });
         try {
             // fetch full list then filter locally to avoid query encoding quirks
-            const res = await axios.get('http://localhost:5001/users');
+            const res = await axios.get(USERS_API);
             console.log('fetched users', res.data);
             const candidates = Array.isArray(res.data) ? res.data : [];
             const loggedInUser = candidates.find(u => u.email === email && u.password === password);
@@ -57,6 +58,51 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    const loginWithGoogle = async (googleUser) => {
+        try {
+            const { email, name, picture } = googleUser || {};
+
+            if (!email) {
+                alert('Không lấy được email từ Google. Vui lòng thử lại.');
+                return;
+            }
+
+            const res = await axios.get(USERS_API);
+            const candidates = Array.isArray(res.data) ? res.data : [];
+            const existingUser = candidates.find(u => u.email === email);
+
+            if (existingUser) {
+                const mergedUser = {
+                    ...existingUser,
+                    authProvider: existingUser.authProvider || 'google',
+                    avatar: existingUser.avatar || picture || ''
+                };
+                setUser(mergedUser);
+                sessionStorage.setItem('user', JSON.stringify(mergedUser));
+                navigate('/');
+                return;
+            }
+
+            const newGoogleUser = {
+                id: Date.now().toString(),
+                name: name || email.split('@')[0],
+                email,
+                password: '',
+                role: 'user',
+                authProvider: 'google',
+                avatar: picture || ''
+            };
+
+            const created = await axios.post(USERS_API, newGoogleUser);
+            setUser(created.data);
+            sessionStorage.setItem('user', JSON.stringify(created.data));
+            navigate('/');
+        } catch (error) {
+            console.error('Lỗi đăng nhập Google:', error);
+            alert('Đăng nhập Google thất bại. Kiểm tra JSON Server và thử lại.');
+        }
+    };
+
     const logout = () => {
         setUser(null);
         sessionStorage.removeItem('user');
@@ -64,7 +110,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, login, logout }}>
+        <AuthContext.Provider value={{ user, login, loginWithGoogle, logout }}>
             {children}
         </AuthContext.Provider>
     );

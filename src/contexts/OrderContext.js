@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import axios from 'axios';
 
 const OrderContext = createContext();
@@ -21,7 +21,7 @@ export const OrderProvider = ({ children }) => {
   const fetchAllOrders = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5001/orders');
+      const response = await axios.get('http://localhost:5000/orders');
       setOrders(response.data);
       setError(null);
     } catch (err) {
@@ -48,7 +48,7 @@ export const OrderProvider = ({ children }) => {
         throw new Error('User ID is required');
       }
 
-      const response = await axios.get(`http://localhost:5001/orders?userId=${userId}`);
+      const response = await axios.get(`http://localhost:5000/orders?userId=${userId}`);
       
       // Sort orders by creation date (newest first)
       const sortedOrders = response.data.sort((a, b) => 
@@ -86,7 +86,7 @@ export const OrderProvider = ({ children }) => {
         throw new Error('Thông tin giao hàng không đầy đủ');
       }
 
-      const response = await axios.post('http://localhost:5001/orders', {
+      const response = await axios.post('http://localhost:5000/orders', {
         ...orderData,
         id: Date.now().toString(),
         createdAt: new Date().toISOString(),
@@ -112,7 +112,7 @@ export const OrderProvider = ({ children }) => {
   const updateOrderStatus = async (orderId, status) => {
     try {
       setLoading(true);
-      await axios.patch(`http://localhost:5001/orders/${orderId}`, { status });
+      await axios.patch(`http://localhost:5000/orders/${orderId}`, { status });
       
       setOrders(prev => 
         prev.map(order => 
@@ -132,7 +132,7 @@ export const OrderProvider = ({ children }) => {
   // Get order by ID
   const getOrderById = async (orderId) => {
     try {
-      const response = await axios.get(`http://localhost:5001/orders/${orderId}`);
+      const response = await axios.get(`http://localhost:5000/orders/${orderId}`);
       return response.data;
     } catch (err) {
       setError('Không thể tìm thấy đơn hàng');
@@ -145,7 +145,7 @@ export const OrderProvider = ({ children }) => {
   const deleteOrder = async (orderId) => {
     try {
       setLoading(true);
-      await axios.delete(`http://localhost:5001/orders/${orderId}`);
+      await axios.delete(`http://localhost:5000/orders/${orderId}`);
       
       setOrders(prev => prev.filter(order => order.id !== orderId));
       setError(null);

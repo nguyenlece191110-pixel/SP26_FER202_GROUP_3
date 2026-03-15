@@ -3,7 +3,7 @@ import { Navbar, Nav, Container, Button, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../AuthContext';
 import { useCart } from '../contexts/CartContext';
-import { Cart3, Clipboard2, ListUl } from 'react-bootstrap-icons';
+import { Cart3, Clipboard2 } from 'react-bootstrap-icons';
 
 export default function Header() {
     const { user, logout } = useContext(AuthContext);

@@ -14,7 +14,7 @@ const ManageProductsPage = () => {
     const [editingProduct, setEditingProduct] = useState(null);
 
     const fetchProducts = () => {
-        fetch('http://localhost:5001/products')
+        fetch('http://localhost:5000/products')
             .then(res => res.json())
             .then(data => setProducts(data))
             .catch(err => console.error("Lỗi fetch API:", err));
@@ -41,7 +41,7 @@ const ManageProductsPage = () => {
 
     const handleDelete = (id) => {
         if (window.confirm("Hành động này không thể hoàn tác. Bạn có chắc chắn xóa?")) {
-            fetch(`http://localhost:5001/products/${id}`, { method: 'DELETE' })
+            fetch(`http://localhost:5000/products/${id}`, { method: 'DELETE' })
                 .then(() => fetchProducts())
                 .catch(err => console.error("Lỗi xóa:", err));
         }

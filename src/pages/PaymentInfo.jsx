@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Card, Form, Button, Alert, Spinner } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../AuthContext';
 import { useCart } from '../contexts/CartContext';
 import { ArrowLeft, Person, Envelope, Telephone, House, CreditCard } from 'react-bootstrap-icons';
@@ -85,7 +85,7 @@ export default function PaymentInfo() {
         return Object.keys(newErrors).length === 0;
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         
         if (selectedItems.length === 0) {
@@ -104,11 +104,13 @@ export default function PaymentInfo() {
             return;
         }
 
-        // Store payment info in session storage
-        sessionStorage.setItem('paymentInfo', JSON.stringify(formData));
-        
-        // Navigate to checkout page
-        navigate('/checkout');
+        try {
+            setIsSubmitting(true);
+            sessionStorage.setItem('paymentInfo', JSON.stringify(formData));
+            navigate('/checkout');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     if (selectedItems.length === 0) {

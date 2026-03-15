@@ -83,7 +83,6 @@ export default function Shop() {
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     // Get unique categories and brands
-    const categories = ['all', ...new Set(products.map(p => p.category))];
     const brands = ['all', ...new Set(products.map(p => p.brand))];
 
     // Handle tab change

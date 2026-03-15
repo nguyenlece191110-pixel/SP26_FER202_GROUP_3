@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Card, Form, Button, Alert, Spinner, Badge } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { CheckCircle, ArrowLeft, Cart3, Truck, ShieldCheck, Shield, CreditCard } from 'react-bootstrap-icons';
+import { CheckCircle, ArrowLeft, Truck, Shield, CreditCard } from 'react-bootstrap-icons';
 import { useAuth } from '../AuthContext';
 import { useCart } from '../contexts/CartContext';
 import { useOrder } from '../contexts/OrderContext';

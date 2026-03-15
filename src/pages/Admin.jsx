@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthContext'; 
-import { Container, Row, Col, Card, Alert, Button } from 'react-bootstrap';
+import { Container, Alert, Button } from 'react-bootstrap';
 
 const Admin = () => {
     const { user } = useContext(AuthContext); 

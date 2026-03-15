@@ -34,6 +34,24 @@
       "email": "ninhtl.ce190997@gmail.com",
       "password": "123",
       "role": "user"
+    },
+    {
+      "id": "1773556167278",
+      "name": "Trung Hậu Nguyễn",
+      "email": "hauntce190069@gmail.com",
+      "password": "",
+      "role": "user",
+      "authProvider": "google",
+      "avatar": "https://lh3.googleusercontent.com/a/ACg8ocIt6WW_tZhBZ1jPg7DPqXxEbObhw1xau7kFIwDxYtf6Qw3TAbY=s96-c"
+    },
+    {
+      "id": "1773557720326",
+      "name": "Như Ngọc Nguyễn Thị",
+      "email": "ngocntn.cs190676@gmail.com",
+      "password": "",
+      "role": "user",
+      "authProvider": "google",
+      "avatar": "https://lh3.googleusercontent.com/a/ACg8ocJwR96IQaLMJnP26CuKuevcFS5osaj0Rz78glNukx52Wmnlyso=s96-c"
     }
   ],
   "products": [
@@ -133,7 +151,6 @@
       ],
       "inStock": true,
       "category": "laptop",
-
       "brand": "Acer",
       "specs": {
         "cpu": "Intel Core i9-13900HX",
