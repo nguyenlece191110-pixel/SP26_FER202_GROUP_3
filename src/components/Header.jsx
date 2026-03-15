@@ -11,8 +11,14 @@ export default function Header() {
 
     return (
         <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
-            <Container>
-                <Navbar.Brand as={Link} to="/">TechHub</Navbar.Brand>
+            <Container fluid className="px-4">
+                <Navbar.Brand as={Link} to="/" aria-label="TechHub Home" style={{ padding: 0, marginRight: '1.25rem' }}>
+                    <img
+                        src="/images/logo.png"
+                        alt="TechHub"
+                        style={{ height: '44px', width: 'auto', display: 'block' }}
+                    />
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">

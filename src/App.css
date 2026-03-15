@@ -36,3 +36,65 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+/* Bao phủ toàn bộ màn hình với ảnh nền */
+.login-page-bg {
+    /* Ép tràn chiều ngang (như cũ) */
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+
+    /* THÊM 2 DÒNG NÀY: Kéo background tràn lên trên và xuống dưới để lấp khoảng trắng */
+    margin-top: -30px; /* Bạn có thể tăng/giảm số này (ví dụ -40px, -50px) để khít với mép Navbar */
+    margin-bottom: -50px; /* Triệt tiêu khoảng trắng dưới cùng */ 
+
+    /* Nếu form bị đẩy sát lên trên quá, thêm dòng này để đẩy form xuống cho cân đối */
+    padding-top: 30px; 
+
+    /* Các thuộc tính giữ nguyên */
+    min-height: calc(100vh - 60px); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('https://img.lovepik.com/background/20211020/large/lovepik-blue-background-of-technology-line-information-image_400055409.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+/* Hiệu ứng kính mờ (Glassmorphism) cho thẻ Card */
+.glass-card {
+    background: rgba(255, 255, 255, 0.15) !important; /* Nền trắng trong suốt */
+    backdrop-filter: blur(15px); /* Làm mờ background phía sau */
+    -webkit-backdrop-filter: blur(15px); /* Hỗ trợ Safari */
+    border: 1px solid rgba(255, 255, 255, 0.3) !important; /* Viền sáng nhẹ */
+    border-radius: 20px !important; /* Bo góc to hơn */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2) !important; /* Đổ bóng tạo chiều sâu */
+    color: #ffffff; /* Chữ màu trắng để nổi bật trên nền */
+}
+
+/* Tùy chỉnh ô nhập liệu cho hợp với giao diện kính */
+.glass-input {
+    background: rgba(255, 255, 255, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    border-radius: 10px !important;
+    color: #333 !important;
+}
+
+.glass-input:focus {
+    background: rgba(255, 255, 255, 0.9) !important;
+    box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Nút bấm nổi bật hơn */
+.btn-login-custom {
+    border-radius: 10px !important;
+    font-weight: bold !important;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    border: none !important;
+    transition: all 0.3s ease;
+}
+
+.btn-login-custom:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(118, 75, 162, 0.4);
+}
