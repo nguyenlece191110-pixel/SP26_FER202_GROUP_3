@@ -32,6 +32,9 @@ const ProductGallery = ({ products }) => {
             id: product.id,
             name: product.name,
             price: finalPrice, // Use discounted price
+            originalPrice: product.price,
+            discountPrice: finalPrice,
+            discount: product.discount || 0,
             image: product.images?.[0] || product.image,
             quantity: 1
         });

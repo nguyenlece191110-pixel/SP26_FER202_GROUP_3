@@ -4,7 +4,7 @@ import { Container, Row, Col, Card, Button, Alert, Form, Badge, Tabs, Tab } from
 import { useCart } from '../contexts/CartContext';
 import { useAuth } from '../AuthContext';
 import { API_ENDPOINTS } from '../config/api';
-import { Cart3, ArrowLeft, Star, Truck, Shield, CreditCard, Plus, Dash } from 'react-bootstrap-icons';
+import { Cart3, ArrowLeft, Truck, Shield, CreditCard, Plus, Dash } from 'react-bootstrap-icons';
 
 export default function ProductDetail() {
     const { id } = useParams();
@@ -72,17 +72,6 @@ export default function ProductDetail() {
         if (newQuantity >= 1 && newQuantity <= 99) {
             setQuantity(newQuantity);
         }
-    };
-
-    const renderStars = (rating) => {
-        return Array.from({ length: 5 }, (_, i) => (
-            <Star
-                key={i}
-                size={16}
-                className={i < rating ? 'text-warning' : 'text-muted'}
-                fill={i < rating ? 'currentColor' : 'none'}
-            />
-        ));
     };
 
     const formatCurrency = (amount) => {
@@ -208,20 +197,13 @@ export default function ProductDetail() {
                         {/* Product Name */}
                         <h1 className="h2 mb-3">{product.name}</h1>
 
-                        {/* Rating */}
-                        <div className="d-flex align-items-center mb-3">
-                            <div className="me-2">
-                                {renderStars(5)}
-                            </div>
-                            <span className="text-muted">(Chưa có đánh giá)</span>
-                            <Badge bg="success" className="ms-2">Bán chạy</Badge>
-                        </div>
+                        <Badge bg="success" className="mb-3">Bán chạy</Badge>
 
                         {/* Price */}
                         <div className="price-section mb-4">
                             {product.discount ? (
                                 <div className="d-flex flex-column align-items-start">
-                                    <span className="fw-bold h5">
+                                    <span className="text-decoration-line-through text-muted h5 mb-1">
                                         {formatCurrency(product.price)}
                                     </span>
                                     <div className="d-flex align-items-baseline">
@@ -252,9 +234,6 @@ export default function ProductDetail() {
                                 </Alert>
                             )}
                         </div>
-
-                        {/* Description */}
-                        <p className="text-muted mb-4">{product.description}</p>
 
                         {/* Quantity Selector */}
                         <div className="quantity-selector mb-4">
@@ -331,8 +310,8 @@ export default function ProductDetail() {
                                 onSelect={(k) => setActiveTab(k)}
                                 className="nav-pills"
                             >
-                                <Tab eventKey="description" title="Mô tả sản phẩm" />
-                                <Tab eventKey="specs" title="Thông số kỹ thuật" />
+                                <Tab eventKey="description" title={<span className="text-dark">Mô tả sản phẩm</span>} />
+                                <Tab eventKey="specs" title={<span className="text-dark">Thông số kỹ thuật</span>} />
                             </Tabs>
                         </Card.Header>
                         <Card.Body>
@@ -341,8 +320,7 @@ export default function ProductDetail() {
                                 {activeTab === 'description' && (
                                     <div className="text-dark">
                                         <h5 className="mb-3 text-dark">Mô tả chi tiết</h5>
-                                        <p className="text-dark">{product.description}</p>
-                                        
+
                                         <h6 className="mb-3 text-dark">Tính năng nổi bật:</h6>
                                         <ul className="text-dark">
                                             {product.features.map((feature, index) => (

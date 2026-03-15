@@ -13,6 +13,31 @@
       "email": "phuocadmin@gmail.com",
       "password": "123@Zxcv",
       "role": "admin"
+    },
+    {
+      "id": "1773580564944",
+      "name": "Trung Hậu Nguyễn",
+      "email": "hauntce190069@gmail.com",
+      "password": "",
+      "role": "user",
+      "authProvider": "google",
+      "avatar": "https://lh3.googleusercontent.com/a/ACg8ocIt6WW_tZhBZ1jPg7DPqXxEbObhw1xau7kFIwDxYtf6Qw3TAbY=s96-c"
+    },
+    {
+      "id": "1773582577492",
+      "name": "Lê Nguyên",
+      "email": "congtuhotmit123@gmail.com",
+      "password": "",
+      "role": "user",
+      "authProvider": "google",
+      "avatar": "https://lh3.googleusercontent.com/a/ACg8ocL3fsSV1w3AMn2mvrzhJTR3-ZMVTIKGEm8EEbgjZs645_6XMNIp=s96-c"
+    },
+    {
+      "id": "641f",
+      "name": "Nguyên Chút Xì",
+      "email": "thaitq.ce190243@gmail.com",
+      "password": "123",
+      "role": "user"
     }
   ],
   "products": [

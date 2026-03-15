@@ -3,6 +3,7 @@ import { Container, Row, Col, Card, Button, Form, Alert, Spinner, Modal } from '
 import { useCart } from '../contexts/CartContext';
 import { useAuth } from '../AuthContext';
 import { useOrder } from '../contexts/OrderContext';
+import { API_ENDPOINTS } from '../config/api';
 import { Person, Envelope, Telephone, House, CreditCard, Cash, Phone, ArrowLeft, QrCode, Cart3, Dash, Plus, Trash2 } from 'react-bootstrap-icons';
 
 export default function Cart() {
@@ -45,6 +46,7 @@ export default function Cart() {
     const [formErrors, setFormErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [qrCodeUrl, setQrCodeUrl] = useState('');
+    const [productPriceMap, setProductPriceMap] = useState({});
 
     // Nếu chưa đăng nhập và có sản phẩm trong giỏ, xóa giỏ hàng
     useEffect(() => {
@@ -52,6 +54,33 @@ export default function Cart() {
             clearCart();
         }
     }, [user, items.length, clearCart]);
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const response = await fetch(API_ENDPOINTS.PRODUCTS);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch products');
+                }
+                const products = await response.json();
+                const priceMap = products.reduce((acc, product) => {
+                    acc[product.id] = {
+                        originalPrice: product.price,
+                        discount: product.discount || 0,
+                        discountPrice: product.discount
+                            ? product.price * (1 - product.discount / 100)
+                            : product.price
+                    };
+                    return acc;
+                }, {});
+                setProductPriceMap(priceMap);
+            } catch (error) {
+                console.error('Error fetching product prices:', error);
+            }
+        };
+
+        fetchProducts();
+    }, []);
 
     const formatCurrency = (amount) => {
         return new Intl.NumberFormat('vi-VN', {
@@ -303,10 +332,28 @@ export default function Cart() {
         setPaymentStep(2);
     };
 
+    const handleRemoveSelectedItems = () => {
+        if (selectedItems.length === 0) {
+            return;
+        }
+
+        if (window.confirm(`Bạn có chắc chắn muốn xóa ${selectedItems.length} sản phẩm đã chọn?`)) {
+            selectedItems.forEach((itemId) => removeFromCart(itemId));
+            clearSelectedItems();
+        }
+    };
+
     // CartItem component
     const CartItem = ({ item, onUpdateQuantity, onRemove, readOnly = false }) => {
         const [quantity, setQuantity] = useState(item.quantity);
         const isSelected = selectedItems.includes(item.id);
+        const productMeta = productPriceMap[item.id] || {};
+        const originalUnitPrice = item.originalPrice || item.purchasePrice || productMeta.originalPrice || item.price;
+        const discountedUnitPrice = item.discountPrice || item.price || productMeta.discountPrice || originalUnitPrice;
+        const calculatedDiscount = originalUnitPrice > discountedUnitPrice
+            ? Math.round(((originalUnitPrice - discountedUnitPrice) / originalUnitPrice) * 100)
+            : 0;
+        const discountPercent = item.discount || productMeta.discount || calculatedDiscount;
 
         const handleQuantityChange = (newQuantity) => {
             if (newQuantity > 0 && newQuantity <= 99) {
@@ -346,12 +393,17 @@ export default function Cart() {
                             }}
                         />
                         <div className="flex-grow-1">
-                            <h6 className="mb-1">{item.name}</h6>
+                            <div className="d-flex align-items-center mb-1">
+                                <h6 className="mb-0 me-2">{item.name}</h6>
+                                {discountPercent > 0 && (
+                                    <span className="text-danger small fw-bold">-{discountPercent}%</span>
+                                )}
+                            </div>
                             <p className="text-muted mb-2 small">{item.description}</p>
-                            <div className="d-flex align-items-center">
-                                <span className="text-primary fw-bold me-3">
-                                    {formatCurrency(item.price)}
-                                </span>
+                            <div className="text-decoration-line-through text-dark mb-2">
+                                {formatCurrency(originalUnitPrice)}
+                            </div>
+                            <div className="d-flex justify-content-center">
                                 <div className="d-flex align-items-center">
                                     <Button
                                         variant="outline-secondary"
@@ -366,7 +418,7 @@ export default function Cart() {
                                         variant="outline-secondary"
                                         size="sm"
                                         onClick={() => handleQuantityChange(quantity + 1)}
-                                            disabled={readOnly || quantity >= 99}
+                                        disabled={readOnly || quantity >= 99}
                                     >
                                         <Plus size={12} />
                                     </Button>
@@ -374,11 +426,11 @@ export default function Cart() {
                             </div>
                         </div>
                         <div className="text-end">
-                            <div className="fw-bold text-primary mb-2">
-                                {formatCurrency(item.price * quantity)}
+                            <div className="fw-bold text-danger mb-2">
+                                {formatCurrency(discountedUnitPrice)}
                             </div>
                             <Button
-                                variant="outline-danger"
+                                variant="outline-secondary"
                                 size="sm"
                                 onClick={handleRemove}
                                 disabled={readOnly}
@@ -444,6 +496,14 @@ export default function Cart() {
                                     Đã chọn {selectedItems.length} sản phẩm
                                 </span>
                             </div>
+                            <Button
+                                variant="outline-secondary"
+                                size="sm"
+                                onClick={handleRemoveSelectedItems}
+                                disabled={selectedItems.length === 0}
+                            >
+                                Xóa sản phẩm 
+                            </Button>
                         </div>
                     </Card.Body>
                 </Card>
@@ -485,19 +545,6 @@ export default function Cart() {
                             </h5>
                         </Card.Header>
                         <Card.Body>
-                            <div className="mb-3">
-                                <Row className="mb-2">
-                                    <Col>
-                                        <span className="text-muted">Tổng sản phẩm:</span>
-                                    </Col>
-                                    <Col className="text-end">
-                                        <span>{totalItems}</span>
-                                    </Col>
-                                </Row>
-                            </div>
-                            
-                            <hr />
-                            
                             <Row className="mb-3">
                                 <Col>
                                     <span className="text-muted">Tạm tính:</span>
