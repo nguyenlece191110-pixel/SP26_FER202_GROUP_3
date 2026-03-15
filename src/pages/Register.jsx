@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Container, Form, Button, Card, Alert } from 'react-bootstrap';
+import { Form, Button, Card, Alert } from 'react-bootstrap';
 import axios from 'axios';
 import emailjs from '@emailjs/browser';
 import { API_ENDPOINTS } from '../config/api';
+import '../App.css';
 
 const OTP_TTL_MS = 5 * 60 * 1000;
 
@@ -117,30 +118,30 @@ const Register = () => {
     };
 
     return (
-        <Container className="mt-5 d-flex justify-content-center">
-            <Card style={{ width: '400px' }} className="p-4 shadow">
-                <h3 className="text-center mb-4">{step === 1 ? 'Đăng Ký' : 'Xác Thực OTP'}</h3>
+        <div className="login-page-bg">
+            <Card style={{ width: '420px' }} className="p-4 glass-card">
+                <h3 className="text-center mb-4 fw-bold">{step === 1 ? 'Đăng Ký TechHub' : 'Xác Thực OTP'}</h3>
                 {error && <Alert variant="danger">{error}</Alert>}
 
                 {step === 1 ? (
                     <Form onSubmit={handleSendOtp}>
                         <Form.Group className="mb-3">
                             <Form.Label>Họ tên</Form.Label>
-                            <Form.Control name="name" value={formData.name} required onChange={handleChange} />
+                            <Form.Control className="glass-input p-2" name="name" placeholder="Nhập họ tên của bạn" value={formData.name} required onChange={handleChange} />
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Email</Form.Label>
-                            <Form.Control type="email" name="email" value={formData.email} required onChange={handleChange} />
+                            <Form.Control className="glass-input p-2" type="email" name="email" placeholder="Nhập email của bạn" value={formData.email} required onChange={handleChange} />
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Mật khẩu</Form.Label>
-                            <Form.Control type="password" name="password" value={formData.password} required onChange={handleChange} />
+                            <Form.Control className="glass-input p-2" type="password" name="password" placeholder="Nhập mật khẩu" value={formData.password} required onChange={handleChange} />
                         </Form.Group>
                         <Form.Group className="mb-4">
-                            <Form.Label>Xác nhận</Form.Label>
-                            <Form.Control type="password" name="confirmPassword" value={formData.confirmPassword} required onChange={handleChange} />
+                            <Form.Label>Xác nhận mật khẩu</Form.Label>
+                            <Form.Control className="glass-input p-2" type="password" name="confirmPassword" placeholder="Nhập lại mật khẩu" value={formData.confirmPassword} required onChange={handleChange} />
                         </Form.Group>
-                        <Button variant="primary" type="submit" className="w-100" disabled={loading}>
+                        <Button type="submit" className="w-100 py-2 btn-login-custom" disabled={loading}>
                             {loading ? 'Đang gửi mã...' : 'Tiếp tục'}
                         </Button>
                     </Form>
@@ -153,18 +154,18 @@ const Register = () => {
                         <Form.Group className="mb-3 text-center">
                             <Form.Label>Nhập mã 6 chữ số</Form.Label>
                             <Form.Control 
-                                className="text-center fs-4" 
+                                className="glass-input text-center fs-4" 
                                 maxLength="6" 
                                 required 
                                 onChange={(e) => setUserOtp(e.target.value)} 
                             />
                         </Form.Group>
-                        <Button variant="success" type="submit" className="w-100 mb-2">Xác nhận đăng ký</Button>
-                        <Button variant="link" onClick={() => setStep(1)} className="w-100">Quay lại</Button>
+                        <Button type="submit" className="w-100 py-2 btn-login-custom mb-2">Xác nhận đăng ký</Button>
+                        <Button variant="link" onClick={() => setStep(1)} className="w-100" style={{ color: '#eee' }}>Quay lại</Button>
                     </Form>
                 )}
             </Card>
-        </Container>
+        </div>
     );
 };
 

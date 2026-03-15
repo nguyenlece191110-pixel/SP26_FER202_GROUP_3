@@ -29,7 +29,8 @@
     "eject": "react-scripts eject",
     "server": "npx json-server --watch db-full.json --port 5000",
     "css": "npm install react-router-dom react-bootstrap bootstrap --legacy-peer-deps",
-    "gg": "npm install @react-oauth/google jwt-decode --legacy-peer-deps"
+    "gg": "npm install @react-oauth/google jwt-decode --legacy-peer-deps",
+    "mail": "npm install @emailjs/browser --legacy-peer-deps"
   },
   "eslintConfig": {
     "extends": [
