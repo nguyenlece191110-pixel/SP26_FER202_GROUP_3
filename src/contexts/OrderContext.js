@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 import axios from 'axios';
+import { API_BASE_URL } from '../config/api';
 
 const OrderContext = createContext();
 
@@ -15,13 +16,12 @@ export const OrderProvider = ({ children }) => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [lastFetch, setLastFetch] = useState(0);
 
   // Fetch all orders (for admin)
   const fetchAllOrders = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5000/orders');
+      const response = await axios.get(`${API_BASE_URL}/orders`);
       setOrders(response.data);
       setError(null);
     } catch (err) {
@@ -35,23 +35,20 @@ export const OrderProvider = ({ children }) => {
   // Fetch user orders
   const fetchUserOrders = async (userId) => {
     try {
-      // Prevent duplicate calls within 1 second
-      const now = Date.now();
-      if (now - lastFetch < 1000) {
-        return;
-      }
-      setLastFetch(now);
-      
       setLoading(true);
       
       if (!userId) {
         throw new Error('User ID is required');
       }
 
-      const response = await axios.get(`http://localhost:5000/orders?userId=${userId}`);
+      // Fetch all then filter with normalized string ID to avoid type mismatch (number vs string).
+      const response = await axios.get(`${API_BASE_URL}/orders`);
+      const userOrders = (response.data || []).filter(
+        order => String(order.userId) === String(userId)
+      );
       
       // Sort orders by creation date (newest first)
-      const sortedOrders = response.data.sort((a, b) => 
+      const sortedOrders = userOrders.sort((a, b) => 
         new Date(b.createdAt) - new Date(a.createdAt)
       );
       
@@ -86,11 +83,11 @@ export const OrderProvider = ({ children }) => {
         throw new Error('Thông tin giao hàng không đầy đủ');
       }
 
-      const response = await axios.post('http://localhost:5000/orders', {
+      const response = await axios.post(`${API_BASE_URL}/orders`, {
         ...orderData,
         id: Date.now().toString(),
         createdAt: new Date().toISOString(),
-        status: 'pending'
+        status: orderData.status || 'pending'
       });
       
       setOrders(prev => [...prev, response.data]);
@@ -112,7 +109,7 @@ export const OrderProvider = ({ children }) => {
   const updateOrderStatus = async (orderId, status) => {
     try {
       setLoading(true);
-      await axios.patch(`http://localhost:5000/orders/${orderId}`, { status });
+      await axios.patch(`${API_BASE_URL}/orders/${orderId}`, { status });
       
       setOrders(prev => 
         prev.map(order => 
@@ -132,7 +129,7 @@ export const OrderProvider = ({ children }) => {
   // Get order by ID
   const getOrderById = async (orderId) => {
     try {
-      const response = await axios.get(`http://localhost:5000/orders/${orderId}`);
+      const response = await axios.get(`${API_BASE_URL}/orders/${orderId}`);
       return response.data;
     } catch (err) {
       setError('Không thể tìm thấy đơn hàng');
@@ -145,7 +142,7 @@ export const OrderProvider = ({ children }) => {
   const deleteOrder = async (orderId) => {
     try {
       setLoading(true);
-      await axios.delete(`http://localhost:5000/orders/${orderId}`);
+      await axios.delete(`${API_BASE_URL}/orders/${orderId}`);
       
       setOrders(prev => prev.filter(order => order.id !== orderId));
       setError(null);

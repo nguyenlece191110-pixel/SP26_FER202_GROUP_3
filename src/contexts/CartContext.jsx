@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer, useEffect } from 'react';
+import React, { createContext, useContext, useReducer, useEffect, useRef } from 'react';
 
 // Cart context
 const CartContext = createContext();
@@ -196,6 +196,7 @@ const cartReducer = (state, action) => {
 // Cart provider component
 export const CartProvider = ({ children }) => {
     const [state, dispatch] = useReducer(cartReducer, initialState);
+    const isHydratedRef = useRef(false);
 
     // Load cart from localStorage on mount
     useEffect(() => {
@@ -214,10 +215,16 @@ export const CartProvider = ({ children }) => {
                 console.error('Error loading cart from localStorage:', error);
             }
         }
+
+        isHydratedRef.current = true;
     }, []);
 
     // Save cart to localStorage whenever it changes
     useEffect(() => {
+        if (!isHydratedRef.current) {
+            return;
+        }
+
         localStorage.setItem('techhub_cart', JSON.stringify({
             items: state.items,
             totalItems: state.totalItems,

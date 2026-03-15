@@ -15,7 +15,7 @@ export default function OrderHistory() {
     if (user) {
       fetchUserOrders(user.id);
     }
-  }, [user, fetchUserOrders]);
+  }, [user?.id]);
 
   // Auto-refresh disabled to prevent flickering
   // useEffect(() => {

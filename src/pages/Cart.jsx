@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Card, Button, Form, Alert, Spinner, Modal } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
 import { useAuth } from '../AuthContext';
 import { useOrder } from '../contexts/OrderContext';
@@ -7,6 +8,7 @@ import { API_ENDPOINTS } from '../config/api';
 import { Person, Envelope, Telephone, House, CreditCard, Cash, Phone, ArrowLeft, QrCode, Cart3, Dash, Plus, Trash2 } from 'react-bootstrap-icons';
 
 export default function Cart() {
+    const navigate = useNavigate();
     const { user } = useAuth();
     const { createOrder } = useOrder();
     const { 
@@ -14,7 +16,6 @@ export default function Cart() {
         totalItems, 
         updateQuantity, 
         removeFromCart,
-        clearCart,
         selectedItems,
         getSelectedItemsTotal,
         getSelectedItemsCount,
@@ -47,13 +48,6 @@ export default function Cart() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [qrCodeUrl, setQrCodeUrl] = useState('');
     const [productPriceMap, setProductPriceMap] = useState({});
-
-    // Nếu chưa đăng nhập và có sản phẩm trong giỏ, xóa giỏ hàng
-    useEffect(() => {
-        if (!user && items.length > 0) {
-            clearCart();
-        }
-    }, [user, items.length, clearCart]);
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -275,7 +269,8 @@ export default function Cart() {
             // Create order
             const newOrder = await createOrder(orderData);
             
-            // Clear selected items from cart
+            // Remove purchased items from cart after successful order creation.
+            selectedItems.forEach((itemId) => removeFromCart(itemId));
             clearSelectedItems();
             
             // Store payment info in session storage
@@ -292,7 +287,7 @@ export default function Cart() {
             setTimeout(() => {
                 setShowPaymentModal(false);
                 setPaymentStep(1); // Reset step for next time
-                window.location.href = '/orders';
+                navigate('/orders');
             }, 1000);
             
         } catch (error) {
@@ -461,7 +456,7 @@ export default function Cart() {
                             </Alert>
                         )}
                     </div>
-                    <Button variant="primary" href="/shop">
+                    <Button as={Link} to="/shop" variant="primary">
                         Tiếp tục mua sắm
                     </Button>
                 </div>
@@ -580,10 +575,10 @@ export default function Cart() {
                                         : 'Chọn sản phẩm để thanh toán'
                                     }
                                 </Button>
-                                <Button variant="outline-secondary" href="/orders">
+                                <Button as={Link} to="/orders" variant="outline-secondary">
                                     Xem lịch sử đơn hàng
                                 </Button>
-                                <Button variant="outline-secondary" href="/shop">
+                                <Button as={Link} to="/shop" variant="outline-secondary">
                                     Tiếp tục mua sắm
                                 </Button>
                             </div>
