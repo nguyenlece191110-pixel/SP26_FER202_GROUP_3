@@ -48,7 +48,7 @@ export default function ProductDetail() {
 
             // Lấy giá giảm từ db.json nếu có, nếu không thì tính
             const discountPrice = product.discountPrice || (product.discount ? product.price * (1 - product.discount / 100) : product.price);
-            
+
             addToCart({
                 id: product.id,
                 name: product.name,
@@ -303,45 +303,45 @@ export default function ProductDetail() {
             {/* Product Details Tabs */}
             <Row className="mt-5">
                 <Col>
-                    <Card>
-                        <Card.Header>
+                    <Card className="border-0 shadow-sm">
+                        <Card.Header className="bg-body-tertiary">
                             <Tabs
                                 activeKey={activeTab}
                                 onSelect={(k) => setActiveTab(k)}
                                 className="nav-pills"
                             >
-                                <Tab eventKey="description" title={<span className="text-dark">Mô tả sản phẩm</span>} />
-                                <Tab eventKey="specs" title={<span className="text-dark">Thông số kỹ thuật</span>} />
+                                {/* Đã xóa các thẻ <span className="text-dark"> gây lỗi */}
+                                <Tab eventKey="description" title="Mô tả sản phẩm" />
+                                <Tab eventKey="specs" title="Thông số kỹ thuật" />
                             </Tabs>
                         </Card.Header>
                         <Card.Body>
                             <Tab.Content>
                                 {/* Description Tab */}
                                 {activeTab === 'description' && (
-                                    <div className="text-dark">
-                                        <h5 className="mb-3 text-dark">Mô tả chi tiết</h5>
-
-                                        <h6 className="mb-3 text-dark">Tính năng nổi bật:</h6>
-                                        <ul className="text-dark">
-                                            {product.features.map((feature, index) => (
+                                    <div className="text-body"> {/* Đổi thành text-body */}
+                                        <h5 className="mb-3">Mô tả chi tiết</h5>
+                                        <h6 className="mb-3">Tính năng nổi bật:</h6>
+                                        <ul>
+                                            {product.features && product.features.map((feature, index) => (
                                                 <li key={index}>{feature}</li>
                                             ))}
                                         </ul>
+                                        <p className="mt-4">{product.description}</p>
                                     </div>
                                 )}
 
-                                {/* Specifications Tab */}
+                                {/* Specs Tab */}
                                 {activeTab === 'specs' && (
-                                    <div className="text-dark">
-                                        <h5 className="mb-3 text-dark">Thông số kỹ thuật</h5>
-                                        <table className="table table-bordered">
+                                    <div className="text-body"> {/* Đổi thành text-body */}
+                                        <h5 className="mb-3">Cấu hình chi tiết</h5>
+                                        {/* Bảng (table) của Bootstrap 5 sẽ tự động đổi màu theo theme */}
+                                        <table className="table table-bordered table-striped">
                                             <tbody>
-                                                {Object.entries(product.specs).map(([key, value]) => (
+                                                {product.specs && Object.entries(product.specs).map(([key, value]) => (
                                                     <tr key={key}>
-                                                        <td className="fw-bold text-dark" style={{ width: '30%' }}>
-                                                            {key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1')}
-                                                        </td>
-                                                        <td className="text-dark">{value}</td>
+                                                        <td className="fw-bold text-uppercase" style={{ width: '30%' }}>{key}</td>
+                                                        <td>{value}</td>
                                                     </tr>
                                                 ))}
                                             </tbody>
@@ -354,6 +354,6 @@ export default function ProductDetail() {
                 </Col>
             </Row>
 
-            </Container>
+        </Container>
     );
 }

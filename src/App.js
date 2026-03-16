@@ -8,6 +8,10 @@ import { OrderProvider } from './contexts/OrderContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
+import ScrollToTop from './components/ScrollToTop';
+import { ThemeProvider } from './contexts/ThemeContext';
+import DarkModeToggle from './components/DarkModeToggle';
+
 const Home = lazy(() => import('./pages/Home'));
 const Login = lazy(() => import('./pages/Login'));
 const Register = lazy(() => import('./pages/Register'));
@@ -24,43 +28,47 @@ const PaymentInfo = lazy(() => import('./pages/PaymentInfo'));
 
 function App() {
   return (
-    <Router>
-      <AuthProvider>
-        <CartProvider>
-          <OrderProvider>
-            <Header />
+    <ThemeProvider>
+      <Router>
+        <AuthProvider>
+          <CartProvider>
+            <OrderProvider>
+              <Header />
 
-            <Container className="mt-4" style={{ minHeight: '80vh' }}>
-              <Suspense fallback={<div className="text-center mt-5 font-italic">Đang tải dữ liệu TechHub...</div>}>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/register" element={<Register />} />
-                  <Route path="/shop" element={<Shop />} />
-                  <Route path="/product/:id" element={<ProductDetail />} />
-                  <Route path="/cart" element={<Cart />} />
-                  <Route path="/payment-info" element={<PaymentInfo />} />
-                  <Route path="/checkout" element={<Checkout />} />
-                  <Route path="/orders" element={<OrderHistory />} />
+              <Container className="mt-4" style={{ minHeight: '80vh' }}>
+                <Suspense fallback={<div className="text-center mt-5 font-italic">Đang tải dữ liệu TechHub...</div>}>
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/shop" element={<Shop />} />
+                    <Route path="/product/:id" element={<ProductDetail />} />
+                    <Route path="/cart" element={<Cart />} />
+                    <Route path="/payment-info" element={<PaymentInfo />} />
+                    <Route path="/checkout" element={<Checkout />} />
+                    <Route path="/orders" element={<OrderHistory />} />
 
-                  <Route path="/admin" element={<Admin />} />
-                  <Route path="/admin/products" element={<ManageProductsPage />} />
-                  <Route path="/admin/orders" element={<OrderManagement />} />
+                    <Route path="/admin" element={<Admin />} />
+                    <Route path="/admin/products" element={<ManageProductsPage />} />
+                    <Route path="/admin/orders" element={<OrderManagement />} />
 
-                  <Route path="*" element={
-                    <div className="text-center mt-5">
-                      <h3>404 - Không tìm thấy trang này!</h3>
-                    </div>
-                  } />
-                </Routes>
-              </Suspense>
-            </Container>
+                    <Route path="*" element={
+                      <div className="text-center mt-5">
+                        <h3>404 - Không tìm thấy trang này!</h3>
+                      </div>
+                    } />
+                  </Routes>
+                </Suspense>
+              </Container>
 
-            <Footer />
-          </OrderProvider>
-        </CartProvider>
-      </AuthProvider>
-    </Router>
+              <Footer />
+              <ScrollToTop />
+              <DarkModeToggle />
+            </OrderProvider>
+          </CartProvider>
+        </AuthProvider>
+      </Router>
+    </ThemeProvider>
   );
 }
 
