@@ -38,6 +38,13 @@
       "email": "thaitq.ce190243@gmail.com",
       "password": "123",
       "role": "user"
+    },
+    {
+      "id": "ccac",
+      "name": "Nhật Minh",
+      "email": "minhhln.ce191000@gmail.com",
+      "password": "123",
+      "role": "user"
     }
   ],
   "products": [
