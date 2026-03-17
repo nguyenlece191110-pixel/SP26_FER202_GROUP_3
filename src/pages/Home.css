@@ -1,35 +1,108 @@
+/* Tổng thể trang Home */
+.home-page {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
 
+/* Tiêu đề chính */
 .home-title {
     font-weight: 800;
     text-align: center;
     margin-bottom: 3rem;
     text-transform: uppercase;
     color: #212529;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    position: relative;
 }
 
+.home-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #0d6efd;
+    margin: 10px auto;
+    border-radius: 2px;
+}
+
+/* Tùy chỉnh Card sản phẩm */
+.home-product-card {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border-radius: 15px;
+    background: #ffffff;
+}
+
+.home-product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+}
+
+.img-container {
+    background: #fff;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+/* Nút Xem chi tiết */
+.btn-detail {
+    border-radius: 10px;
+    padding: 10px 0;
+    border-width: 2px;
+    transition: all 0.3s;
+}
+
+.btn-detail:hover {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: white;
+}
+
+/* Nút Xem thêm ở dưới cùng */
 .load-more-container {
     text-align: center;
-    margin-top: 3rem;
+    margin-top: 4rem;
 }
 
 .btn-load-more {
-    padding: 12px 40px;
-    font-weight: bold;
+    padding: 12px 60px;
+    font-weight: 700;
     border-radius: 50px;
-    /* Làm nút bo tròn cho đẹp */
-    transition: all 0.3s ease;
     text-transform: uppercase;
+    transition: all 0.3s ease;
 }
 
 .btn-load-more:hover {
-    transform: translateY(-3px);
-    /* Nhấn nút có hiệu ứng bay lên nhẹ */
-    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3);
 }
 
 .loading-text {
-    margin-top: 10px;
     color: #6c757d;
     font-style: italic;
+}
+/* Thanh tìm kiếm */
+.search-bar-container {
+    border-radius: 50px;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.search-bar-container:focus-within {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1) !important;
+}
+
+.search-input {
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    border-radius: 0 50px 50px 0;
+}
+
+.search-input:focus {
+    box-shadow: none;
+    border-color: #dee2e6;
+}
+
+.search-bar-container .input-group-text {
+    padding-left: 20px;
+    border-radius: 50px 0 0 50px;
 }
