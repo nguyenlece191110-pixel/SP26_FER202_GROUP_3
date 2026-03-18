@@ -1,38 +1,20 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../AuthContext'; 
 import { Form, Button, Card } from 'react-bootstrap';
-import { GoogleLogin } from '@react-oauth/google';
-import { jwtDecode } from 'jwt-decode';
 import '../App.css'; // Import file CSS hiệu ứng kính mờ
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { login, loginWithGoogle } = useContext(AuthContext);
+    const [rememberMe, setRememberMe] = useState(false);
+    const { login } = useContext(AuthContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const cleanEmail = email.trim();
         const cleanPassword = password; 
-        console.debug('submitting', { cleanEmail, cleanPassword });
-        login(cleanEmail, cleanPassword);
-    };
-
-    const handleGoogleSuccess = (credentialResponse) => {
-        try {
-            if (!credentialResponse?.credential) {
-                throw new Error('Missing Google credential');
-            }
-            const decoded = jwtDecode(credentialResponse.credential);
-            loginWithGoogle({
-                email: decoded.email,
-                name: decoded.name,
-                picture: decoded.picture
-            });
-        } catch (error) {
-            console.error('Google decode error:', error);
-            alert('Không thể đọc dữ liệu từ Google. Vui lòng thử lại.');
-        }
+        console.debug('submitting', { cleanEmail, cleanPassword, rememberMe });
+        login(cleanEmail, cleanPassword, rememberMe);
     };
 
     return (
@@ -54,7 +36,7 @@ export default function Login() {
                         />
                     </Form.Group>
                     
-                    <Form.Group className="mb-4">
+                    <Form.Group className="mb-3">
                         <Form.Label>Mật khẩu</Form.Label>
                         <Form.Control 
                             type="password" 
@@ -65,27 +47,20 @@ export default function Login() {
                             required 
                         />
                     </Form.Group>
+
+                    <Form.Group className="mb-4">
+                        <Form.Check 
+                            type="checkbox" 
+                            label="Ghi nhớ tôi"
+                            checked={rememberMe}
+                            onChange={(e) => setRememberMe(e.target.checked)}
+                        />
+                    </Form.Group>
                     
                     <Button type="submit" className="w-100 py-2 btn-login-custom">
                         Vào hệ thống
                     </Button>
                 </Form>
-
-                <div className="text-center my-4">
-                    <span
-                        style={{ color: '#eee', fontSize: '0.9rem' }}
-                    >
-                        hoặc đăng nhập bằng
-                    </span>
-                </div>
-                
-                <div className="d-flex justify-content-center">
-                    <GoogleLogin 
-                        onSuccess={handleGoogleSuccess} 
-                        onError={() => alert('Đăng nhập Google thất bại!')}
-                        theme="outline" // Giúp nút Google nhìn gọn gàng hơn trên nền tối/kính
-                    />
-                </div>
             </Card>
         </div>
     );
