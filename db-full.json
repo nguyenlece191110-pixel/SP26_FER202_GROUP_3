@@ -75,7 +75,8 @@
         "Thiết kế mỏng nhẹ 1.8kg",
         "Pin lâu dài",
         "Bảo hành 24 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "2",
@@ -103,7 +104,8 @@
         "SSD NVMe tốc độ cao",
         "Thiết kế gaming hiện đại",
         "Bảo hành 24 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "3",
@@ -132,7 +134,8 @@
         "SSD 1TB siêu nhanh",
         "Màn hình 144Hz",
         "Bảo hành 24 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "4",
@@ -160,7 +163,8 @@
         "SSD 2TB siêu nhanh",
         "Màn hình QHD 165Hz",
         "Bảo hành 24 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "5",
@@ -188,7 +192,8 @@
         "RAM LPDDR5 tiết kiệm điện",
         "SSD 1TB tốc độ cao",
         "Bảo hành 24 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "6",
@@ -217,7 +222,8 @@
         "Thiết kế mỏng nhẹ",
         "SSD 1TB siêu nhanh",
         "Bảo hành 24 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "7",
@@ -245,7 +251,8 @@
         "USB-C reversible",
         "Hot-swappable switches",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "8",
@@ -274,7 +281,8 @@
         "Pin 24 tiếng với case",
         "Chống nước IPX4",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "9",
@@ -302,7 +310,8 @@
         "Bảo mật vân tay",
         "Thiết kế siêu mỏng nhẹ",
         "Bảo hành 24 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "10",
@@ -330,7 +339,8 @@
         "SSD 2TB siêu nhanh",
         "Màn hình QHD 240Hz",
         "Bảo hành 24 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "11",
@@ -359,7 +369,8 @@
         "SSD NVMe 1TB",
         "Màn hình 144Hz",
         "Bảo hành 24 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "12",
@@ -387,7 +398,8 @@
         "Thiết kế mỏng nhẹ",
         "Màn hình Full HD",
         "Bảo hành 24 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "13",
@@ -415,7 +427,8 @@
         "RAM LPDDR5 16GB",
         "SSD NVMe 1TB",
         "Bảo hành 24 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "14",
@@ -443,7 +456,8 @@
         "Màn hình LED",
         "Thiết kế kim loại",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "15",
@@ -472,7 +486,8 @@
         "SSD NVMe 512GB",
         "Màn hình 120Hz",
         "Bảo hành 24 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "16",
@@ -500,7 +515,8 @@
         "SSD NVMe 1TB",
         "Màn hình QHD 165Hz",
         "Bảo hành 24 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "17",
@@ -529,7 +545,8 @@
         "Thiết kế nhỏ gọn",
         "Màn hình Full HD",
         "Bảo hành 24 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "18",
@@ -557,7 +574,8 @@
         "Màn hình 16 inch",
         "Thiết kế hiện đại",
         "Bảo hành 24 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "19",
@@ -585,7 +603,8 @@
         "SSD NVMe 1TB",
         "Thiết kế siêu mỏng",
         "Bảo hành 24 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "20",
@@ -613,7 +632,8 @@
         "SSD 2TB siêu nhanh",
         "Màn hình 4K OLED",
         "Bảo hành 24 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "21",
@@ -642,7 +662,8 @@
         "SSD NVMe 1TB",
         "Thiết kế 2-in-1",
         "Bảo hành 24 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "22",
@@ -671,7 +692,8 @@
         "Giá sinh viên",
         "Màn hình Full HD",
         "Bảo hành 24 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "23",
@@ -699,7 +721,8 @@
         "SSD NVMe 1TB",
         "Màn hình QHD 165Hz",
         "Bảo hành 24 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "24",
@@ -727,7 +750,8 @@
         "Thiết kế trẻ trung",
         "Màn hình Full HD",
         "Bảo hành 24 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "25",
@@ -755,7 +779,8 @@
         "SSD NVMe 1TB",
         "Thiết kế 2-in-1 cao cấp",
         "Bảo hành 24 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "26",
@@ -784,7 +809,8 @@
         "SSD NVMe 512GB",
         "Màn hình 144Hz",
         "Bảo hành 24 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "27",
@@ -813,7 +839,8 @@
         "iOS 16",
         "5G",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "28",
@@ -843,7 +870,8 @@
         "Màn hình ProMotion 120Hz",
         "5G",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "29",
@@ -872,7 +900,8 @@
         "Màn hình ProMotion 120Hz",
         "5G",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "30",
@@ -901,7 +930,8 @@
         "5G",
         "iOS 18",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "31",
@@ -930,7 +960,8 @@
         "5G",
         "iOS 18",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "32",
@@ -959,7 +990,8 @@
         "5G",
         "iOS 18",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "33",
@@ -988,7 +1020,8 @@
         "5G",
         "iOS 18",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "34",
@@ -1016,7 +1049,8 @@
         "Thiết kế mỏng nhẹ",
         "SSD NVMe 512GB",
         "Bảo hành 24 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "35",
@@ -1045,7 +1079,8 @@
         "Giá sinh viên",
         "Màn hình Full HD",
         "Bảo hành 24 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "36",
@@ -1073,7 +1108,8 @@
         "Thiết kế mỏng nhẹ",
         "Màn hình Full HD",
         "Bảo hành 24 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "37",
@@ -1101,7 +1137,8 @@
         "SSD NVMe 1TB",
         "Màn hình QHD 165Hz",
         "Bảo hành 24 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "38",
@@ -1129,7 +1166,8 @@
         "SSD 2TB siêu nhanh",
         "Màn hình QHD 240Hz",
         "Bảo hành 24 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "39",
@@ -1158,7 +1196,8 @@
         "SSD NVMe 1TB",
         "Thiết kế 2-in-1",
         "Bảo hành 24 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "40",
@@ -1186,7 +1225,8 @@
         "SSD NVMe 1TB",
         "Thiết kế 2-in-1 cao cấp",
         "Bảo hành 24 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "41",
@@ -1216,7 +1256,8 @@
         "Sạc nhanh 120W",
         "5G",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "42",
@@ -1246,7 +1287,8 @@
         "Pin 5000mAh",
         "5G",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "43",
@@ -1275,7 +1317,8 @@
         "Pin 5000mAh",
         "5G",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "44",
@@ -1304,7 +1347,8 @@
         "Pin 5000mAh",
         "5G",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "45",
@@ -1333,7 +1377,8 @@
         "RAM 16GB",
         "Android 13",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "46",
@@ -1363,7 +1408,8 @@
         "RAM 16GB",
         "Android 14",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "47",
@@ -1392,7 +1438,8 @@
         "Pin 5000mAh",
         "5G",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "48",
@@ -1421,7 +1468,8 @@
         "Pin 4800mAh",
         "5G",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "49",
@@ -1450,7 +1498,8 @@
         "RAM 12GB",
         "Android 14",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "50",
@@ -1480,7 +1529,8 @@
         "RAM 8GB",
         "Android 13",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "51",
@@ -1509,7 +1559,8 @@
         "Sạc nhanh 67W",
         "5G",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "52",
@@ -1539,7 +1590,8 @@
         "5G",
         "Android 13",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "53",
@@ -1568,7 +1620,8 @@
         "Pin 5000mAh",
         "Android 13",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "54",
@@ -1597,7 +1650,8 @@
         "Sạc nhanh 33W",
         "Android 13",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "55",
@@ -1626,7 +1680,8 @@
         "Sạc nhanh 120W",
         "5G",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "56",
@@ -1655,7 +1710,8 @@
         "Pin 5000mAh",
         "5G",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "57",
@@ -1684,7 +1740,8 @@
         "Pin 5000mAh",
         "Android 13",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "58",
@@ -1713,7 +1770,8 @@
         "Pin 5000mAh",
         "5G",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "59",
@@ -1743,7 +1801,8 @@
         "Sạc nhanh 45W",
         "5G",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "60",
@@ -1772,7 +1831,8 @@
         "5G",
         "Android 14",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "61",
@@ -1802,7 +1862,8 @@
         "5G",
         "Android 14",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "62",
@@ -1831,7 +1892,8 @@
         "5G",
         "Android 14",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "63",
@@ -1860,7 +1922,8 @@
         "5G",
         "Android 14",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "64",
@@ -1890,7 +1953,8 @@
         "5G",
         "Android 14",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "65",
@@ -1919,7 +1983,8 @@
         "RAM 12GB",
         "Android 14",
         "Bảo hành 12 tháng"
-      ]
+      ],
+      "quantity": 10
     },
     {
       "id": "c5b7",
@@ -1933,7 +1998,8 @@
       "inStock": true,
       "images": [
         "\\images\\Apple-MacBook-Neo.jpg"
-      ]
+      ],
+      "quantity": 10
     }
   ],
   "orders": [
@@ -2028,7 +2094,7 @@
         "zipCode": ""
       },
       "paymentMethod": "cod",
-      "status": "pending",
+      "status": "processing",
       "createdAt": "2026-03-15T14:33:50.731Z"
     },
     {
