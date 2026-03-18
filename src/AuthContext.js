@@ -11,25 +11,55 @@ export const AuthProvider = ({ children }) => {
 
     // Kiểm tra trạng thái đăng nhập khi load lại trang
     useEffect(() => {
-        // sessionStorage is cleared automatically when browser/tab closes
-        const storedUser = sessionStorage.getItem('user');
-        if (storedUser) {
+        const validateStoredUser = async () => {
+            // Ưu tiên localStorage (ghi nhớ), fallback sang sessionStorage
+            const storedUser = localStorage.getItem('user') || sessionStorage.getItem('user');
+            if (!storedUser) return;
+
+            let parsedUser;
             try {
-                const parsedUser = JSON.parse(storedUser);
-                // Kiểm tra user có hợp lệ không (có trong database)
-                // Nếu không hợp lệ, xóa và đăng xuất lại
+                parsedUser = JSON.parse(storedUser);
                 if (!parsedUser || !parsedUser.email) {
+                    localStorage.removeItem('user');
                     sessionStorage.removeItem('user');
                     setUser(null);
                     return;
                 }
+                // Hiển thị phiên ngay lập tức sau khi mở lại app
                 setUser(parsedUser);
             } catch (error) {
                 console.error('Error parsing stored user:', error);
+                localStorage.removeItem('user');
                 sessionStorage.removeItem('user');
                 setUser(null);
+                return;
             }
-        }
+
+            try {
+                // Nếu user bị xóa khỏi db thì buộc đăng nhập lại
+                const res = await axios.get(USERS_API);
+                const candidates = Array.isArray(res.data) ? res.data : [];
+                const existingUser = candidates.find(u => u.email === parsedUser.email);
+
+                if (!existingUser) {
+                    localStorage.removeItem('user');
+                    sessionStorage.removeItem('user');
+                    setUser(null);
+                    navigate('/login');
+                    return;
+                }
+
+                setUser(existingUser);
+                // Chuẩn hóa về localStorage để luôn nhớ sau khi restart app
+                localStorage.setItem('user', JSON.stringify(existingUser));
+                sessionStorage.removeItem('user');
+            } catch (error) {
+                // API tạm lỗi thì vẫn giữ phiên hiện tại, không tự logout
+                console.warn('Cannot validate stored user from server, keep local session:', error);
+            }
+        };
+
+        validateStoredUser();
     }, []);
 
     // Xử lý Đăng nhập với dữ liệu thật từ JSON-server
@@ -45,8 +75,9 @@ export const AuthProvider = ({ children }) => {
             if (loggedInUser) {
                 console.log('login success, user=', loggedInUser);
                 setUser(loggedInUser);
-                // persist only for current browsing session
-                sessionStorage.setItem('user', JSON.stringify(loggedInUser));
+                // Luôn ghi nhớ khi đã đăng nhập, chỉ quên khi logout
+                localStorage.setItem('user', JSON.stringify(loggedInUser));
+                sessionStorage.removeItem('user');
                 navigate('/');
             } else {
                 console.warn('login failed: no matching user', { email, password });
@@ -58,59 +89,15 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-    const loginWithGoogle = async (googleUser) => {
-        try {
-            const { email, name, picture } = googleUser || {};
-
-            if (!email) {
-                alert('Không lấy được email từ Google. Vui lòng thử lại.');
-                return;
-            }
-
-            const res = await axios.get(USERS_API);
-            const candidates = Array.isArray(res.data) ? res.data : [];
-            const existingUser = candidates.find(u => u.email === email);
-
-            if (existingUser) {
-                const mergedUser = {
-                    ...existingUser,
-                    authProvider: existingUser.authProvider || 'google',
-                    avatar: existingUser.avatar || picture || ''
-                };
-                setUser(mergedUser);
-                sessionStorage.setItem('user', JSON.stringify(mergedUser));
-                navigate('/');
-                return;
-            }
-
-            const newGoogleUser = {
-                id: Date.now().toString(),
-                name: name || email.split('@')[0],
-                email,
-                password: '',
-                role: 'user',
-                authProvider: 'google',
-                avatar: picture || ''
-            };
-
-            const created = await axios.post(USERS_API, newGoogleUser);
-            setUser(created.data);
-            sessionStorage.setItem('user', JSON.stringify(created.data));
-            navigate('/');
-        } catch (error) {
-            console.error('Lỗi đăng nhập Google:', error);
-            alert('Đăng nhập Google thất bại. Kiểm tra JSON Server và thử lại.');
-        }
-    };
-
     const logout = () => {
         setUser(null);
+        localStorage.removeItem('user');
         sessionStorage.removeItem('user');
         navigate('/login');
     };
 
     return (
-        <AuthContext.Provider value={{ user, login, loginWithGoogle, logout }}>
+        <AuthContext.Provider value={{ user, login, logout }}>
             {children}
         </AuthContext.Provider>
     );
