@@ -13,6 +13,13 @@
       "email": "phuocadmin@gmail.com",
       "password": "123@Zxcv",
       "role": "admin"
+    },
+    {
+      "id": "af9b",
+      "name": "Nguyễn Trung Hậu",
+      "email": "hauntce190069@gmail.com",
+      "password": "123",
+      "role": "user"
     }
   ],
   "products": [

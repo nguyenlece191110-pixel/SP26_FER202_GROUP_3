@@ -6,15 +6,14 @@ import '../App.css'; // Import file CSS hiệu ứng kính mờ
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [rememberMe, setRememberMe] = useState(false);
     const { login } = useContext(AuthContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const cleanEmail = email.trim();
         const cleanPassword = password; 
-        console.debug('submitting', { cleanEmail, cleanPassword, rememberMe });
-        login(cleanEmail, cleanPassword, rememberMe);
+        console.debug('submitting', { cleanEmail, cleanPassword });
+        login(cleanEmail, cleanPassword);
     };
 
     return (
@@ -47,16 +46,6 @@ export default function Login() {
                             required 
                         />
                     </Form.Group>
-
-                    <Form.Group className="mb-4">
-                        <Form.Check 
-                            type="checkbox" 
-                            label="Ghi nhớ tôi"
-                            checked={rememberMe}
-                            onChange={(e) => setRememberMe(e.target.checked)}
-                        />
-                    </Form.Group>
-                    
                     <Button type="submit" className="w-100 py-2 btn-login-custom">
                         Vào hệ thống
                     </Button>

@@ -11,31 +11,60 @@ export const AuthProvider = ({ children }) => {
 
     // Kiểm tra trạng thái đăng nhập khi load lại trang
     useEffect(() => {
-        // Kiểm tra localStorage trước (Remember me), sau đó kiểm tra sessionStorage
-        const storedUser = localStorage.getItem('user') || sessionStorage.getItem('user');
-        if (storedUser) {
+        const validateStoredUser = async () => {
+            // Ưu tiên localStorage (ghi nhớ), fallback sang sessionStorage
+            const storedUser = localStorage.getItem('user') || sessionStorage.getItem('user');
+            if (!storedUser) return;
+
+            let parsedUser;
             try {
-                const parsedUser = JSON.parse(storedUser);
-                // Kiểm tra user có hợp lệ không (có trong database)
+                parsedUser = JSON.parse(storedUser);
                 if (!parsedUser || !parsedUser.email) {
                     localStorage.removeItem('user');
                     sessionStorage.removeItem('user');
                     setUser(null);
                     return;
                 }
+                // Hiển thị phiên ngay lập tức sau khi mở lại app
                 setUser(parsedUser);
             } catch (error) {
                 console.error('Error parsing stored user:', error);
                 localStorage.removeItem('user');
                 sessionStorage.removeItem('user');
                 setUser(null);
+                return;
             }
-        }
-    }, []);
+
+            try {
+                // Nếu user bị xóa khỏi db thì buộc đăng nhập lại
+                const res = await axios.get(USERS_API);
+                const candidates = Array.isArray(res.data) ? res.data : [];
+                const existingUser = candidates.find(u => u.email === parsedUser.email);
+
+                if (!existingUser) {
+                    localStorage.removeItem('user');
+                    sessionStorage.removeItem('user');
+                    setUser(null);
+                    navigate('/login');
+                    return;
+                }
+
+                setUser(existingUser);
+                // Chuẩn hóa về localStorage để luôn nhớ sau khi restart app
+                localStorage.setItem('user', JSON.stringify(existingUser));
+                sessionStorage.removeItem('user');
+            } catch (error) {
+                // API tạm lỗi thì vẫn giữ phiên hiện tại, không tự logout
+                console.warn('Cannot validate stored user from server, keep local session:', error);
+            }
+        };
+
+        validateStoredUser();
+    }, [navigate]);
 
     // Xử lý Đăng nhập với dữ liệu thật từ JSON-server
-    const login = async (email, password, rememberMe = false) => {
-        console.debug('login called with', { email, password, rememberMe });
+    const login = async (email, password) => {
+        console.debug('login called with', { email, password });
         try {
             // fetch full list then filter locally to avoid query encoding quirks
             const res = await axios.get(USERS_API);
@@ -46,14 +75,9 @@ export const AuthProvider = ({ children }) => {
             if (loggedInUser) {
                 console.log('login success, user=', loggedInUser);
                 setUser(loggedInUser);
-                // Lưu vào localStorage nếu chọn "Ghi nhớ tôi", ngược lại lưu vào sessionStorage
-                if (rememberMe) {
-                    localStorage.setItem('user', JSON.stringify(loggedInUser));
-                    sessionStorage.removeItem('user');
-                } else {
-                    sessionStorage.setItem('user', JSON.stringify(loggedInUser));
-                    localStorage.removeItem('user');
-                }
+                // Luôn ghi nhớ khi đã đăng nhập, chỉ quên khi logout
+                localStorage.setItem('user', JSON.stringify(loggedInUser));
+                sessionStorage.removeItem('user');
                 navigate('/');
             } else {
                 console.warn('login failed: no matching user', { email, password });
@@ -64,8 +88,6 @@ export const AuthProvider = ({ children }) => {
             alert("Kiểm tra JSON Server đang chạy tại http://localhost:5000!");
         }
     };
-
-
     const logout = () => {
         setUser(null);
         localStorage.removeItem('user');
