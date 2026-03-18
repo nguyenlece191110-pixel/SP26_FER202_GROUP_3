@@ -57,7 +57,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url('https://img.lovepik.com/background/20211020/large/lovepik-blue-background-of-technology-line-information-image_400055409.jpg') no-repeat center center;
+    background: url('../public/images/bg.png') no-repeat center center;
     background-size: cover;
 }
 
