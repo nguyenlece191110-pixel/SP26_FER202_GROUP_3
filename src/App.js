@@ -7,6 +7,7 @@ import { CartProvider } from './contexts/CartContext';
 import { OrderProvider } from './contexts/OrderContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Zalo from './pages/Zalo';
 
 import ScrollToTop from './components/ScrollToTop';
 import { ThemeProvider } from './contexts/ThemeContext';
@@ -62,6 +63,7 @@ function App() {
               </Container>
 
               <Footer />
+              <Zalo />
               <ScrollToTop />
               <DarkModeToggle />
             </OrderProvider>
