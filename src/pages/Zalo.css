@@ -1,0 +1,44 @@
+.zalo-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.zalo-float img {
+    width: 40px;
+    height: 40px;
+}
+
+.zalo-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* Hiệu ứng nhấp nháy nhẹ */
+@keyframes pulse-zalo {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 104, 255, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(0, 104, 255, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 104, 255, 0);
+    }
+}
+
+.zalo-float {
+    animation: pulse-zalo 2s infinite;
+}
