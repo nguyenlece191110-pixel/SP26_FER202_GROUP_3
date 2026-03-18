@@ -40,7 +40,7 @@ export default function Home() {
     return (
         <div className="home-page">
             <HeroBanner />
-            
+
             <Container className="mt-4">
                 {/* THANH TÌM KIẾM */}
                 <Row className="justify-content-center mb-5">
@@ -56,8 +56,8 @@ export default function Home() {
                                 className="border-start-0 search-input"
                             />
                             {searchTerm && (
-                                <Button 
-                                    variant="outline-secondary" 
+                                <Button
+                                    variant="outline-secondary"
                                     className="border-start-0 border-end-0 bg-white text-muted"
                                     onClick={() => setSearchTerm('')}
                                 >
@@ -85,9 +85,9 @@ export default function Home() {
                                     <Col key={item.id} xs={12} sm={6} md={4} lg={3}>
                                         <Card className="home-product-card h-100 shadow-sm border-0">
                                             <div className="img-container p-3 text-center">
-                                                <Card.Img 
-                                                    variant="top" 
-                                                    src={getImageUrl(item)} 
+                                                <Card.Img
+                                                    variant="top"
+                                                    src={getImageUrl(item)}
                                                     style={{ height: '180px', objectFit: 'contain' }}
                                                 />
                                             </div>
@@ -98,10 +98,10 @@ export default function Home() {
                                                 <Card.Text className="text-danger fw-bold fs-5 mt-auto text-center">
                                                     {item.price?.toLocaleString('vi-VN')} VND
                                                 </Card.Text>
-                                                <Button 
-                                                    as={Link} 
-                                                    to={`/product/${item.id}`} 
-                                                    variant="outline-primary" 
+                                                <Button
+                                                    as={Link}
+                                                    to={`/product/${item.id}`}
+                                                    variant="outline-primary"
                                                     className="mt-3 w-100 fw-bold btn-detail"
                                                 >
                                                     Xem chi tiết
