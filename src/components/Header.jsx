@@ -1,13 +1,23 @@
-import React, { useContext } from 'react';
-import { Navbar, Nav, Container, Button, Badge } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Navbar, Nav, Container, Button, Badge, Form, InputGroup } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthContext';
 import { useCart } from '../contexts/CartContext';
-import { Cart3, Clipboard2 } from 'react-bootstrap-icons';
+import { Cart3, Clipboard2, Search } from 'react-bootstrap-icons';
 
 export default function Header() {
     const { user, logout } = useContext(AuthContext);
     const { totalItems } = useCart();
+
+    const [searchTerm, setSearchTerm] = useState('');
+    const navigate = useNavigate();
+    const handleSearch = (e) => {
+        e.preventDefault();
+        if (searchTerm.trim()) {
+            // Chuyển hướng sang trang Shop kèm từ khóa tìm kiếm
+            navigate(`/shop?search=${searchTerm}`);
+        }
+    };
 
     return (
         <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
@@ -28,9 +38,9 @@ export default function Header() {
                             <Cart3 className="me-1" />
                             Giỏ hàng
                             {totalItems > 0 && (
-                                <Badge 
-                                    bg="danger" 
-                                    pill 
+                                <Badge
+                                    bg="danger"
+                                    pill
                                     className="position-absolute top-0 start-100 translate-middle"
                                     style={{ fontSize: '0.7em' }}
                                 >
@@ -48,6 +58,35 @@ export default function Header() {
                             <Nav.Link as={Link} to="/admin">Quản trị</Nav.Link>
                         )}
                     </Nav>
+
+                    {/* --- THANH TÌM KIẾM --- */}
+                    <Form className="d-flex me-3" onSubmit={handleSearch}>
+                        <style>
+                            {`
+                                .custom-search::placeholder {
+                                    color: white !important;
+                                    opacity: 0.7; /* Độ mờ nhẹ để trông chuyên nghiệp hơn */
+                                }
+                                .custom-search::-webkit-input-placeholder {
+                                    color: white !important;
+                                }
+                            `}
+                        </style>
+                        <InputGroup size="sm">
+                            <Form.Control
+                                type="search"
+                                placeholder="Tìm sản phẩm..."
+                                className="bg-dark text-white border-secondary custom-search"
+                                aria-label="Search"
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                            />
+                            <Button variant="outline-secondary" type="submit" className="border-secondary">
+                                <Search className="text-white" />
+                            </Button>
+                        </InputGroup>
+                    </Form>
+
                     <Nav>
                         {user ? (
                             <>
