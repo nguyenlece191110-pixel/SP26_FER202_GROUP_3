@@ -20,6 +20,13 @@
       "email": "hauntce190069@gmail.com",
       "password": "123",
       "role": "user"
+    },
+    {
+      "id": "676b",
+      "name": "nguyen",
+      "email": "nguyenle.ce191110@gmail.com",
+      "password": "1",
+      "role": "user"
     }
   ],
   "products": [

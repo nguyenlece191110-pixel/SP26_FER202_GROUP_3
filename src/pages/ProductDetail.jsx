@@ -5,6 +5,7 @@ import { useCart } from '../contexts/CartContext';
 import { useAuth } from '../AuthContext';
 import { API_ENDPOINTS } from '../config/api';
 import { Cart3, ArrowLeft, Truck, Shield, CreditCard, Plus, Dash } from 'react-bootstrap-icons';
+import './ProductDetail.css';
 
 export default function ProductDetail() {
     const { id } = useParams();
@@ -308,7 +309,7 @@ export default function ProductDetail() {
                             <Tabs
                                 activeKey={activeTab}
                                 onSelect={(k) => setActiveTab(k)}
-                                className="nav-pills"
+                                className="nav-pills product-detail-tabs"
                             >
                                 {/* Đã xóa các thẻ <span className="text-dark"> gây lỗi */}
                                 <Tab eventKey="description" title="Mô tả sản phẩm" />

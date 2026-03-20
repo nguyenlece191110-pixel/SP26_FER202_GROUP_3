@@ -1,0 +1,16 @@
+.product-detail-tabs .nav-link {
+    color: #000000 !important;
+    font-weight: 600;
+}
+
+.product-detail-tabs .nav-link:hover,
+.product-detail-tabs .nav-link:focus {
+    color: #000000 !important;
+}
+
+.product-detail-tabs .nav-link.active,
+.product-detail-tabs .show > .nav-link {
+    color: #000000 !important;
+    background-color: #f1f3f5;
+    border-color: #dee2e6;
+}
