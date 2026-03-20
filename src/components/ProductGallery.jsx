@@ -3,6 +3,7 @@ import { Card, Button, Row, Col, Badge } from 'react-bootstrap';
 import { useCart } from '../contexts/CartContext';
 import { useAuth } from '../AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
+import './ProductGallery.css';
 
 const ProductGallery = ({ products }) => {
     const { addToCart } = useCart();
@@ -62,7 +63,6 @@ const ProductGallery = ({ products }) => {
                                     src={selectedImage[product.id] || product.images?.[0] || product.image}
                                     alt={product.name}
                                     className="main-image"
-                                    style={{ height: '200px', objectFit: 'cover' }}
                                 />
                                 {product.discount && (
                                     <Badge 
@@ -83,14 +83,6 @@ const ProductGallery = ({ products }) => {
                                             src={image}
                                             alt={`${product.name} ${index + 1}`}
                                             className={`thumbnail ${selectedImage[product.id] === image ? 'active' : ''}`}
-                                            style={{
-                                                width: '40px',
-                                                height: '40px',
-                                                objectFit: 'cover',
-                                                cursor: 'pointer',
-                                                border: selectedImage[product.id] === image ? '2px solid #0d6efd' : '1px solid #dee2e6',
-                                                borderRadius: '4px'
-                                            }}
                                             onClick={() => handleImageClick(product.id, image)}
                                         />
                                     ))}
@@ -161,28 +153,5 @@ const ProductGallery = ({ products }) => {
         </Row>
     );
 };
-
-// Add CSS styles to remove any potential "0" content
-ProductGallery.defaultProps = {
-    // Ensure no default content that could show "0"
-};
-
-// Add inline styles to prevent any "0" from appearing
-const styles = `
-    .product-card::before,
-    .product-card::after,
-    .main-image::before,
-    .main-image::after,
-    .thumbnail::before,
-    .thumbnail::after {
-        content: none !important;
-    }
-`;
-
-if (typeof document !== 'undefined') {
-    const styleSheet = document.createElement('style');
-    styleSheet.textContent = styles;
-    document.head.appendChild(styleSheet);
-}
 
 export default ProductGallery;
