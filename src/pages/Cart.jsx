@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Card, Button, Form, Alert, Spinner, Modal } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
-import { useCart } from '../contexts/CartContext';
+import { Container, Row, Col, Card, Button, Modal, Form, Alert, Spinner } from 'react-bootstrap';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../AuthContext';
 import { useOrder } from '../contexts/OrderContext';
+import { useCart } from '../contexts/CartContext';
 import { API_ENDPOINTS } from '../config/api';
-import { Person, Envelope, Telephone, House, CreditCard, Cash, Phone, ArrowLeft, QrCode, Cart3, Dash, Plus, Trash2 } from 'react-bootstrap-icons';
+import { Person, Envelope, Telephone, House, CreditCard, Cash, ArrowLeft, Cart3, Dash, Plus, Trash2 } from 'react-bootstrap-icons';
 
 export default function Cart() {
     const navigate = useNavigate();
@@ -46,7 +46,6 @@ export default function Cart() {
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('cod');
     const [formErrors, setFormErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [qrCodeUrl, setQrCodeUrl] = useState('');
     const [productPriceMap, setProductPriceMap] = useState({});
 
     useEffect(() => {
@@ -118,10 +117,72 @@ export default function Cart() {
     // Payment form handlers
     const handlePaymentFormChange = (e) => {
         const { name, value } = e.target;
-        setPaymentFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
+        
+        // Handle fullName field - allow all characters except numbers and special symbols
+        if (name === 'fullName') {
+            const lettersOnlyValue = value.replace(/[0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '');
+            setPaymentFormData(prev => ({
+                ...prev,
+                [name]: lettersOnlyValue
+            }));
+            
+            if (value !== lettersOnlyValue && value.length > lettersOnlyValue.length) {
+                setFormErrors(prev => ({
+                    ...prev,
+                    [name]: 'Họ tên không được chứa số và ký tự đặc biệt'
+                }));
+            } else if (formErrors[name]) {
+                setFormErrors(prev => ({
+                    ...prev,
+                    [name]: ''
+                }));
+            }
+        }
+        // Handle address field - allow all characters and numbers except special symbols
+        else if (name === 'address') {
+            const validAddressValue = value.replace(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '');
+            setPaymentFormData(prev => ({
+                ...prev,
+                [name]: validAddressValue
+            }));
+            
+            if (value !== validAddressValue && value.length > validAddressValue.length) {
+                setFormErrors(prev => ({
+                    ...prev,
+                    [name]: 'Địa chỉ không được chứa ký tự đặc biệt'
+                }));
+            } else if (formErrors[name]) {
+                setFormErrors(prev => ({
+                    ...prev,
+                    [name]: ''
+                }));
+            }
+        }
+        // Handle phone field - numbers only
+        else if (name === 'phone') {
+            const numbersOnlyValue = value.replace(/[^0-9]/g, '');
+            setPaymentFormData(prev => ({
+                ...prev,
+                [name]: numbersOnlyValue
+            }));
+            
+            if (value !== numbersOnlyValue && value.length > numbersOnlyValue.length) {
+                setFormErrors(prev => ({
+                    ...prev,
+                    [name]: 'Số điện thoại chỉ được chứa số'
+                }));
+            } else if (formErrors[name]) {
+                setFormErrors(prev => ({
+                    ...prev,
+                    [name]: ''
+                }));
+            }
+        } else {
+            setPaymentFormData(prev => ({
+                ...prev,
+                [name]: value
+            }));
+        }
         
         // Clear district when city changes
         if (name === 'city') {
@@ -148,6 +209,8 @@ export default function Cart() {
             newErrors.fullName = 'Vui lòng nhập họ tên';
         } else if (paymentFormData.fullName.trim().length < 2) {
             newErrors.fullName = 'Họ tên phải có ít nhất 2 ký tự';
+        } else if (/[0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(paymentFormData.fullName)) {
+            newErrors.fullName = 'Họ tên không được chứa số và ký tự đặc biệt';
         }
 
         if (!paymentFormData.email.trim()) {
@@ -158,14 +221,16 @@ export default function Cart() {
 
         if (!paymentFormData.phone.trim()) {
             newErrors.phone = 'Vui lòng nhập số điện thoại';
-        } else if (!/^(0|\+84)[0-9]{9,10}$/.test(paymentFormData.phone.replace(/\s/g, ''))) {
-            newErrors.phone = 'Số điện thoại không hợp lệ (bắt đầu bằng 0 hoặc +84)';
+        } else if (!/^0[0-9]{9,10}$/.test(paymentFormData.phone.replace(/\s/g, ''))) {
+            newErrors.phone = 'Số điện thoại không hợp lệ (bắt đầu bằng 0 và không quá 10 và 11 số)';
         }
 
         if (!paymentFormData.address.trim()) {
             newErrors.address = 'Vui lòng nhập địa chỉ';
         } else if (paymentFormData.address.trim().length < 5) {
             newErrors.address = 'Địa chỉ phải có ít nhất 5 ký tự';
+        } else if (/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(paymentFormData.address)) {
+            newErrors.address = 'Địa chỉ không được chứa ký tự đặc biệt';
         }
 
         if (!paymentFormData.city.trim()) {
@@ -179,17 +244,6 @@ export default function Cart() {
         setFormErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
-
-    // Generate QR Code for payment
-    // Generate QR code when moving to step 3
-    useEffect(() => {
-        if (paymentStep === 3 && selectedPaymentMethod !== 'cod') {
-            setQrCodeUrl(selectedPaymentMethod === 'momo' ? '/images/momo-qr.png' : '/images/banking-qr.png');
-        }
-        if (paymentStep !== 3 || selectedPaymentMethod === 'cod') {
-            setQrCodeUrl('');
-        }
-    }, [paymentStep, selectedPaymentMethod]);
 
     const handlePaymentSubmit = (e) => {
         e.preventDefault();
@@ -207,16 +261,10 @@ export default function Cart() {
             // Move to payment method step
             setPaymentStep(2);
         } else if (paymentStep === 2) {
-            // Check payment method and move accordingly
-            if (selectedPaymentMethod === 'cod') {
-                // Directly submit for COD - create order immediately
-                submitOrder();
-            } else {
-                // Show QR code for MoMo and Banking
-                setPaymentStep(3);
-            }
+            // Only COD payment available - create order immediately
+            submitOrder();
         } else {
-            // Final submission from QR step
+            // This should not happen since we only have COD
             submitOrder();
         }
     };
@@ -321,10 +369,6 @@ export default function Cart() {
     const handleCloseModal = () => {
         setShowPaymentModal(false);
         setPaymentStep(1); // Reset step
-    };
-
-    const handleBackToPaymentMethod = () => {
-        setPaymentStep(2);
     };
 
     const handleRemoveSelectedItems = () => {
@@ -616,9 +660,7 @@ export default function Cart() {
                 <Modal.Header closeButton>
                     <Modal.Title>
                         <CreditCard className="me-2" />
-                        {paymentStep === 1 ? 'Thông tin thanh toán' : 
-                         paymentStep === 2 ? 'Phương thức thanh toán' : 
-                         'Quét mã QR thanh toán'}
+                        {paymentStep === 1 ? 'Thông tin thanh toán' : 'Phương thức thanh toán'}
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -677,7 +719,7 @@ export default function Cart() {
                                     value={paymentFormData.phone}
                                     onChange={handlePaymentFormChange}
                                     isInvalid={!!formErrors.phone}
-                                    placeholder="09xxxxxxxx hoặc +849xxxxxxxx"
+                                    placeholder="0xxxxxxxxxxx"
                                 />
                                 <Form.Control.Feedback type="invalid">
                                     {formErrors.phone}
@@ -795,44 +837,6 @@ export default function Cart() {
                                         }
                                     />
                                 </div>
-
-                                <div className="payment-option p-3 border rounded mb-3">
-                                    <Form.Check
-                                        type="radio"
-                                        name="paymentMethod"
-                                        value="momo"
-                                        checked={selectedPaymentMethod === 'momo'}
-                                        onChange={(e) => setSelectedPaymentMethod(e.target.value)}
-                                        label={
-                                            <div className="d-flex align-items-center">
-                                                <Phone className="me-3 text-primary" size={24} />
-                                                <div>
-                                                    <h6 className="mb-1">Chuyển khoản qua MoMo</h6>
-                                                    <small className="text-muted">Quét mã QR hoặc chuyển khoản qua ứng dụng MoMo</small>
-                                                </div>
-                                            </div>
-                                        }
-                                    />
-                                </div>
-
-                                <div className="payment-option p-3 border rounded mb-3">
-                                    <Form.Check
-                                        type="radio"
-                                        name="paymentMethod"
-                                        value="banking"
-                                        checked={selectedPaymentMethod === 'banking'}
-                                        onChange={(e) => setSelectedPaymentMethod(e.target.value)}
-                                        label={
-                                            <div className="d-flex align-items-center">
-                                                <CreditCard className="me-3 text-info" size={24} />
-                                                <div>
-                                                    <h6 className="mb-1">Chuyển khoản ngân hàng</h6>
-                                                    <small className="text-muted">Chuyển khoản qua internet banking hoặc quầy ngân hàng</small>
-                                                </div>
-                                            </div>
-                                        }
-                                    />
-                                </div>
                             </div>
 
                             {/* Order Summary */}
@@ -859,112 +863,9 @@ export default function Cart() {
                                 </Card.Body>
                             </Card>
                         </div>
-                    ) : (
-                        // Step 3: QR Code Display
-                        <div className="text-center">
-                            <h5 className="mb-4">
-                                <QrCode className="me-2" />
-                                Quét mã QR để thanh toán
-                            </h5>
-                            
-                            <div className="mb-4">
-                                {qrCodeUrl ? (
-                                    <div className="qr-code-container d-inline-block p-4 border-2 border-dark rounded">
-                                        <img 
-                                            src={qrCodeUrl} 
-                                            alt="Payment QR Code" 
-                                            style={{ 
-                                                width: '256px', 
-                                                height: '256px',
-                                                display: 'block'
-                                            }} 
-                                        />
-                                    </div>
-                                ) : (
-                                    <div className="qr-code-container d-inline-block p-4 border-2 border-dark rounded">
-                                        <div className="qr-placeholder" style={{ 
-                                            width: '256px', 
-                                            height: '256px', 
-                                            background: 'linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%, #ccc), linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%, #ccc)',
-                                            backgroundSize: '20px 20px',
-                                            backgroundPosition: '0 0, 10px 10px',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                            flexDirection: 'column'
-                                        }}>
-                                            <QrCode size={64} className="text-muted mb-2" />
-                                            <small className="text-muted">QR Code</small>
-                                        </div>
-                                    </div>
-                                )}
-                            </div>
-
-                            <Alert variant="info">
-                                <h6 className="alert-heading">
-                                    {selectedPaymentMethod === 'momo' ? 'Hướng dẫn thanh toán MoMo:' : 'Hướng dẫn chuyển khoản:'}
-                                </h6>
-                                <ol className="mb-0 small text-start">
-                                    <li>Quét mã QR bằng ứng dụng {selectedPaymentMethod === 'momo' ? 'MoMo' : 'ngân hàng'}</li>
-                                    <li>Kiểm tra lại thông tin đơn hàng</li>
-                                    <li>Nhập chính xác số tiền: <strong>{formatCurrency(getSelectedItemsTotal())}</strong></li>
-                                    <li>Xác nhận thanh toán</li>
-                                </ol>
-                            </Alert>
-
-                            {/* Order Summary */}
-                            <Card className="bg-light mt-3">
-                                <Card.Body>
-                                    <h6 className="mb-3">Thông tin thanh toán</h6>
-                                    <div className="d-flex justify-content-between mb-2">
-                                        <span>Phương thức:</span>
-                                        <span className="fw-bold">
-                                            {selectedPaymentMethod === 'momo' ? 'Ví MoMo' : 'Chuyển khoản ngân hàng'}
-                                        </span>
-                                    </div>
-                                    <div className="d-flex justify-content-between mb-2">
-                                        <span>Số tiền:</span>
-                                        <span className="fw-bold text-primary">{formatCurrency(getSelectedItemsTotal())}</span>
-                                    </div>
-                                    <div className="d-flex justify-content-between mb-2">
-                                        <span>Nội dung:</span>
-                                        <span className="fw-bold">THANHTOAN_{Date.now()}</span>
-                                    </div>
-                                    {selectedPaymentMethod === 'momo' && (
-                                        <div className="mt-3 p-2 bg-warning bg-opacity-10 rounded">
-                                            <small className="text-muted">
-                                                <strong>Số điện thoại MoMo:</strong> 0338815265<br />
-                                                <strong>Tên tài khoản:</strong> LAPTOP STORE
-                                            </small>
-                                        </div>
-                                    )}
-                                    {selectedPaymentMethod === 'banking' && (
-                                        <div className="mt-3 p-2 bg-info bg-opacity-10 rounded">
-                                            <small className="text-muted">
-                                                <strong>Ngân hàng:</strong> Vietcombank<br />
-                                                <strong>Số tài khoản:</strong> 1234567890<br />
-                                                <strong>Chủ tài khoản:</strong> LAPTOP STORE
-                                            </small>
-                                        </div>
-                                    )}
-                                </Card.Body>
-                            </Card>
-
-                            <Alert variant="warning" className="mt-3">
-                                <small>
-                                    <strong>Lưu ý:</strong> Sau khi thanh toán thành công, vui lòng nhấn "Xác nhận đã thanh toán" để hoàn tất đơn hàng.
-                                </small>
-                            </Alert>
-                        </div>
-                    )}
+                    ) : null}
                 </Modal.Body>
                 <Modal.Footer>
-                    {paymentStep === 3 && (
-                        <Button variant="secondary" onClick={handleBackToPaymentMethod}>
-                            <ArrowLeft className="me-2" />
-                            Quay lại
-                        </Button>
-                    )}
                     {paymentStep === 2 && (
                         <Button variant="secondary" onClick={handleBackToInfo}>
                             <ArrowLeft className="me-2" />
@@ -990,24 +891,10 @@ export default function Cart() {
                                 Tiếp tục thanh toán
                                 <ArrowLeft className="ms-2" style={{ transform: 'rotate(180deg)' }} />
                             </>
-                        ) : paymentStep === 2 ? (
-                            <>
-                                {selectedPaymentMethod === 'cod' ? (
-                                    <>
-                                        <CreditCard className="me-2" />
-                                        Xác nhận đặt hàng
-                                    </>
-                                ) : (
-                                    <>
-                                        <QrCode className="me-2" />
-                                        Hiển thị mã QR
-                                    </>
-                                )}
-                            </>
                         ) : (
                             <>
                                 <CreditCard className="me-2" />
-                                Xác nhận đã thanh toán
+                                Xác nhận đặt hàng
                             </>
                         )}
                     </Button>

@@ -20,6 +20,13 @@
       "email": "hauntce190069@gmail.com",
       "password": "123",
       "role": "user"
+    },
+    {
+      "id": "de46",
+      "name": "ninh",
+      "email": "ninhtl.ce190997@gmail.com",
+      "password": "123",
+      "role": "user"
     }
   ],
   "products": [
