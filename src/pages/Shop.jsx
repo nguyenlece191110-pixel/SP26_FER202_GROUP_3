@@ -128,23 +128,23 @@ export default function Shop() {
                 
                 <Tab.Content>
                     <Tab.Pane eventKey="all">
-                        <ShopContent />
+                        {renderShopContent()}
                     </Tab.Pane>
                     <Tab.Pane eventKey="laptop">
-                        <ShopContent />
+                        {renderShopContent()}
                     </Tab.Pane>
                     <Tab.Pane eventKey="phone">
-                        <ShopContent />
+                        {renderShopContent()}
                     </Tab.Pane>
                     <Tab.Pane eventKey="accessories">
-                        <ShopContent />
+                        {renderShopContent()}
                     </Tab.Pane>
                 </Tab.Content>
             </Tab.Container>
         </Container>
     );
 
-    function ShopContent() {
+    function renderShopContent() {
         return (
             <>
                 {/* Search and Filter */}
