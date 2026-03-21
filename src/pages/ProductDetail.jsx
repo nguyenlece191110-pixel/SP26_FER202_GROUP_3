@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate, Link, useLocation } from 'react-router-dom';
 import { Container, Row, Col, Card, Button, Alert, Form, Badge, Tabs, Tab } from 'react-bootstrap';
 import { useCart } from '../contexts/CartContext';
 import { useAuth } from '../AuthContext';
@@ -10,6 +10,7 @@ import './ProductDetail.css';
 export default function ProductDetail() {
     const { id } = useParams();
     const navigate = useNavigate(); // Khai báo navigate
+    const location = useLocation();
     const { addToCart } = useCart();
     const { user } = useAuth(); // Lấy thông tin user
     const [product, setProduct] = useState(null);
@@ -82,6 +83,10 @@ export default function ProductDetail() {
         }).format(amount);
     };
 
+    const handleBackToProducts = () => {
+        navigate(location.state?.from || '/shop');
+    };
+
     if (loading) {
         return (
             <Container className="mt-5">
@@ -101,7 +106,7 @@ export default function ProductDetail() {
                 <Alert variant="danger">
                     <h4>Không tìm thấy sản phẩm</h4>
                     <p>Sản phẩm bạn tìm kiếm không tồn tại hoặc đã bị xóa.</p>
-                    <Button variant="primary" href="/shop">
+                    <Button variant="primary" onClick={handleBackToProducts}>
                         Quay lại cửa hàng
                     </Button>
                 </Alert>
@@ -136,7 +141,7 @@ export default function ProductDetail() {
             )}
 
             {/* Back Button */}
-            <Button variant="outline-secondary" href="/shop" className="mb-4">
+            <Button variant="outline-secondary" onClick={handleBackToProducts} className="mb-4">
                 <ArrowLeft className="me-2" />
                 Quay lại sản phẩm
             </Button>
