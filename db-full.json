@@ -1998,6 +1998,358 @@
       "quantity": 10
     }
   ],
-  "orders": [],
+  "orders": [
+    {
+      "id": "order001",
+      "userId": "b566",
+      "items": [
+        {
+          "id": "1",
+          "name": "Acer Aspire 5",
+          "price": 15990000,
+          "quantity": 1,
+          "image": "/images/AcerAspire5.png"
+        }
+      ],
+      "totalAmount": 15990000,
+      "shippingInfo": {
+        "fullName": "Nguyen Van A",
+        "email": "nguyenvana@example.com",
+        "phone": "0901234567",
+        "address": "123 Nguyen Hue",
+        "city": "hcmc",
+        "district": "quan1",
+        "zipCode": "700000"
+      },
+      "paymentMethod": "cod",
+      "status": "cancelled",
+      "createdAt": "2024-01-15T10:30:00.000Z",
+      "note": "Giao hàng giờ hành chính"
+    },
+    {
+      "id": "order002",
+      "userId": "cbd6",
+      "items": [
+        {
+          "id": "2",
+          "name": "Dell XPS 13",
+          "price": 25990000,
+          "quantity": 1,
+          "image": "/images/DellXPS13.png"
+        },
+        {
+          "id": "3",
+          "name": "Logitech MX Master 3",
+          "price": 2490000,
+          "quantity": 1,
+          "image": "/images/LogitechMXMaster3.png"
+        }
+      ],
+      "totalAmount": 28480000,
+      "shippingInfo": {
+        "fullName": "Tran Thi B",
+        "email": "tranthib@example.com",
+        "phone": "0912345678",
+        "address": "456 Le Loi",
+        "city": "hanoi",
+        "district": "hoankiem",
+        "zipCode": "100000"
+      },
+      "paymentMethod": "transfer",
+      "status": "processing",
+      "createdAt": "2024-02-20T14:15:00.000Z",
+      "note": ""
+    },
+    {
+      "id": "1773585230731",
+      "userId": "1773580564944",
+      "items": [
+        {
+          "id": "1",
+          "name": "Acer Aspire 5",
+          "price": 15190500,
+          "quantity": 1,
+          "image": "/images/AcerAspire5.png"
+        },
+        {
+          "id": "2",
+          "name": "Acer Aspire 7",
+          "price": 21990000,
+          "quantity": 1,
+          "image": "/images/AcerAspire7.png"
+        }
+      ],
+      "totalAmount": 37180500,
+      "shippingInfo": {
+        "fullName": "Trung Hậu Nguyễn",
+        "email": "hauntce190069@gmail.com",
+        "phone": "0123456789",
+        "address": "22NVC,CANTHO",
+        "city": "Cần Thơ",
+        "district": "Ninh Kiều",
+        "zipCode": ""
+      },
+      "paymentMethod": "cod",
+      "status": "processing",
+      "createdAt": "2026-03-15T14:33:50.731Z"
+    },
+    {
+      "id": "1773585284034",
+      "userId": "1773580564944",
+      "items": [
+        {
+          "id": "1",
+          "name": "Acer Aspire 5",
+          "price": 15190500,
+          "quantity": 1,
+          "image": "/images/AcerAspire5.png"
+        },
+        {
+          "id": "2",
+          "name": "Acer Aspire 7",
+          "price": 21990000,
+          "quantity": 1,
+          "image": "/images/AcerAspire7.png"
+        }
+      ],
+      "totalAmount": 37180500,
+      "shippingInfo": {
+        "fullName": "Trung Hậu Nguyễn",
+        "email": "hauntce190069@gmail.com",
+        "phone": "0123456789",
+        "address": "ádasd132",
+        "city": "Hà Nội",
+        "district": "Hai Bà Trưng",
+        "zipCode": ""
+      },
+      "paymentMethod": "cod",
+      "status": "pending",
+      "createdAt": "2026-03-15T14:34:44.034Z"
+    },
+    {
+      "id": "1773585629859",
+      "userId": "1773580564944",
+      "items": [
+        {
+          "id": "1",
+          "name": "Acer Aspire 5",
+          "price": 15190500,
+          "quantity": 1,
+          "image": "/images/AcerAspire5.png"
+        },
+        {
+          "id": "2",
+          "name": "Acer Aspire 7",
+          "price": 21990000,
+          "quantity": 1,
+          "image": "/images/AcerAspire7.png"
+        },
+        {
+          "id": "3",
+          "name": "Acer Nitro 5",
+          "price": 23391000,
+          "quantity": 1,
+          "image": "/images/AcerNitro5.png"
+        }
+      ],
+      "totalAmount": 60571500,
+      "shippingInfo": {
+        "fullName": "Trung Hậu Nguyễn",
+        "email": "hauntce190069@gmail.com",
+        "phone": "0123456789",
+        "address": "ádasd132",
+        "city": "Hà Nội",
+        "district": "Ba Đình",
+        "zipCode": ""
+      },
+      "paymentMethod": "cod",
+      "status": "pending",
+      "createdAt": "2026-03-15T14:40:29.859Z"
+    },
+    {
+      "userId": "de46",
+      "items": [
+        {
+          "id": "2",
+          "name": "Acer Aspire 7",
+          "price": 21990000,
+          "quantity": 4,
+          "image": "/images/AcerAspire7.png"
+        }
+      ],
+      "totalAmount": 87960000,
+      "shippingInfo": {
+        "fullName": "ninh",
+        "email": "ninhtl.ce190997@gmail.com",
+        "phone": "0098761111",
+        "address": "11 Ninh",
+        "city": "Hà Nội",
+        "district": "Hoàng Mai",
+        "zipCode": ""
+      },
+      "paymentMethod": "cod",
+      "status": "pending",
+      "createdAt": "2026-03-21T09:40:04.316Z",
+      "id": "GdAXRtZBqV4"
+    },
+    {
+      "userId": "1",
+      "items": [
+        {
+          "id": "2",
+          "name": "Acer Aspire 7",
+          "price": 21990000,
+          "quantity": 2,
+          "image": "/images/AcerAspire7.png"
+        }
+      ],
+      "totalAmount": 43980000,
+      "shippingInfo": {
+        "fullName": "Hậu Admin",
+        "email": "admin@gmail.com",
+        "phone": "0987654321",
+        "address": "11 NIBH",
+        "city": "TP. Hồ Chí Minh",
+        "district": "Gò Vấp",
+        "zipCode": ""
+      },
+      "paymentMethod": "cod",
+      "status": "delivered",
+      "createdAt": "2026-03-21T09:59:43.115Z",
+      "id": "92AYKZK4BAM"
+    },
+    {
+      "userId": "1",
+      "items": [
+        {
+          "id": "2",
+          "name": "Acer Aspire 7",
+          "price": 21990000,
+          "quantity": 4,
+          "image": "/images/AcerAspire7.png"
+        }
+      ],
+      "totalAmount": 87960000,
+      "shippingInfo": {
+        "fullName": "Hậu Admin",
+        "email": "admin@gmail.com",
+        "phone": "09876543234",
+        "address": "11 NINH",
+        "city": "Hà Nội",
+        "district": "Nam Từ Liêm",
+        "zipCode": ""
+      },
+      "paymentMethod": "cod",
+      "status": "cancelled",
+      "createdAt": "2026-03-21T10:01:20.063Z",
+      "id": "nj9nQ4BlUmg"
+    },
+    {
+      "userId": "1",
+      "items": [
+        {
+          "id": "1",
+          "name": "Acer Aspire 5",
+          "price": 15190500,
+          "quantity": 2,
+          "image": "/images/AcerAspire5.png"
+        }
+      ],
+      "totalAmount": 30381000,
+      "shippingInfo": {
+        "fullName": "Hậu Admin",
+        "email": "admin@gmail.com",
+        "phone": "0987654321",
+        "address": "11 ning",
+        "city": "TP. Hồ Chí Minh",
+        "district": "Gò Vấp",
+        "zipCode": ""
+      },
+      "paymentMethod": "cod",
+      "status": "cancelled",
+      "createdAt": "2026-03-21T10:03:26.540Z",
+      "id": "jOqWLxPWyos"
+    },
+    {
+      "userId": "1",
+      "items": [
+        {
+          "id": "1",
+          "name": "Acer Aspire 5",
+          "price": 15190500,
+          "quantity": 2,
+          "image": "/images/AcerAspire5.png"
+        }
+      ],
+      "totalAmount": 30381000,
+      "shippingInfo": {
+        "fullName": "Hậu Admin",
+        "email": "admin@gmail.com",
+        "phone": "09876543222",
+        "address": "111 nnn",
+        "city": "Hà Nội",
+        "district": "Nam Từ Liêm",
+        "zipCode": ""
+      },
+      "paymentMethod": "cod",
+      "status": "delivered",
+      "createdAt": "2026-03-21T10:05:00.154Z",
+      "id": "R92JL9TzQow"
+    },
+    {
+      "userId": "1",
+      "items": [
+        {
+          "id": "1",
+          "name": "Acer Aspire 5",
+          "price": 15190500,
+          "quantity": 2,
+          "image": "/images/AcerAspire5.png"
+        },
+        {
+          "id": "2",
+          "name": "Acer Aspire 7",
+          "price": 21990000,
+          "quantity": 2,
+          "image": "/images/AcerAspire7.png"
+        },
+        {
+          "id": "3",
+          "name": "Acer Nitro 5",
+          "price": 23391000,
+          "quantity": 2,
+          "image": "/images/AcerNitro5.png"
+        },
+        {
+          "id": "4",
+          "name": "Acer Predator Helios 16",
+          "price": 45990000,
+          "quantity": 2,
+          "image": "/images/AcerPredatorHelios16.png"
+        },
+        {
+          "id": "5",
+          "name": "Acer Swift Go 14",
+          "price": 18990000,
+          "quantity": 2,
+          "image": "/images/AcerSwiftGo14.png"
+        }
+      ],
+      "totalAmount": 251103000,
+      "shippingInfo": {
+        "fullName": "Hậu Admin",
+        "email": "admin@gmail.com",
+        "phone": "0987654345",
+        "address": "HH 1111",
+        "city": "TP. Hồ Chí Minh",
+        "district": "Bình Chánh",
+        "zipCode": ""
+      },
+      "paymentMethod": "cod",
+      "status": "delivered",
+      "createdAt": "2026-03-21T10:06:15.620Z",
+      "id": "2tJqLvhddPY"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

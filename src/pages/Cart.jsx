@@ -388,11 +388,12 @@ export default function Cart() {
         const isSelected = selectedItems.includes(item.id);
         const productMeta = productPriceMap[item.id] || {};
         const originalUnitPrice = item.originalPrice || item.purchasePrice || productMeta.originalPrice || item.price;
-        const discountedUnitPrice = item.discountPrice || item.price || productMeta.discountPrice || originalUnitPrice;
+        const discountedUnitPrice = item.discountPrice || productMeta.discountPrice || item.price || originalUnitPrice;
         const calculatedDiscount = originalUnitPrice > discountedUnitPrice
             ? Math.round(((originalUnitPrice - discountedUnitPrice) / originalUnitPrice) * 100)
             : 0;
         const discountPercent = item.discount || productMeta.discount || calculatedDiscount;
+        const hasDiscount = discountPercent > 0 && discountedUnitPrice < originalUnitPrice;
 
         const handleQuantityChange = (newQuantity) => {
             if (newQuantity > 0 && newQuantity <= 99) {
@@ -439,25 +440,40 @@ export default function Cart() {
                                 )}
                             </div>
                             <p className="text-muted mb-2 small">{item.description}</p>
-                            <div className="text-decoration-line-through text-dark mb-2">
-                                {formatCurrency(originalUnitPrice)}
-                            </div>
-                            <div className="d-flex justify-content-center">
-                                <div className="d-flex align-items-center">
+                            {hasDiscount ? (
+                                <div className="text-decoration-line-through text-dark mb-2">
+                                    {formatCurrency(originalUnitPrice)}
+                                </div>
+                            ) : (
+                                <div className="text-dark fw-bold mb-2">
+                                    {formatCurrency(originalUnitPrice)}
+                                </div>
+                            )}
+                            <div className="d-flex justify-content-center mt-2">
+                                <div className="d-flex align-items-center gap-2">
                                     <Button
                                         variant="outline-secondary"
                                         size="sm"
+                                        className="rounded-circle d-flex align-items-center justify-content-center p-0"
                                         onClick={() => handleQuantityChange(quantity - 1)}
                                         disabled={readOnly || quantity <= 1}
+                                        style={{ width: '30px', height: '30px' }}
                                     >
                                         <Dash size={12} />
                                     </Button>
-                                    <span className="mx-3 fw-bold">{quantity}</span>
+                                    <span
+                                        className="fw-bold text-center"
+                                        style={{ minWidth: '36px' }}
+                                    >
+                                        {quantity}
+                                    </span>
                                     <Button
                                         variant="outline-secondary"
                                         size="sm"
+                                        className="rounded-circle d-flex align-items-center justify-content-center p-0"
                                         onClick={() => handleQuantityChange(quantity + 1)}
                                         disabled={readOnly || quantity >= 99}
+                                        style={{ width: '30px', height: '30px' }}
                                     >
                                         <Plus size={12} />
                                     </Button>
@@ -465,9 +481,11 @@ export default function Cart() {
                             </div>
                         </div>
                         <div className="text-end">
-                            <div className="fw-bold text-danger mb-2">
-                                {formatCurrency(discountedUnitPrice)}
-                            </div>
+                            {hasDiscount && (
+                                <div className="fw-bold text-danger mb-2">
+                                    {formatCurrency(discountedUnitPrice)}
+                                </div>
+                            )}
                             <Button
                                 variant="outline-secondary"
                                 size="sm"

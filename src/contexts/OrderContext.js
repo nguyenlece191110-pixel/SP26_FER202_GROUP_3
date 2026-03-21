@@ -83,6 +83,39 @@ export const OrderProvider = ({ children }) => {
         throw new Error('Thông tin giao hàng không đầy đủ');
       }
 
+      // Check and update product quantities
+      for (const item of orderData.items) {
+        try {
+          // Get current product data
+          const productResponse = await axios.get(`${API_BASE_URL}/products/${item.id}`);
+          const product = productResponse.data;
+          
+          // Check if product exists
+          if (!product) {
+            throw new Error(`Sản phẩm với ID ${item.id} không tồn tại`);
+          }
+          
+          // Check if enough quantity is available
+          if (product.quantity < item.quantity) {
+            throw new Error(`Sản phẩm ${product.name} chỉ còn ${product.quantity} sản phẩm trong kho`);
+          }
+          
+          // Update product quantity
+          const newQuantity = product.quantity - item.quantity;
+          await axios.patch(`${API_BASE_URL}/products/${item.id}`, { 
+            quantity: newQuantity,
+            inStock: newQuantity > 0
+          });
+          
+          console.log(`Updated quantity for product ${product.name}: ${product.quantity} -> ${newQuantity}`);
+        } catch (error) {
+          if (error.response?.status === 404) {
+            throw new Error(`Sản phẩm với ID ${item.id} không tồn tại`);
+          }
+          throw error;
+        }
+      }
+
       const response = await axios.post(`${API_BASE_URL}/orders`, {
         ...orderData,
         id: Date.now().toString(),
@@ -109,6 +142,36 @@ export const OrderProvider = ({ children }) => {
   const updateOrderStatus = async (orderId, status) => {
     try {
       setLoading(true);
+      
+      // If order is being cancelled, restore product quantities
+      if (status === 'cancelled') {
+        // Get order details to restore quantities
+        const orderResponse = await axios.get(`${API_BASE_URL}/orders/${orderId}`);
+        const order = orderResponse.data;
+        
+        // Restore product quantities
+        for (const item of order.items) {
+          try {
+            // Get current product data
+            const productResponse = await axios.get(`${API_BASE_URL}/products/${item.id}`);
+            const product = productResponse.data;
+            
+            if (product) {
+              // Restore quantity
+              const newQuantity = product.quantity + item.quantity;
+              await axios.patch(`${API_BASE_URL}/products/${item.id}`, { 
+                quantity: newQuantity,
+                inStock: newQuantity > 0
+              });
+              
+              console.log(`Restored quantity for product ${product.name}: ${product.quantity} -> ${newQuantity}`);
+            }
+          } catch (error) {
+            console.error(`Error restoring quantity for product ${item.id}:`, error);
+          }
+        }
+      }
+      
       await axios.patch(`${API_BASE_URL}/orders/${orderId}`, { status });
       
       setOrders(prev => 
