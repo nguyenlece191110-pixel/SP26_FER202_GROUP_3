@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Card, Badge, Button, Alert, Spinner, Modal } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import { useOrder } from '../contexts/OrderContext';
 import { useAuth } from '../AuthContext';
 import { Eye, Clock, Trash } from 'react-bootstrap-icons';
@@ -7,6 +8,7 @@ import { Eye, Clock, Trash } from 'react-bootstrap-icons';
 export default function OrderHistory() {
   const { user } = useAuth();
   const { orders, loading, error, fetchUserOrders, deleteOrder, setLoading } = useOrder();
+  const navigate = useNavigate();
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [orderToDelete, setOrderToDelete] = useState(null);
@@ -175,11 +177,11 @@ export default function OrderHistory() {
               <p className="mb-3">Bạn chưa có đơn hàng nào trong hệ thống.</p>
               <hr />
               <div className="d-flex gap-2 justify-content-center">
-                <Button variant="primary" href="/shop">
+                <Button variant="primary" onClick={() => navigate('/shop')}>
                   <i className="bi bi-cart me-2"></i>
                   Bắt đầu mua sắm
                 </Button>
-                <Button variant="outline-primary" href="/cart">
+                <Button variant="outline-primary" onClick={() => navigate('/cart')}>
                   <i className="bi bi-basket me-2"></i>
                   Xem giỏ hàng
                 </Button>
@@ -255,7 +257,7 @@ export default function OrderHistory() {
                           <Eye className="me-1" />
                           {selectedOrder?.id === order.id ? 'Ẩn' : 'Xem'}
                         </Button>
-                        {canDeleteOrder(order) && (
+                        {user?.role === 'admin' && canDeleteOrder(order) && (
                           <Button
                             variant="outline-danger"
                             size="sm"
@@ -359,11 +361,11 @@ export default function OrderHistory() {
               <h4 className="mb-3">Chưa có đơn hàng nào</h4>
               <p className="text-muted mb-4">Bạn chưa có đơn hàng nào trong hệ thống.</p>
               <div className="d-flex gap-2 justify-content-center">
-                <Button variant="primary" href="/shop">
+                <Button variant="primary" onClick={() => navigate('/shop')}>
                   <i className="bi bi-cart me-2"></i>
                   Bắt đầu mua sắm
                 </Button>
-                <Button variant="outline-primary" href="/cart">
+                <Button variant="outline-primary" onClick={() => navigate('/cart')}>
                   <i className="bi bi-basket me-2"></i>
                   Xem giỏ hàng
                 </Button>
