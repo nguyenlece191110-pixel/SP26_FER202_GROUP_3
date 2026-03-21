@@ -22,17 +22,18 @@
       "role": "user"
     },
     {
-<<<<<<< HEAD
+      "id": "1f59",
+      "name": "Nhật Minh",
+      "email": "minhhln.ce191000@gmail.com",
+      "password": "111",
       "id": "de46",
       "name": "ninh",
       "email": "ninhtl.ce190997@gmail.com",
       "password": "123",
-=======
       "id": "676b",
       "name": "nguyen",
       "email": "nguyenle.ce191110@gmail.com",
       "password": "1",
->>>>>>> a8f5f7863ee85a773a6f20cbe1380020897c3aa9
       "role": "user"
     }
   ],
