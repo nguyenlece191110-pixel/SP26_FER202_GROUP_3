@@ -95,8 +95,51 @@ export const AuthProvider = ({ children }) => {
         navigate('/login');
     };
 
+    const resetPassword = async (email, newPassword) => {
+        const cleanEmail = (email || '').trim();
+        const cleanPassword = (newPassword || '').trim();
+
+        if (!cleanEmail) {
+            return { success: false, message: 'Email không hợp lệ.' };
+        }
+
+        if (cleanPassword.length < 6) {
+            return { success: false, message: 'Mật khẩu mới phải có ít nhất 6 ký tự.' };
+        }
+
+        try {
+            const res = await axios.get(USERS_API);
+            const candidates = Array.isArray(res.data) ? res.data : [];
+            const targetUser = candidates.find(u => u.email === cleanEmail);
+
+            if (!targetUser) {
+                return { success: false, message: 'Không tìm thấy tài khoản với email này.' };
+            }
+
+            await axios.patch(`${USERS_API}/${targetUser.id}`, {
+                password: cleanPassword
+            });
+
+            // Nếu người dùng hiện tại vừa đổi mật khẩu, đồng bộ lại phiên đang lưu
+            if (user && user.email === cleanEmail) {
+                const updatedUser = { ...user, password: cleanPassword };
+                setUser(updatedUser);
+                localStorage.setItem('user', JSON.stringify(updatedUser));
+                sessionStorage.removeItem('user');
+            }
+
+            return { success: true, message: 'Đổi mật khẩu thành công.' };
+        } catch (error) {
+            console.error('Reset password failed:', error);
+            return {
+                success: false,
+                message: 'Không thể cập nhật mật khẩu. Vui lòng thử lại sau.'
+            };
+        }
+    };
+
     return (
-        <AuthContext.Provider value={{ user, login, logout }}>
+        <AuthContext.Provider value={{ user, login, logout, resetPassword }}>
             {children}
         </AuthContext.Provider>
     );

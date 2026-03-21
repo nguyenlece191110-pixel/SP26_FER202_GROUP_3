@@ -15,6 +15,7 @@ import DarkModeToggle from './components/DarkModeToggle';
 
 const Home = lazy(() => import('./pages/Home'));
 const Login = lazy(() => import('./pages/Login'));
+const ForgotPassword = lazy(() => import('./pages/ForgotPassword'));
 const Register = lazy(() => import('./pages/Register'));
 const Shop = lazy(() => import('./pages/Shop'));
 const Cart = lazy(() => import('./pages/Cart'));
@@ -41,6 +42,7 @@ function App() {
                   <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/forgot-password" element={<ForgotPassword />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/shop" element={<Shop />} />
                     <Route path="/product/:id" element={<ProductDetail />} />

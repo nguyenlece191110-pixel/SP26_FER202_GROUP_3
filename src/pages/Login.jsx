@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../AuthContext'; 
 import { Form, Button, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import '../App.css'; // Import file CSS hiệu ứng kính mờ
 
 export default function Login() {
@@ -49,6 +50,11 @@ export default function Login() {
                     <Button type="submit" className="w-100 py-2 btn-login-custom">
                         Vào hệ thống
                     </Button>
+                    <div className="text-center mt-3">
+                        <Link to="/forgot-password" style={{ color: '#fff' }}>
+                            Quên mật khẩu?
+                        </Link>
+                    </div>
                 </Form>
             </Card>
         </div>
