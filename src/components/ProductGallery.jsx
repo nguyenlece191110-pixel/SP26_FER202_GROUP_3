@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { Card, Button, Row, Col, Badge } from 'react-bootstrap';
 import { useCart } from '../contexts/CartContext';
 import { useAuth } from '../AuthContext';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 import './ProductGallery.css';
 
 const ProductGallery = ({ products }) => {
     const { addToCart } = useCart();
     const { user } = useAuth();
     const navigate = useNavigate();
+    const location = useLocation();
     const [selectedImage, setSelectedImage] = useState({});
 
     const handleImageClick = (productId, imageUrl) => {
@@ -142,6 +143,7 @@ const ProductGallery = ({ products }) => {
                                     size="sm"
                                     as={Link}
                                     to={`/product/${product.id}`}
+                                    state={{ from: `${location.pathname}${location.search}` }}
                                 >
                                     Xem chi tiết
                                 </Button>
