@@ -20,6 +20,13 @@
       "email": "hauntce190069@gmail.com",
       "password": "123",
       "role": "user"
+    },
+    {
+      "id": "1f59",
+      "name": "Nhật Minh",
+      "email": "minhhln.ce191000@gmail.com",
+      "password": "111",
+      "role": "user"
     }
   ],
   "products": [

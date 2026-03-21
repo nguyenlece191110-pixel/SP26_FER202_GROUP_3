@@ -1,21 +1,41 @@
 import React from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Carousel, Container } from 'react-bootstrap';
 
 export default function HeroBanner() {
     return (
-        <div className="bg-primary text-white p-5 rounded-3 mb-4 text-center">
-            <Container>
-                <Row>
-                    <Col>
-                        <h1 className="display-4 fw-bold">Chào mừng đến với TechHub</h1>
-                        <p className="lead">Nơi cung cấp Điện thoại và Laptop chính hãng với giá tốt nhất.</p>
-                        <Button as={Link} to="/shop" variant="light" size="lg" className="mt-3">
-                            Mua sắm ngay
-                        </Button>
-                    </Col>
-                </Row>
-            </Container>
-        </div>
+        /* Dùng class 'overflow-hidden' và 'rounded-bottom' của Bootstrap để bo góc dưới banner */
+        <Carousel className="hero-carousel shadow-sm mb-4 overflow-hidden rounded-bottom">
+            
+            {/* Slide 1: brand1.jpg */}
+            <Carousel.Item interval={3000}>
+                <img
+                    className="d-block w-100"
+                    src="/images/brand1.png"
+                    alt="First slide"
+                    style={{ height: '450px', objectFit: 'cover', backgroundColor: '#f1f1f1' }}
+                />
+            </Carousel.Item>
+
+            {/* Slide 2: brand2.jpg */}
+            <Carousel.Item interval={3000}>
+                <img
+                    className="d-block w-100"
+                    src="/images/brand2.jpg"
+                    alt="Second slide"
+                    style={{ height: '450px', objectFit: 'cover', backgroundColor: '#f1f1f1' }}
+                />
+            </Carousel.Item>
+
+            {/* Slide 3: brand3.jpg */}
+            <Carousel.Item interval={3000}>
+                <img
+                    className="d-block w-100"
+                    src="/images/brand3.png"
+                    alt="Third slide"
+                    style={{ height: '450px', objectFit: 'cover', backgroundColor: '#f1f1f1' }}
+                />
+            </Carousel.Item>
+            
+        </Carousel>
     );
 }
