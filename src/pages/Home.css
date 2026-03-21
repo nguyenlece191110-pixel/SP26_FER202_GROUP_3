@@ -1,108 +1,127 @@
-/* Tổng thể trang Home */
+/* Cấu trúc trang và Dark Mode */
 .home-page {
-    background-color: #f8f9fa;
     min-height: 100vh;
+    padding-bottom: 0;
+    transition: background-color 0.3s ease;
 }
 
-/* Tiêu đề chính */
-.home-title {
-    font-weight: 800;
-    text-align: center;
-    margin-bottom: 3rem;
-    text-transform: uppercase;
-    color: #212529;
-    letter-spacing: 2px;
+.home-page.light { background-color: #ffffff; color: #212529; }
+.home-page.dark { background-color: #121212; color: #f8f9fa; }
+
+/* KHU VỰC DEAL ONLINE */
+.deal-section {
+    position: relative;
+    margin-top: 60px;
+}
+
+.deal-wrapper-bg {
+    border-radius: 20px;
+    padding-top: 45px;
     position: relative;
 }
 
-.home-title::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 4px;
-    background: #0d6efd;
-    margin: 10px auto;
-    border-radius: 2px;
+.home-page.light .deal-wrapper-bg { background-color: #fff5f5; border: 2px solid #ffcccc; }
+.home-page.dark .deal-wrapper-bg { background-color: #1e1e1e; border: 2px solid #333; }
+
+.deal-title-wrapper {
+    position: absolute;
+    top: -25px;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
 }
 
-/* Tùy chỉnh Card sản phẩm */
-.home-product-card {
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    border-radius: 15px;
-    background: #ffffff;
-}
-
-.home-product-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
-}
-
-.img-container {
-    background: #fff;
-    border-bottom: 1px solid #f1f1f1;
-}
-
-/* Nút Xem chi tiết */
-.btn-detail {
-    border-radius: 10px;
-    padding: 10px 0;
-    border-width: 2px;
-    transition: all 0.3s;
-}
-
-.btn-detail:hover {
-    background-color: #0d6efd;
-    border-color: #0d6efd;
+.deal-main-title {
+    background: linear-gradient(180deg, #ff5e5e 0%, #ef3030 100%);
     color: white;
-}
-
-/* Nút Xem thêm ở dưới cùng */
-.load-more-container {
-    text-align: center;
-    margin-top: 4rem;
-}
-
-.btn-load-more {
-    padding: 12px 60px;
-    font-weight: 700;
-    border-radius: 50px;
+    padding: 12px 50px;
+    border-radius: 40px;
+    font-weight: 800;
+    font-size: 1.3rem;
+    box-shadow: 0 4px 15px rgba(239, 48, 48, 0.4);
     text-transform: uppercase;
+}
+
+/* Nút Xem tất cả sản phẩm */
+.btn-view-all {
+    border-width: 2px;
+    transition: all 0.3s ease;
+    background-color: white;
+}
+
+.home-page.dark .btn-view-all {
+    background-color: transparent;
+    color: #ff6b6b;
+    border-color: #ff6b6b;
+}
+
+.btn-view-all:hover {
+    background-color: #ef3030 !important;
+    color: white !important;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(239, 48, 48, 0.2);
+}
+
+/* Tabs điều hướng */
+.custom-deal-tabs .nav-link {
+    color: #666;
+    border: none !important;
+    background: transparent !important;
+    font-size: 1.1rem;
+    padding: 10px 20px;
+}
+
+.custom-deal-tabs .nav-link.active {
+    color: #ef3030 !important;
+    font-weight: 800;
+    border-bottom: 3px solid #ef3030 !important;
+}
+
+.deal-content-padding { padding: 10px 25px 30px; }
+
+/* Card sản phẩm */
+.product-deal-card {
+    border-radius: 15px;
     transition: all 0.3s ease;
 }
 
-.btn-load-more:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3);
+.home-page.light .product-deal-card { background-color: #ffffff !important; border: 1px solid #ffeded !important; }
+.home-page.dark .product-deal-card { background-color: #2c2c2c !important; border: 1px solid #444 !important; color: white; }
+
+.badge-discount {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ffc107;
+    color: #000;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    z-index: 5;
 }
 
-.loading-text {
-    color: #6c757d;
-    font-style: italic;
-}
-/* Thanh tìm kiếm */
-.search-bar-container {
-    border-radius: 50px;
-    overflow: hidden;
-    transition: transform 0.2s ease;
+/* PHẦN CHÍNH SÁCH DỊCH VỤ */
+.service-policy-section {
+    margin-top: 60px;
+    padding: 50px 0;
 }
 
-.search-bar-container:focus-within {
-    transform: scale(1.02);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1) !important;
+.home-page.light .service-policy-section { background-color: #f8f9fa; }
+.home-page.dark .service-policy-section { background-color: #1a1a1a; }
+
+.policy-icon-wrapper {
+    width: 75px;
+    height: 75px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    transition: all 0.3s ease;
 }
 
-.search-input {
-    padding: 12px 20px;
-    font-size: 1.1rem;
-    border-radius: 0 50px 50px 0;
-}
-
-.search-input:focus {
-    box-shadow: none;
-    border-color: #dee2e6;
-}
-
-.search-bar-container .input-group-text {
-    padding-left: 20px;
-    border-radius: 50px 0 0 50px;
-}
+.policy-icon { width: 45px; height: 45px; object-fit: contain; }

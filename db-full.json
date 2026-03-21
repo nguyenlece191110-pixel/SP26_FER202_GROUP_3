@@ -22,13 +22,20 @@
       "role": "user"
     },
     {
+      "id": "1f59",
+      "name": "Nhật Minh",
+      "email": "minhhln.ce191000@gmail.com",
+      "password": "111",
+      "role": "user"
+    },
+    {
       "id": "de46",
       "name": "ninh",
       "email": "ninhtl.ce190997@gmail.com",
       "password": "123",
       "role": "user"
-        },
-        {
+    },
+    {
       "id": "676b",
       "name": "nguyen",
       "email": "nguyenle.ce191110@gmail.com",

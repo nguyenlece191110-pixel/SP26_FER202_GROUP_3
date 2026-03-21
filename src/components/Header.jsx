@@ -65,7 +65,7 @@ export default function Header() {
                             {`
                                 .custom-search::placeholder {
                                     color: white !important;
-                                    opacity: 0.7; /* Độ mờ nhẹ để trông chuyên nghiệp hơn */
+                                    opacity: 0.7;
                                 }
                                 .custom-search::-webkit-input-placeholder {
                                     color: white !important;
