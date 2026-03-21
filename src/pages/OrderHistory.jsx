@@ -126,7 +126,6 @@ export default function OrderHistory() {
   const getPaymentMethodText = (method) => {
     switch (method) {
       case 'cod': return 'Thanh toán khi nhận hàng';
-      case 'momo': return 'Ví MoMo';
       case 'banking': return 'Chuyển khoản ngân hàng';
       case 'transfer': return 'Chuyển khoản';
       default: return 'Không xác định';

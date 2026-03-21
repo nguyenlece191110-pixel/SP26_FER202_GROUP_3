@@ -61,17 +61,79 @@ export default function Checkout() {
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
         
-        // Clear error when user starts typing
-        if (errors[name]) {
-            setErrors(prev => ({
+        // Handle fullName field - allow all characters except numbers and special symbols
+        if (name === 'fullName') {
+            const lettersOnlyValue = value.replace(/[0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '');
+            setFormData(prev => ({
                 ...prev,
-                [name]: ''
+                [name]: lettersOnlyValue
             }));
+            
+            if (value !== lettersOnlyValue && value.length > lettersOnlyValue.length) {
+                setErrors(prev => ({
+                    ...prev,
+                    [name]: 'Họ tên không được chứa số và ký tự đặc biệt'
+                }));
+            } else if (errors[name]) {
+                setErrors(prev => ({
+                    ...prev,
+                    [name]: ''
+                }));
+            }
+        }
+        // Handle address field - allow all characters and numbers except special symbols
+        else if (name === 'address') {
+            const validAddressValue = value.replace(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '');
+            setFormData(prev => ({
+                ...prev,
+                [name]: validAddressValue
+            }));
+            
+            if (value !== validAddressValue && value.length > validAddressValue.length) {
+                setErrors(prev => ({
+                    ...prev,
+                    [name]: 'Địa chỉ không được chứa ký tự đặc biệt'
+                }));
+            } else if (errors[name]) {
+                setErrors(prev => ({
+                    ...prev,
+                    [name]: ''
+                }));
+            }
+        }
+        // Handle phone field - numbers only
+        else if (name === 'phone') {
+            const numbersOnlyValue = value.replace(/[^0-9]/g, '');
+            setFormData(prev => ({
+                ...prev,
+                [name]: numbersOnlyValue
+            }));
+            
+            if (value !== numbersOnlyValue && value.length > numbersOnlyValue.length) {
+                setErrors(prev => ({
+                    ...prev,
+                    [name]: 'Số điện thoại chỉ được chứa số'
+                }));
+            } else if (errors[name]) {
+                setErrors(prev => ({
+                    ...prev,
+                    [name]: ''
+                }));
+            }
+        } else {
+            setFormData(prev => ({
+                ...prev,
+                [name]: value
+            }));
+            
+            // Clear error when user starts typing for other fields
+            if (errors[name]) {
+                setErrors(prev => ({
+                    ...prev,
+                    [name]: ''
+                }));
+            }
         }
     };
 
@@ -82,6 +144,8 @@ export default function Checkout() {
             newErrors.fullName = 'Vui lòng nhập họ tên';
         } else if (formData.fullName.trim().length < 2) {
             newErrors.fullName = 'Họ tên phải có ít nhất 2 ký tự';
+        } else if (/[0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(formData.fullName)) {
+            newErrors.fullName = 'Họ tên không được chứa số và ký tự đặc biệt';
         }
 
         if (!formData.email.trim()) {
@@ -92,14 +156,16 @@ export default function Checkout() {
 
         if (!formData.phone.trim()) {
             newErrors.phone = 'Vui lòng nhập số điện thoại';
-        } else if (!/^(0|\+84)[0-9]{9,10}$/.test(formData.phone.replace(/\s/g, ''))) {
-            newErrors.phone = 'Số điện thoại không hợp lệ (bắt đầu bằng 0 hoặc +84)';
+        } else if (!/^0[0-9]{9,10}$/.test(formData.phone.replace(/\s/g, ''))) {
+            newErrors.phone = 'Số điện thoại không hợp lệ (bắt đầu bằng 0 và không quá 10 và 11 số)';
         }
 
         if (!formData.address.trim()) {
             newErrors.address = 'Vui lòng nhập địa chỉ';
         } else if (formData.address.trim().length < 5) {
             newErrors.address = 'Địa chỉ phải có ít nhất 5 ký tự';
+        } else if (/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(formData.address)) {
+            newErrors.address = 'Địa chỉ không được chứa ký tự đặc biệt';
         }
 
         if (!formData.city.trim()) {
