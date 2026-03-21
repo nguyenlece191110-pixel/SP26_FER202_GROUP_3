@@ -13,10 +13,12 @@ export default function Header() {
     const navigate = useNavigate();
     const handleSearch = (e) => {
         e.preventDefault();
-        if (searchTerm.trim()) {
-            // Chuyển hướng sang trang Shop kèm từ khóa tìm kiếm
-            navigate(`/shop?search=${searchTerm}`);
-        }
+        const keyword = searchTerm.trim();
+
+        if (!keyword) return;
+
+        // Chuyển hướng sang trang Shop kèm từ khóa tìm kiếm (URL-safe)
+        navigate(`/shop?search=${encodeURIComponent(keyword)}`);
     };
 
     return (
