@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Form, Button, Alert, Pagination, Tab, Nav } from 'react-bootstrap';
+import { useSearchParams } from 'react-router-dom';
 import ProductGallery from '../components/ProductGallery';
 
 export default function Shop() {
+    const [searchParams] = useSearchParams();
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -34,6 +36,12 @@ export default function Shop() {
 
         fetchProducts();
     }, []);
+
+    // Sync search term from URL query (?search=...) so navbar search can filter immediately.
+    useEffect(() => {
+        const querySearch = (searchParams.get('search') || '').trim();
+        setSearchTerm(querySearch);
+    }, [searchParams]);
 
     // Filter and sort products
     useEffect(() => {
