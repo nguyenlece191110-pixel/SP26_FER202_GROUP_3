@@ -2,8 +2,16 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FaFacebook } from 'react-icons/fa';
 import { SiZalo } from 'react-icons/si';
+import { Link } from 'react-router-dom'; // Thêm import này
 
 export default function Footer() {
+    // Style chung cho các link chính sách để tránh bị đổi màu mặc định của thẻ a
+    const linkStyle = {
+        textDecoration: 'none',
+        color: 'inherit',
+        transition: 'color 0.2s'
+    };
+
     return (
         <footer className="bg-dark text-white pt-5 pb-3 mt-5 shadow-lg">
             <Container>
@@ -41,20 +49,31 @@ export default function Footer() {
                             <li>Lê Nguyên</li>
                             <li>Phạm Nguyên Phước</li>
                             <li>Huỳnh Lê Nhật Minh</li>
-
                         </ul>
                     </Col>
 
-                    {/* Cột 3: Chính sách */}
+                    {/* Cột 3: Chính sách - ĐÃ CẬP NHẬT LINK */}
                     <Col xs={12} md={4}>
                         <h6 className="fw-bold mb-3 text-uppercase small">Chính sách</h6>
                         <ul className="list-unstyled small text-secondary lh-lg">
-                            <li>Chính sách bảo hành</li>
-                            <li>Chính sách đổi trả</li>
-                            <li>Chính sách bảo mật</li>
-                            <li>Chính sách trả góp</li>
-                            <li>Chính sách khui hộp sản phẩm</li>
-                            <li>Chính sách giao hàng & lắp đặt</li>
+                            <li>
+                                <Link to="/policy/bao-hanh" style={linkStyle} className="policy-link">Chính sách bảo hành</Link>
+                            </li>
+                            <li>
+                                <Link to="/policy/doi-tra" style={linkStyle} className="policy-link">Chính sách đổi trả</Link>
+                            </li>
+                            <li>
+                                <Link to="/policy/bao-mat" style={linkStyle} className="policy-link">Chính sách bảo mật</Link>
+                            </li>
+                            <li>
+                                <Link to="/policy/tra-gop" style={linkStyle} className="policy-link">Chính sách trả góp</Link>
+                            </li>
+                            <li>
+                                <Link to="/policy/khui-hop" style={linkStyle} className="policy-link">Chính sách khui hộp sản phẩm</Link>
+                            </li>
+                            <li>
+                                <Link to="/policy/giao-hang" style={linkStyle} className="policy-link">Chính sách giao hàng & lắp đặt</Link>
+                            </li>
                         </ul>
                     </Col>
                 </Row>
@@ -64,6 +83,15 @@ export default function Footer() {
                     <p className="mb-0">&copy; 2026 TechHub. Bản quyền thuộc về Nhóm 3 - FER202.</p>
                 </div>
             </Container>
+
+            {/* Thêm một chút CSS inline để hiệu ứng đẹp hơn */}
+            <style>{`
+                .policy-link:hover {
+                    color: #0088ff !important;
+                    padding-left: 5px;
+                    transition: all 0.3s ease;
+                }
+            `}</style>
         </footer>
     );
 }

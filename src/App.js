@@ -22,6 +22,8 @@ const Cart = lazy(() => import('./pages/Cart'));
 const Checkout = lazy(() => import('./pages/Checkout'));
 const ProductDetail = lazy(() => import('./pages/ProductDetail'));
 
+const PolicyDetail = lazy(() => import('./pages/PolicyDetail'));
+
 const Admin = lazy(() => import('./pages/Admin'));
 const ManageProductsPage = lazy(() => import('./pages/ManageProductsPage'));
 const OrderHistory = lazy(() => import('./pages/OrderHistory'));
@@ -50,7 +52,7 @@ function App() {
                     <Route path="/payment-info" element={<PaymentInfo />} />
                     <Route path="/checkout" element={<Checkout />} />
                     <Route path="/orders" element={<OrderHistory />} />
-
+                    <Route path="/policy/:type" element={<PolicyDetail />} />
                     <Route path="/admin" element={<Admin />} />
                     <Route path="/admin/products" element={<ManageProductsPage />} />
                     <Route path="/admin/orders" element={<OrderManagement />} />
