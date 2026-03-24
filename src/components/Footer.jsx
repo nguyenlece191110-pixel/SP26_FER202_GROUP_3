@@ -78,9 +78,9 @@ export default function Footer() {
                         </ul>
                     </Col>
                     <Col xs={12} md={3}>
-                        <p className="mb-0">
-                            Email: <a href="mailto:minhhln.ce191000@gmail.com" className="text-info text-decoration-none">
-                                minhhln.ce191000@gmail.com
+                        <p className="fw-bold mb-3 text-uppercase small text">
+                            Liên hệ chúng tôi tại <a href="mailto:minhhln.ce191000@gmail.com" className="text-info text-decoration-none text-blue">
+                                Email
                             </a>
                         </p>
 
