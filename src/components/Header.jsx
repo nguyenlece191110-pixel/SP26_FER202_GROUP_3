@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Navbar, Nav, Container, Button, Badge, Form, InputGroup } from 'react-bootstrap';
+import { Navbar, Nav, Container, Button, Badge, Form, InputGroup, NavDropdown } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthContext';
 import { useCart } from '../contexts/CartContext';
@@ -33,32 +33,41 @@ export default function Header() {
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
+
                     <Nav className="me-auto">
-                        <Nav.Link as={Link} to="/">Trang chủ</Nav.Link>
-                        <Nav.Link as={Link} to="/shop">Sản phẩm</Nav.Link>
-                        <Nav.Link as={Link} to="/cart" className="position-relative">
-                            <Cart3 className="me-1" />
-                            Giỏ hàng
-                            {totalItems > 0 && (
-                                <Badge
-                                    bg="danger"
-                                    pill
-                                    className="position-absolute top-0 start-100 translate-middle"
-                                    style={{ fontSize: '0.7em' }}
-                                >
-                                    {totalItems}
-                                </Badge>
+                        <NavDropdown >
+                            <NavDropdown.Item as={Link} to="/">
+                                Trang chủ
+                            </NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="/shop">
+                                Sản phẩm
+                            </NavDropdown.Item>
+
+                            <NavDropdown.Item as={Link} to="/cart">
+                                <Cart3 className="me-2" />
+                                Giỏ hàng
+                                {totalItems > 0 && (
+                                    <Badge bg="danger" pill className="ms-2">
+                                        {totalItems}
+                                    </Badge>
+                                )}
+                            </NavDropdown.Item>
+                            {user && <NavDropdown.Divider />}
+                            {user && (
+                                <NavDropdown.Item as={Link} to="/orders">
+                                    <Clipboard2 className="me-2" />
+                                    Đơn hàng
+                                </NavDropdown.Item>
                             )}
-                        </Nav.Link>
-                        {user && (
-                            <Nav.Link as={Link} to="/orders">
-                                <Clipboard2 className="me-1" />
-                                Đơn hàng
-                            </Nav.Link>
-                        )}
-                        {user?.role === 'admin' && (
-                            <Nav.Link as={Link} to="/admin">Quản trị</Nav.Link>
-                        )}
+                            {user?.role === 'admin' && (
+                                <>
+                                    <NavDropdown.Divider />
+                                    <NavDropdown.Item as={Link} to="/admin" className="text-warning">
+                                        Quản trị hệ thống
+                                    </NavDropdown.Item>
+                                </>
+                            )}
+                        </NavDropdown>
                     </Nav>
 
                     {/* --- THANH TÌM KIẾM --- */}

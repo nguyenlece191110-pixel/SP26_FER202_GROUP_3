@@ -7,7 +7,7 @@ const Zalo = () => {
     return (
         <a
             href={zaloLink}
-            target="_blank"
+            target="_blank"//mở tab mới nhưng k mất trang
             rel="noopener noreferrer"
             className="zalo-float shadow"
         >

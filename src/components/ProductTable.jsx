@@ -41,8 +41,9 @@ const ProductTable = ({ products, onEdit, onDelete, onToggle, selectedIds, setSe
                         <th className="text-center" style={{ width: '10%' }}>Hình ảnh</th>
                         <th style={{ width: '25%' }}>Tên sản phẩm</th>
                         <th style={{ width: '15%' }}>Giá</th>
+                        <th style={{ width: '20%' }}>Email</th>
                         <th style={{ width: '15%' }}>Trạng thái (Kho)</th>
-                        <th className="text-center" style={{ width: '25%' }}>Hành động</th>
+                        <th className="text-center" style={{ width: '20%' }}>Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -67,7 +68,7 @@ const ProductTable = ({ products, onEdit, onDelete, onToggle, selectedIds, setSe
                                     <span className="badge bg-secondary text-uppercase" style={{fontSize: '10px'}}>{product.category}</span>
                                 </td>
                                 <td className="text-danger fw-bold">{formatVND(product.price)}</td>
-                                
+                                <td className="text-truncate" title={product.email || 'N/A'}>{product.email || 'N/A'}</td>
                                 {/* Cột Trạng thái mới với thanh Toggle Gạt */}
                                 <td>
                                     <div className="d-flex align-items-center gap-2">
@@ -103,7 +104,7 @@ const ProductTable = ({ products, onEdit, onDelete, onToggle, selectedIds, setSe
                     })}
                     {products.length === 0 && (
                         <tr>
-                            <td colSpan="7" className="text-center text-muted py-5">
+                            <td colSpan="8" className="text-center text-muted py-5">
                                 <i className="bi bi-inbox display-4 d-block mb-2"></i>
                                 Không tìm thấy sản phẩm nào.
                             </td>

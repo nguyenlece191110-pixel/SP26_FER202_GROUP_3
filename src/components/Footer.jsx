@@ -14,9 +14,9 @@ export default function Footer() {
     return (
         <footer className="bg-dark text-white pt-5 pb-3 mt-5 shadow-lg">
             <Container>
-                <Row className="g-4">
+                <Row className="g-3">
                     {/* Cột 1: Kết nối với TechHub */}
-                    <Col xs={12} md={4}>
+                    <Col xs={12} md={3}>
                         <h6 className="fw-bold mb-3 text-uppercase small">Kết nối với TechHub</h6>
                         <div className="d-flex gap-3 mb-4">
                             {/* đường dẫn tới trang fb */}
@@ -42,7 +42,7 @@ export default function Footer() {
                     </Col>
 
                     {/* Cột 2: Về chúng tôi*/}
-                    <Col xs={12} md={4}>
+                    <Col xs={12} md={3}>
                         <h6 className="fw-bold mb-3 text-uppercase small">Về chúng tôi - Group 3</h6>
                         <ul className="list-unstyled small text-secondary lh-lg">
                             <li>Nguyễn Trung Hậu</li>
@@ -54,7 +54,7 @@ export default function Footer() {
                     </Col>
 
                     {/* Cột 3: Chính sách - ĐÃ CẬP NHẬT LINK */}
-                    <Col xs={12} md={4}>
+                    <Col xs={12} md={3}>
                         <h6 className="fw-bold mb-3 text-uppercase small">Chính sách</h6>
                         <ul className="list-unstyled small text-secondary lh-lg">
                             <li>
@@ -77,6 +77,15 @@ export default function Footer() {
                             </li>
                         </ul>
                     </Col>
+                    <Col xs={12} md={3}>
+                        <p className="mb-0">
+                            Email: <a href="mailto:minhhln.ce191000@gmail.com" className="text-info text-decoration-none">
+                                minhhln.ce191000@gmail.com
+                            </a>
+                        </p>
+
+                    </Col>
+
                 </Row>
 
                 <hr className="my-4 border-secondary" />
