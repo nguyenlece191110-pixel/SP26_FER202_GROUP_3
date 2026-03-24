@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import HeroBanner from '../components/HeroBanner';
 import { Container, Row, Col, Button, Spinner, Card, Nav, Tab } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom'; // Thêm useNavigate
+import { Link, useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../contexts/ThemeContext'; 
 import axios from 'axios';
 import './Home.css';
 
-// Component Chính sách dịch vụ (Sử dụng đuôi .jpg như bạn yêu cầu)
 const ServicePolicy = () => (
     <div className="service-policy-section py-5">
         <Container>

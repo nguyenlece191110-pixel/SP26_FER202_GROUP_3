@@ -73,7 +73,7 @@ const PolicyDetail = () => {
                                     <Badge bg="warning" text="dark" className="px-3 py-2 rounded-pill my-3">
                                         <Spinner animation="grow" size="sm" className="me-2 bg-white" /> Coming soon...
                                     </Badge>
-                                    <p className="text-muted">Nội dung này đang được xây dựng.</p>
+                                    <p className="text-muted">Chính sách này hiện đang được đội ngũ TechHub xây dựng nội dung chi tiết. Chúng tôi sẽ cập nhật sớm nhất để phục vụ quý khách hàng.</p>
                                     <div className="text-primary fw-bold mt-3">
                                         <Icon.TelephoneFill className="me-2" /> Hotline: 0856 357 069
                                     </div>

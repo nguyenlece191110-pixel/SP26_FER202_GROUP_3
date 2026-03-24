@@ -2,10 +2,9 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FaFacebook } from 'react-icons/fa';
 import { SiZalo } from 'react-icons/si';
-import { Link } from 'react-router-dom'; // Thêm import này
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
-    // Style chung cho các link chính sách để tránh bị đổi màu mặc định của thẻ a
     const linkStyle = {
         textDecoration: 'none',
         color: 'inherit',
@@ -20,11 +19,13 @@ export default function Footer() {
                     <Col xs={12} md={4}>
                         <h6 className="fw-bold mb-3 text-uppercase small">Kết nối với TechHub</h6>
                         <div className="d-flex gap-3 mb-4">
+                            {/* đường dẫn tới trang fb */}
                             <a href="https://www.facebook.com/share/14Zozu5frnu/" target="_blank" rel="noreferrer"
                                 className="d-flex align-items-center justify-content-center rounded-circle"
                                 style={{ width: '36px', height: '36px', backgroundColor: '#3b5998' }}>
                                 <FaFacebook className="text-white fs-5" />
                             </a>
+                            {/* đường dẫn tới trnag zalo */}
                             <a href="https://zalo.me/0856357069" target="_blank" rel="noreferrer"
                                 className="d-flex align-items-center justify-content-center rounded-circle"
                                 style={{ width: '36px', height: '36px', backgroundColor: '#0088ff' }}>
